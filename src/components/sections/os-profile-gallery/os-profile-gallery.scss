@@ -1,0 +1,166 @@
+@import "~assets/vars";
+
+.profile-gallery{
+  display: flex;
+  flex-flow: raw wrap;    
+
+  &__picture{
+    width: 800px;
+    position: relative;
+  }
+
+  &__button{
+    display: block;
+    width: 80px;
+    height: 600px;
+    position: absolute;
+    top: 1px; 
+
+    &--next{
+      right: 0;      
+    } 
+
+    &--next .svg{
+      right: 12px;
+    }  
+
+    &--prev{
+      left: 0;
+    }
+
+    &--prev .svg{
+      left: 12px; 
+    }
+  }
+
+  &__button .svg{
+    fill: $light;
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;      
+  }
+
+  &__comments-place{
+    width: 370px;
+    background: $gallery-background;
+  }
+
+  &__content{
+    padding: 20px;
+  } 
+
+  &__footer-modal{
+    border-top: 1px solid $grey-border;
+  }   
+
+  &__header-modal{
+    display: flex;
+    padding: 10px 5px;    
+  }
+
+  &__avatar{
+    margin-right: 20px;
+    line-height: 0;    
+  }
+
+  &__artist-avatar{
+    width: 60px;
+    border-radius: 50%;    
+  }
+
+  &__title{
+    padding: 9px 0 6px 0;
+    font-size: 16px;
+    line-height: 18px;
+    color: $dark;    
+  }
+
+  &__data{
+    font-size: 12px;
+    line-height: 18px;
+    color: $slide-data;
+  }
+
+  &__body-modal{
+
+  }
+
+  &__list{
+    height: 400px;    
+  }
+
+  &__item{
+    border-bottom: 1px solid $grey-border;
+    display: flex;
+    padding: 20px 5px;
+  }
+
+  &__item:first-child{
+    border-top: 1px solid $grey-border;
+  }  
+
+  &__manager-avatar{
+    width: 30px;
+    margin-right: 10px;    
+  }
+
+  &__manager-avatar img{
+    width: 30px;
+  }
+
+  &__comment-content{
+    
+  }
+
+  &__text{
+    font-size: 12px;
+    line-height: 18px;
+    color: $gallery-text;    
+  }
+
+  &__comment-author{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;    
+  }
+
+  &__footer-modal{
+    display: flex;
+    padding: 20px 10px;
+    border-top: 1px solid $grey-border;
+    align-items: baseline;    
+  }
+
+  &__message{
+    width: 310px;
+    height: 100px;
+    border: none;
+    outline: none;
+    resize: none;
+    background: $gallery-background;
+    font-size: 14px;
+    line-height: 18px;    
+  }
+
+  &__send{
+    width: 20px;
+    margin-left: 10px;
+  } 
+
+  &__send .svg{
+    fill: $gallery-write;
+
+    &:hover{
+      fill: darken($gallery-write, 10%);
+      transition: .3s;
+    }    
+  } 
+
+  &__close{
+    fill: $gallery-close;
+    position: absolute;
+    top: -40px;
+    right: -410px;
+    cursor: pointer; 
+  }
+}

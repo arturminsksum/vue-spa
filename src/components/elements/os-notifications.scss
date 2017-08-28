@@ -1,0 +1,40 @@
+@import "~assets/vars";
+
+.notifications {
+  background: $seach-input-bg;
+  position: absolute;
+  top: 45px;
+  right: 0;
+  z-index: 11;
+  min-width: 160px;
+  cursor: default;
+
+  &-item {
+    padding: 15px 19px 15px;
+
+    &:hover{
+      background: $dark-blue-hover;
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid $dark-blue;
+    }
+    &-description {
+      color: $grey-bg-text;
+    }
+    &-time {
+      color: $rider-gray-hover;
+      text-align: right;
+      font-size: 10px;
+      padding-top: 7px;
+    }
+    a {
+      text-decoration: none;
+      color: $green;
+      font-weight: 500;
+      font-size: 12px;
+      &:hover {
+        color: $green-hover;
+      }      
+    }
+  }
+}

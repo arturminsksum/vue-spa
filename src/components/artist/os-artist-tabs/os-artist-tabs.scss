@@ -1,0 +1,180 @@
+@import "~assets/vars";
+
+.artist-tabs {
+  padding-top: 10px;
+}
+
+.artist-slider {
+  overflow: hidden;
+  position: relative;
+  padding-top: 30px;
+
+  &__pagin {
+    text-align: right;
+    margin: -15px 0 10px 0;
+  }
+
+  &__prev {
+    padding-right: 7px;
+    border-right: 1px solid $grey-border;
+  }
+
+  &__next {
+    padding-left: 7px;
+    border-left: 1px solid $grey-border;
+  }
+
+  &__prev,
+  &__next {
+    cursor: pointer;
+    fill: $grey-text;
+
+    &:hover,
+    &:active {
+      fill: $green;
+    }
+
+  }
+
+  .swiper-slide {
+    height: 135px;
+    position: relative;
+
+    video,
+    iframe {
+      height: auto;
+      width: 100%;
+    }
+
+    &__cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $dark-grey;
+      z-index: 20;
+
+      &-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -18px;
+        margin-left: -18px;
+      }
+
+      &-text {
+        position: absolute;
+        bottom: 6px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        line-height: 24px;
+        color: $white;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 0 15px;
+      }
+
+      &-icon {
+        fill: $playerBtn;
+      }
+
+    }
+
+    &__img {
+      width: 100%;
+      height: 160px;
+      background: $green;
+    }
+
+  }
+
+}
+
+.events-list {
+  margin-top: 20px;
+
+  &__item {
+    margin-bottom: 20px;
+
+    &:hover {
+      .events-list__info {
+        background-color: $green;
+        color: $white;
+        fill: $white;
+      }
+
+    }
+
+  }
+
+  &__img {
+    line-height: 0;
+  }
+
+  &__info {
+    background-color: $grey-bg-text;
+    color: $font-color;
+    fill: $font-color;
+    padding: 10px;
+    @include trans(background-color, color, fill);
+  }
+
+  &__name {
+    margin-bottom: 10px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__date {
+  }
+
+  &__place {
+    &-marker {
+      margin-right: 10px;
+      vertical-align: bottom;
+    }
+
+  }
+
+}
+
+.pagin {
+  &__item {
+    min-width: 20px;
+    height: 20px;
+    line-height: 18px;
+    border-radius: 3px;
+    background-color: $white;
+    border: solid 1px $banner-grey;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    padding: 0 7px;
+    cursor: pointer;
+    @include trans(color,background-color);
+
+    & + & {
+      margin-left: 5px;
+    }
+
+    &:hover {
+      background-color: $banner-grey;
+      color: $white;
+    }
+  }
+
+}
+
+.modal-gallery{
+
+  .modal__container {
+    width: 1170px;
+  }
+}

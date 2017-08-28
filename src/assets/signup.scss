@@ -1,0 +1,242 @@
+@import "./vars";
+
+.signup {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(15, 40, 67);
+  display: table;
+  transition: opacity .3s ease;
+
+  &__wrap {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  &__container {
+    width: 770px;
+    margin: 0px auto;
+    padding: 30px 70px;
+    background-color: $white;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  }
+
+  &__title {
+    display: flex;
+    align-items: flex-end;
+    margin: 30px 0;
+
+    &-text {
+      color: $darkest;
+      font-size: 30px;
+      margin-right: 15px;
+    }
+
+    &-logo {
+      margin-right: 15px;
+      line-height: 0;
+    }
+
+    &-icon {
+      use {
+        fill: $green;
+      }
+
+    }
+
+  }
+
+}
+
+.form {
+  &--signup {
+    margin-top: 20px;
+  }
+
+  &__row {
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+
+    &--space-between {
+      justify-content: space-between;
+    }
+
+    &--align-top {
+      align-items: flex-start;
+    }
+
+    &--bottom {
+      border-top: 1px solid $grey-border;
+      padding: 30px 0;
+      margin-bottom: 0;
+
+      .btn {
+        flex-basis: 50%;
+        & + .btn {
+          margin-left: 30px;
+        }
+      }
+    }
+
+    .btn {
+      font-size: 17px;
+      font-weight: bold;
+
+      .svg {
+        margin-right: 20px;
+        vertical-align: middle;
+        fill: #fff;
+      }
+    }
+  }
+
+  &__col {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+
+    &--60 {
+      width: 60%;
+    }
+    &--40 {
+      width: 40%;
+    }
+
+  }
+
+  &__submit {
+    .btn {
+      width: 180px;
+    }
+  }
+
+  &__links {
+    text-align: right;
+  }
+
+  &__start {
+    margin-bottom: 10px;
+
+    &-link {
+      color: $green;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__forgot {
+    color: $font-color;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}
+
+.label {
+  color: $grey-text;
+
+  &--signup {
+    flex-shrink: 0;
+    width: 135px;
+  }
+
+  &--between {
+    flex-shrink: 0;
+    margin: 0 20px;
+  }
+
+}
+
+.input {
+  height: 30px;
+  font-size: 14px;
+  border-radius: 15px;
+  background-color: $white;
+  border: solid 1px $input-border;
+  padding: 0 16px;
+  width: 100%;
+  outline: none;
+
+  &--fifty {
+    flex-basis: 50%;
+
+    & + & {
+      margin-left: 30px;
+    }
+
+  }
+
+}
+
+.select {
+  height: 30px;
+  font-size: 14px;
+  border-radius: 15px;
+  background-color: $input-border;
+  padding: 0 16px;
+  flex-basis: 100%;
+  outline: none;
+
+  &--age {
+    flex-basis: 100px;
+  }
+
+}
+
+.checkbox {
+  &__input {
+    position: absolute;
+    left: -9999px;
+
+    &:checked + .checkbox__label:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+  }
+
+  &__label {
+    padding-left: 35px;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      background-color: $white;
+      border: solid 1px $input-border;
+    }
+
+    &:after {
+      content: '✔';
+      color: $green;
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      opacity: 0;
+      @include trans(all);
+    }
+
+  }
+
+}
+
+.modal-login {
+  .modal__container {
+    width: 770px;
+  }
+}

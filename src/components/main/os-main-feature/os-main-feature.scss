@@ -1,0 +1,107 @@
+@import "~assets/vars";
+
+.main-feature {
+
+  &__item {
+    background-color: $white;
+    box-shadow: 0px 1px 29px 0 $box-shadow;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    @include trans(box-shadow);
+
+    &:hover {
+      box-shadow: 0px 0px 0px 3px $green;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    @include desktop {
+      padding: 50px 0;
+    }
+
+  }
+
+  &__picture {
+    margin-right: 30px;
+    width: 85px;
+
+    @include tablet {
+      margin-right: 20px;
+    }
+
+    @include desktop {
+      margin-right: 30px;
+      width: 110px;
+    }
+
+  }
+
+  &__img {
+    height: 80px;
+    width: 100%;
+
+    @include desktop {
+      height: 100px;
+    }
+
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  &__title {
+    color: $darkest;
+    font-size: 20px;
+    font-weight: bold;
+
+    @include desktop {
+      font-size: 30px;
+    }
+
+  }
+
+  &__underline {
+    background-color: $grey-underline;
+    height: 2px;
+    margin-top: 10px;
+    width: 40px;
+
+    @include desktop {
+      height: 3px;
+      margin-top: 15px;
+      width: 50px;
+    }
+
+  }
+
+  &__more {
+    color: $green;
+    font-size: 14px;
+    font-weight: bold;
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+  }
+
+  &__arrow-right {
+    display: inline-block;
+    margin-left: 8px;
+    @include arr(7, 9, $green, r);
+
+    @include desktop {
+      height: 11px;
+      width: 9px;
+    }
+
+  }
+
+}

@@ -1,0 +1,341 @@
+@import "~assets/vars";
+
+.artist-events {
+  padding: 20px;
+  position: relative;
+
+  &__calendar {
+
+    &-toggler {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      width: 115px;
+      padding: 2px;
+      border-radius: 20px;
+      justify-content: space-between;
+      background: $light;
+      cursor: pointer;
+    }
+
+    &-months,
+    &-year {
+      background: $white;
+      color: $font-color;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 16px;
+
+      &--passive {
+        background: transparent;
+        color: $white;
+      }
+    }
+  }
+}
+
+.artist-concert {
+  &__item {
+    background-color: $grey-bg-text;
+    padding: 10px 10px 0;
+    margin: 12px 0;
+  }
+
+  &__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+
+    &-hrefs {
+      position: relative;
+    }
+
+    &-image {
+      width: 58px;
+      height: 58px;
+      border: 1px solid $grey-border-img;
+    }
+
+    &-date {
+      display: block;
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      bottom: 4px;
+      left: 1px;
+      padding-top: 50%;
+      background: $grey-bg-item;
+    }
+
+    &-month,
+    &-year {
+      display: block;
+      font-size: 13px;
+      line-height: 20px;
+      text-transform: uppercase;
+      color: $white;
+      text-align: center;
+    }
+
+    &-date:hover &-month,
+    &-date:hover &-year,
+    &-date:active &-month,
+    &-date:active &-year {
+      color: $green;
+    }
+
+    &-month {
+      margin-top: -20px;
+    }
+
+    &-text {
+      flex: 1;
+      padding-left: 30px;
+      line-height: 20px;
+      color: $grey-text;
+      font-size: 14px;
+    }
+
+    &-dots {
+      width: 40px;
+      height: 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include trans(transform);
+
+      div {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        margin: 3px;
+        background-color: $grey-dots;
+      }
+
+      &--active {
+        transform: rotate(90deg);
+
+        .artist-concert__summary-dot {
+          background-color: $dots-active;
+        }
+
+      }
+
+    }
+
+    &-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin: 3px;
+      background-color: $grey-dots;
+    }
+  }
+
+  &__full {
+    border-top: 1px solid $grey-border;
+    padding: 20px 5px;
+    display: flex;
+    justify-content: space-between;
+
+    &-image {
+      width: 50px;
+    }
+
+    &-info {
+      width: 150px;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      margin-left: 30px;
+    }
+
+    &-text,
+    &-date,
+    &-time {
+      font-size: 14px;
+      line-height: 20px;
+      color: $dark;
+    }
+    &-text {
+      margin-bottom: 15px;
+    }
+
+    &-date,
+    &-time {
+      font-weight: 800;
+    }
+
+    &-container {
+      margin-bottom: 15px;
+    }
+
+    &-button {
+      padding: 5px 0;
+      text-align: center;
+      border: 1px solid $font-color;
+      border-radius: 15px;
+      @include trans(color,background-color)
+
+      &:hover,
+      &:active {
+        color: $white;
+        background-color: $font-color;
+      }
+
+    }
+
+  }
+
+}
+
+.cal-wrapper .cal-header {
+  position: relative;
+  width: 100%;
+  background-color: $white;
+  font-weight: 400;
+  overflow: hidden;
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+.cal-wrapper .cal-header>div {
+  float: left;
+  line-height: 20px;
+}
+
+.cal-wrapper .cal-header .title {
+  padding: 0 15px;
+  text-align: center;
+}
+
+.cal-wrapper .cal-header .l,
+.cal-wrapper .cal-header .r {
+  width: 15px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+}
+
+.cal-wrapper .cal-header .l {
+
+  &:after {
+    content: url(~assets/img/calendarLeftArrow.png);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+  }
+
+}
+
+.cal-wrapper .cal-header .r {
+
+  &:after {
+    content: url(~assets/img/calendarRightArrow.png);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -10px;
+  }
+
+}
+
+.cal-wrapper .cal-body {
+  width: 100%;
+}
+
+.cal-wrapper .cal-body .weeks,
+.cal-wrapper .cal-body .dates {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cal-wrapper .cal-body .weeks .item {
+  line-height: 25px;
+  float: left;
+  width: 14.285%;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.cal-wrapper .cal-body .dates .item {
+  position: relative;
+  float: left;
+  display: block;
+  width: 14.285%;
+  padding: 10px 0;
+  cursor: default;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.cal-wrapper .cal-body .dates .item .date-num {
+  font-size: 14px;
+  position: relative;
+  z-index: 3;
+}
+
+.cal-wrapper .cal-body .dates .item.event {
+  cursor: pointer;
+
+  .date-num {
+    color: $white !important;
+  }
+}
+
+.cal-wrapper .cal-body .dates .item.selected-day .is-event {
+  background-color: $green;
+}
+
+.cal-wrapper .cal-body .dates .item .is-event {
+  content: "";
+  border: 1px solid $green;
+  background-color: $green !important;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin-left: -15px;
+  margin-top: -16px;
+}
+
+.cal-wrapper .cal-body .dates .item .is-today {
+  content: "";
+  background-color: $orange !important;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  margin-left: -3px;
+  margin-top: 8px;
+}
+
+.events-wrapper {
+  background-color: transparent  !important;
+
+  .date {
+    display: none
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  @include trans(opacity);
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
+}

@@ -1,0 +1,155 @@
+@import "~assets/vars";
+
+.artist-playlist {
+
+  &__content {
+    border-top: 1px solid $grey-border;
+  }
+
+  &__treck {
+    margin-bottom: 10px;
+
+    &-header {
+      padding: 10px 0;
+      border-bottom: 1px solid $grey-border;
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    &-avatar {
+      display: flex;
+      flex: 0 0 70px;
+      width: 70px;
+      height: 70px;
+      background: $grey-bg-text;
+      justify-content: center;
+      align-items: center;
+      fill: $playlist-avatar;
+    }
+
+    &-melody {
+      flex: 1;
+      margin-left: 30px;
+
+      &__manager {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &__invoce {
+        display: flex;
+        align-items: center;
+      }
+
+      &-play {
+
+        &__button-play,
+        &__button-stop {
+          fill: $font-color;
+        }
+      }
+
+      &-play:hover > &__button-play,
+      &-play:hover > &__button-stop {
+        fill: $green;
+      }
+
+    }
+
+    &-name {
+      padding-left: 20px;
+    }
+
+    &-dt {
+      flex: 0 0 80px;
+      width: 80px;
+      text-align: right;
+    }
+
+    &-date,
+    &-time {
+      text-align: right;
+      padding-bottom: 5px;
+
+      &--active {
+        display: inline-block;
+        padding: 2px 7px;
+        border-radius: 14px;
+      }
+
+    }
+
+    &-time {
+      padding-top: 5px;
+
+      &--active {
+        margin-bottom: 4px;
+        background: $font-color;
+        color: $white;
+      }
+
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+    }
+
+    &-like,
+    &-share,
+    &-add,
+    &-chart,
+    &-popular {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 14px;
+      margin: 0 5px;
+
+      &_icon {
+        margin-right: 5px;
+      }
+    }
+
+    &-popular {
+      color: $light;
+
+      &_icon {
+        fill: $light;
+      }
+    }
+
+    &-like,
+    &-share,
+    &-add,
+    &-chart {
+      border: 1px solid $grey-border;
+      color: $font-color;
+
+      &:hover {
+        background: $grey-bg-text;
+      }
+
+      &_icon {
+        fill: $font-color;
+      }
+    }
+
+    &-like,
+    &-share,
+    &-chart {
+
+      &:hover {
+        color: $green;
+      }
+    }
+
+    &-like:hover > &-like_icon,
+    &-share:hover > &-share_icon,
+    &-chart:hover > &-chart_icon {
+      fill: $green;
+    }
+  }
+
+}

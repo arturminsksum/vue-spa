@@ -1,0 +1,46 @@
+@import "~assets/vars";
+
+.tabs {
+
+  &-list {
+    border-bottom: 1px solid $grey-border;
+
+    &__button {
+      display: inline-block;
+      padding: 5px 15px;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+
+      .svg {
+        margin-right: 10px;
+        vertical-align: bottom;
+        fill:$font-color;
+        width: 16px;
+        height: 16px;
+      }
+
+      &--is-active {
+        border-bottom-color: $green;
+        color: $green;
+
+        .tabs-list__text {
+          color: $green;
+        }
+
+        .svg {
+          fill: $green;
+        }
+
+      }
+
+    }
+
+    &__text {
+      color: $font-color;
+      font-size: 14px;
+    }
+
+  }
+
+}

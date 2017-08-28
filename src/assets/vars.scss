@@ -1,0 +1,177 @@
+// Typography
+$font-family: "NunitoSans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-color: #575b61;
+
+// colors
+$border-color: #e6e6e6;
+$border-dark-color: #e1e1e1;
+$grey-border-img: #d4d4d4;
+$input-border: #c1c1c1;
+// button
+$dark-blue: #0f2843;
+$dark-blue-hover: #16487d;
+$white: #fff;
+$white-hover: #83ee76;
+$green: #28a151;
+$green-dark: #45ae68;
+$green-hover: #66c35b;
+$gray: #969696;
+$gray-hover: $white;
+$grey-dots: #c4c4c4;
+
+// text
+$blue-icon: #456486;
+$blue-icon-hover: #1b5da5;
+$blue-copyright: #4d6178;
+$darkest: #0f2843;
+$dark: #3e3e3e;
+$grey-text: #828282;
+$grey-border: #e0e0e0;
+$grey-underline: #edeef0;
+$header-text: #acb3bb;
+$header-menu-divider: #051220;
+$banner-grey: #cdcdcd;
+$white: #fff;
+$light: #a6acb6;
+$rider-gray: #606060;
+$rider-gray: #a4aab6;
+$rider-gray-hover: #575c62;
+$slide-data: #a5aab2;
+$gallery-text: #636262;
+
+// background
+
+$grey-bg: #e5e3e3;
+$grey-bg-img: #dadada;
+$seach-input-bg: #091d32;
+$grey-bg-text: #f2f2f2;
+$dark-grey: #464646;
+$grey-bg-item: rgba(53, 53, 53, 0.4);
+$orange: #ffb951;
+$dots-active: #575b61;
+$light-grey-bg: #c4c4c4;
+$player-avatar: #575c60;
+$bright-green: #81e976;
+$player-default: #a6acb6;
+$gallery-background: #f1f2f3;
+
+//icons
+$gold: #ffb74d;
+$silver: #cacaca;
+$playerBtn: #bebebe;
+$banner-icon: #c4c4c4;
+$playlist-avatar: #c4c4c4;
+$full-playeer-button: #a7aeb8;
+$gallery-write: #a6acb6;
+$gallery-close: #868686;
+
+
+$box-shadow: rgba(0, 0, 0, 0.07);
+
+
+// media
+
+$tablet: 768px;
+$desktop: 1200px;
+
+// mixins
+
+@mixin img() {
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin green-hover {
+  color: $green;
+
+  &:hover {
+    color: $green-hover;
+  }
+}
+
+@mixin trans($agrs...) {
+  transition-duration: 0.3s;
+  transition-property: $agrs;
+}
+
+@mixin arr($width, $height, $bg, $direction) {
+  border-style: solid;
+  height: 0px;
+  width: 0px;
+
+  @if $direction == t {
+    border-color: transparent transparent $bg transparent;
+    border-width: 0 $width / 2 + px $height + px $width / 2 + px;
+  }
+
+  @if $direction == r {
+    border-color: transparent transparent transparent $bg;
+    border-width: $height / 2 + px 0 $height / 2 + px $width + px;
+  }
+
+  @if $direction == b {
+    border-color: $bg transparent transparent transparent;
+    border-width: $height + px $width / 2 + px 0 $width / 2 + px;
+  }
+
+  @if $direction == l {
+    border-color: transparent $bg transparent transparent;
+    border-width: $height / 2 + px $width + px $height / 2 + px 0;
+  }
+
+  @if $direction == tl {
+    border-color: $bg transparent transparent transparent;
+    border-width: $height + px $width + px 0 0;
+  }
+
+  @if $direction == tr {
+    border-color: transparent $bg transparent transparent;
+    border-width: 0 $width + px $height + px 0;
+  }
+
+  @if $direction == br {
+    border-color: transparent transparent $bg transparent;
+    border-width: 0 0 $height + px $width + px;
+  }
+
+  @if $direction == bl {
+    border-color: transparent transparent transparent $bg;
+    border-width: $height + px 0 0 $width + px;
+  }
+
+}
+
+
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+

@@ -1,0 +1,74 @@
+@import "~assets/vars";
+
+.rider-item {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+
+  & + & {
+    margin-top: 20px;
+  }
+
+  &__main {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .svg {
+      cursor: pointer;
+      fill: $rider-gray;
+
+      &:hover {
+        fill: $rider-gray-hover;
+      }
+    }
+
+  }
+
+  &__info {
+    padding: 10px 15px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__thumb {
+    margin-right: 15px;
+  }
+
+  &__action {
+  }
+
+  &__name {
+    font-size: 16px;
+    color: $rider-gray;
+    margin-bottom: 20px;
+  }
+
+  &__buttons {
+    .svg {
+      margin-right: 20px;
+    }
+  }
+
+  &__toggle {
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 60px;
+    height: 60px;
+  }
+
+  &__detail {
+    border-top: 1px solid $grey-dots;
+    height: 380px;
+    overflow-y: auto;
+    padding: 15px 10px;
+  }
+
+  &__row {
+  }
+
+  &__column {
+    line-height: 18px;
+  }
+
+}

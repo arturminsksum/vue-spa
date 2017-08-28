@@ -1,0 +1,62 @@
+@import "~assets/vars";
+
+.artist-feedback {
+  margin-bottom: 28px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    width: 14px;
+    height: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    fill: $font-color;
+  }
+
+  &__count {
+    font-size: 12px;
+  }
+
+  &__content {
+    border-radius: 5px;
+    background-color: $grey-bg-text;
+    padding: 10px;
+    font-family: Ubuntu;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    color: $dark;
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    color: $green-hover;
+  }
+
+  &__date {
+    font-size: 10px;
+    color: $banner-grey;
+  }
+
+  &__footer {
+    text-align: right;
+  }
+
+  &__link {
+    font-family: Ubuntu;
+    font-size: 13px;
+  }
+
+}

@@ -1,0 +1,63 @@
+@import "~assets/vars";
+
+.main-describe {
+  margin-top: 20px;
+
+  &__item {
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+  }
+
+  &__picture {
+    display: none;
+
+    @include tablet {
+      background-color: $grey-bg-img;
+      display: block;
+      font-size: 0;
+      margin-bottom: 30px;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+  }
+
+  &__img {
+    height: 100px;
+    width: auto;
+
+    @include desktop {
+      height: 150px;
+    }
+
+  }
+
+  &__info {
+    text-align: center;
+  }
+
+  &__title {
+    color: $darkest;
+    font-size: 20px;
+    font-weight: bold;
+
+    @include desktop {
+      font-size: 24px;
+    }
+
+  }
+
+  &__divider {
+    margin: 15px 0;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: justify;
+  }
+
+}
