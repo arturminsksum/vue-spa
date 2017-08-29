@@ -12,7 +12,7 @@
 
 <script>
 
-import OsSvg from '~components/elements/os-svg'
+import OsSvg from '@/components/elements/os-svg'
 
 export default {
 
@@ -34,7 +34,7 @@ export default {
 
   mounted () {
     this.tabs.forEach(tab => {
-      tab.iconName ? require(`~/assets/svg/${tab.iconName}.svg`) : false
+      tab.iconName ? require(`@/assets/svg/${tab.iconName}.svg`) : false
     })
   },
 
