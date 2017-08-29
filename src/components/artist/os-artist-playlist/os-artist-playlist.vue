@@ -39,8 +39,8 @@ ul.artist-playlist__content
 
 <script>
 
-import OsSvg from '~components/elements/os-svg'
-import OsAudioPlayer from '~components/os-audio-player/os-audio-player.vue'
+import OsSvg from '@/components/elements/os-svg'
+import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 
 const convertTimeHHMMSS = (val) => {
   let hhmmss = new Date(val * 1000).toISOString().substr(11, 8)

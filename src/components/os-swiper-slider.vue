@@ -1,5 +1,5 @@
 <template lang="pug">
-  .artist-slider(v-swiper:myswiper='swiperOptions')
+  swiper.artist-slider(:options='swiperOptions' ref="mySwiper")
     .artist-slider__pagin
       span.artist-slider__prev
         os-svg(name="arrowLeft", width="12px", height="10px").artist-slider__prev-icon
@@ -10,14 +10,16 @@
 </template>
 
 <script>
-import OsSvg from '~components/elements/os-svg'
+import OsSvg from '@/components/elements/os-svg'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 export default {
   name: 'OsSwiperSlider',
   props: ['swiperOptions'],
 
   components: {
-    OsSvg
+    OsSvg,
+    VueAwesomeSwiper
   },
 
   data () {

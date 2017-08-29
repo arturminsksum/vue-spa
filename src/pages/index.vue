@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  os-header
   main.main
     .main-banner
       .container
@@ -46,35 +45,23 @@ div
 </template>
 
 <script>
-// import OsHeader from '~components/sections/os-header.vue'
+
 import OsSvg from '@/components/elements/os-svg'
-// import OsMainFeature from '~components/main/os-main-feature/os-main-feature'
-// import OsMainDescribe from '~components/main/os-main-describe/os-main-describe'
-// import OsMainPlan from '~components/main/os-main-plan/os-main-plan'
-// import OsMainSlider from '~components/main/os-main-slider/os-main-slider'
-// import { mapActions } from 'vuex'
+import OsMainFeature from '@/components/main/os-main-feature/os-main-feature'
+import OsMainDescribe from '@/components/main/os-main-describe/os-main-describe'
+import OsMainPlan from '@/components/main/os-main-plan/os-main-plan'
+import OsMainSlider from '@/components/main/os-main-slider/os-main-slider'
 
 export default {
 
   name: 'Index',
 
   components: {
-    // OsHeader,
-    OsSvg
-    // OsMainFeature,
-    // OsMainDescribe,
-    // OsMainPlan,
-    // OsMainSlider
-  },
-
-  methods: {
-    // ...mapActions([
-    //   'signOut'
-    // ])
-  },
-
-  created () {
-    // this.signOut()
+    OsSvg,
+    OsMainFeature,
+    OsMainDescribe,
+    OsMainPlan,
+    OsMainSlider
   }
 
 }

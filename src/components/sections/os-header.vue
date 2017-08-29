@@ -8,14 +8,14 @@
           .header__signin
             a.link.link--white(href='' @click.prevent="showLoginModal = true") Sign in
           .header__register
-            nuxt-link.btn.btn--30.btn--green(to="/signup")
+            a.btn.btn--30.btn--green(href="#/signup")
              | Free
              span.show-tablet &nbsp;1-month
              |  trial
         .header__registered(v-else)
           ul.header-menu
             li.header-menu__item(v-for="item in artistMenu")
-              nuxt-link.header-menu__link(:to="`/${item.link}`") {{item.text}}
+              a.header-menu__link(:href="`/${item.link}`") {{item.text}}
           .header-search
             input.header-search__input(type="text" placeholder="search")
             os-svg.header-search__icon(name="search", width="13px", height="14px")
@@ -24,7 +24,7 @@
             span.header-upload__text Upload
           .header-artist
             .header-artist__avatar
-              img(src="~assets/img/artist.jpg")
+              img(src="../../assets/img/artist.jpg")
             .header-artist__name(@click.prevent="toggleUserDropdown") Artist Name
               os-svg.header-artist__arrow(name="arrow-down", width="11px", height="6px", :class="{'dropdown-opened': dropdownIsOpened}")
               os-dropdown(:menu-items="userDropdownItems", :is-opened="dropdownIsOpened")
@@ -41,7 +41,7 @@
     )
       .signup__container(slot="body")
         .signup__title
-          nuxt-link.signup__title-logo(to="/")
+          a.signup__title-logo(href="/")
             os-svg.signup__title-icon(name="onstage-logo-black" width="128" height="28")
           span.signup__title-text Great to see you again!
         form.form.form--signup
@@ -58,12 +58,12 @@
             .form__links
               .form__start
                 span.form__start-text Don't have an account?&nbsp;
-                nuxt-link(to="/signup").form__start-link Get started
-              nuxt-link(to="/signup").form__forgot Forgot Password?
+                a(href="/signup").form__start-link Get started
+              a(href="/signup").form__forgot Forgot Password?
 
           .form__row.form__row--space-between
             .form__captcha
-              img(src="~assets/img/captcha.jpg" alt="captcha")
+              img(src="../../assets/img/captcha.jpg" alt="captcha")
             .form__submit
               button.btn.btn--green.btn--40(type="button" @click="getData") Sign In
           .form__row.form__row--bottom
@@ -79,11 +79,11 @@
 
 <script>
 
-import OsModal from '~components/os-modal/os-modal.vue'
-import OsSvg from '~components/elements/os-svg'
-import OsLogo from '~components/elements/os-logo'
-import OsDropdown from '~components/elements/os-dropdown'
-import OsNotifications from '~components/elements/os-notifications'
+import OsModal from '@/components/os-modal/os-modal.vue'
+import OsSvg from '@/components/elements/os-svg'
+import OsLogo from '@/components/elements/os-logo'
+import OsDropdown from '@/components/elements/os-dropdown'
+import OsNotifications from '@/components/elements/os-notifications'
 import { mapState } from 'vuex'
 import axios from 'axios'
 

@@ -1,4 +1,4 @@
-@import "~assets/vars";
+@import "../../assets/vars";
 
 .header {
   background-color: $dark-blue;
@@ -186,7 +186,7 @@
     &__letter {
       cursor: pointer;
       position: relative;
-      
+
       &.incoming {
         &:after {
           content: '';

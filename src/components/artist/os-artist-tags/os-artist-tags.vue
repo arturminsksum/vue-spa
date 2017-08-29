@@ -1,7 +1,7 @@
 <template lang="pug">
 .artist-hashtags
   .artist-tags(:class="{'artist-tags--active': availibleTags}")
-    nuxt-link(to="" v-for="tag in artistTags" key="index").artist-tags__link.btn.btn--grey.btn--20
+    a(href="" v-for="tag in artistTags" key="index").artist-tags__link.btn.btn--grey.btn--20
       span # {{tag}}
   .artist-hashtags__dots(@click="availibleTags = !availibleTags", :class="{'artist-hashtags__dots--active': availibleTags}")
     span.artist-hashtags__dot

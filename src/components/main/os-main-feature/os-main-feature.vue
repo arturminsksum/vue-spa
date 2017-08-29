@@ -13,7 +13,7 @@
 
 <script>
 
-import OsSvg from '~components/elements/os-svg'
+import OsSvg from '@/components/elements/os-svg'
 
 export default {
 

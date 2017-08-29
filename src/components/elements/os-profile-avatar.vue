@@ -1,6 +1,6 @@
 <template lang="pug">
   .profile-avatar
-    img(src="~assets/img/artist-avatar-01.jpg")
+    img(src="../../assets/img/artist-avatar-01.jpg")
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss">
 
-  @import "~assets/vars";
+  @import "../../assets/vars";
 
   .profile-avatar {
     width: 140px;

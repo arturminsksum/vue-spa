@@ -10,12 +10,12 @@
       .artist-feedback__name Manager Name
       time(datetime="2017-01-11").artist-feedback__date 11.01.2017
     .artist-feedback__footer
-      nuxt-link(to="").artist-feedback__link Show all
+      a(href="").artist-feedback__link Show all
 </template>
 
 <script>
 
-import OsSvg from '~components/elements/os-svg'
+import OsSvg from '@/components/elements/os-svg'
 
 export default {
   name: 'OsArtistFeedback',

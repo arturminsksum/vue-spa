@@ -1,4 +1,4 @@
-@import "~assets/vars";
+@import "../../assets/vars";
 
 .notifications {
   background: $seach-input-bg;
@@ -34,7 +34,7 @@
       font-size: 12px;
       &:hover {
         color: $green-hover;
-      }      
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-@import "~assets/vars";
+@import "../../assets/vars";
 .dropdown {
   background: $seach-input-bg;
   position: absolute;
@@ -14,12 +14,12 @@
     &:not(:last-child) {
       border-bottom: 1px solid $dark-blue;
     }
-    
+
     a {
       text-decoration: none;
       color: $grey-bg-text;
       font-weight: 500;
-      font-size: 14px;      
+      font-size: 14px;
     }
   }
 }

@@ -18,7 +18,7 @@
             .swiper-slide__img
     os-tabs-item(name='Events', iconName="calendar")
       .events-list.row
-        nuxt-link(to="/" v-for="n in 6" key="index").events-list__item.four.columns
+        a(href="/" v-for="n in 6" key="index").events-list__item.four.columns
           .events-list__img
             img.img(src="~assets/img/event-list-item.jpg")
           .events-list__info
@@ -32,21 +32,21 @@
         li.pagin__item(v-for="(text, index) in ['<<','<','1','2','3','4','>','>>']", key="index")
           span.pagin__text {{index}}
     os-modal.modal-gallery(
-      modal-title="Gallery" 
-      v-if="showModalGallery" 
+      modal-title="Gallery"
+      v-if="showModalGallery"
       no-header)
       .modal__body(slot="body")
         os-profile-gallery.modal__gallery(@close="showModalGallery = false", :num-open="openedPhoto")
 </template>
 
 <script>
-import OsTabs from '~components/os-tabs/os-tabs'
-import OsTabsItem from '~components/os-tabs/os-tabs-item'
-import OsProfileGallery from '~components/sections/os-profile-gallery/os-profile-gallery'
-import OsSwiperSlider from '~components/os-swiper-slider'
-import OsSvg from '~components/elements/os-svg'
-import OsArtistPlaylist from '~components/artist/os-artist-playlist/os-artist-playlist'
-import OsModal from '~components/os-modal/os-modal.vue'
+import OsTabs from '@/components/os-tabs/os-tabs'
+import OsTabsItem from '@/components/os-tabs/os-tabs-item'
+import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
+import OsSwiperSlider from '@/components/os-swiper-slider'
+import OsSvg from '@/components/elements/os-svg'
+import OsArtistPlaylist from '@/components/artist/os-artist-playlist/os-artist-playlist'
+import OsModal from '@/components/os-modal/os-modal.vue'
 
 export default {
   name: 'OsArtistTabs',

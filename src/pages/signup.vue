@@ -4,7 +4,7 @@
       .signup__container
         .signup__title
           span.signup__title-text Realize your talent with
-          a.signup__title-logo(href="/")
+          a.signup__title-logo(href="#/")
             os-svg.signup__title-icon(name="onstage-logo-black" width="128" height="28")
         os-tabs.artist-tabs
           os-tabs-item(name='User')
