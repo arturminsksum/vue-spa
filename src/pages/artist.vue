@@ -97,7 +97,6 @@ import OsProfilePartners from '@/components/sections/os-profile-partners/os-prof
 import OsSvg from '@/components/elements/os-svg'
 
 import { mapGetters } from 'vuex'
-import JwtDecode from 'jwt-decode'
 
 export default {
 
@@ -209,15 +208,6 @@ export default {
       'isAgent',
       'isClub'
     ])
-  },
-  mounted () {
-    const token = sessionStorage.getItem('token')
-
-    if (!token) {
-      this.$router.replace({path: '/'})
-    } else {
-      this.$store.dispatch('setUser', {user: JwtDecode(token)})
-    }
   }
 }
 

@@ -73,7 +73,6 @@ import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-event
 import OsSvg from '@/components/elements/os-svg'
 
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
-import JwtDecode from 'jwt-decode'
 
 export default {
 
@@ -91,16 +90,6 @@ export default {
   },
 
   methods: {
-  },
-
-  mounted () {
-    const token = sessionStorage.getItem('token')
-
-    if (!token) {
-      this.$router.replace({path: '/'})
-    } else {
-      this.$store.dispatch('setUser', {user: JwtDecode(token)})
-    }
   }
 }
 
