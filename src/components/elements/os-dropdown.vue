@@ -1,8 +1,8 @@
 <template lang="pug">
   transition(name='fade', mode='in-out')
     ul.dropdown(v-show='isOpened')
-      li.dropdown-item(v-for='option in menuItems', :key='option.title', @click='select')
-        a(:to='option.url') {{ option.title }}
+      li.dropdown-item(v-for='(option, index) in menuItems', :key='option.title', @click='select(index)')
+        a(:href='option.url') {{ option.title }}
 </template>
 <script>
 export default {
@@ -11,7 +11,11 @@ export default {
     toggle () {
       this.isOpened = !this.isOpened
     },
-    select () {}
+    select (i) {
+      let action = this.menuItems[i].onClick
+
+      if (action) action()
+    }
   }
 }
 </script>

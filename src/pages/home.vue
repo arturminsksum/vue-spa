@@ -1,6 +1,5 @@
 <template lang="pug">
-div
-  os-header
+
   .container
     main.main
       .page-wrapper.page-wrapper--grey
@@ -48,7 +47,7 @@ div
               .post-single__news
                 .post-single__news-text James Marshall "Jimi" Hendrix (born Johnny Allen Hendrix; November 27, 1942 – September 18, 1970) was an American rock guitarist, singer, and songwriter. Although his mainstream career spanned only four years, he is widely regarded as one of the most influential electric guitarists in the history of popular music, and one of the most celebrated musicians of the 20th century...
                 .post-single__news-img
-                  img(src="~assets/img/post-picture.jpg")
+                  img(src="../assets/img/post-picture.jpg")
             .post-single__footer
               .post-single__footer-left
               .post-single__footer-right
@@ -109,7 +108,7 @@ export default {
 
 <style lang="scss">
 
-  @import "~assets/vars";
+  @import "../assets/vars";
 
   .page-home {
 

@@ -1,5 +1,4 @@
 <template lang="pug">
-div
   main.main
     .main-banner
       .container

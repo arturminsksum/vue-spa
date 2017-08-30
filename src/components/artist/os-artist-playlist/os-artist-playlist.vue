@@ -1,7 +1,7 @@
 <template lang="pug">
 ul.artist-playlist__content
   li.artist-playlist__track(v-for="(track, index) in playlistTracks", :key="track.id")
-    audio(ref="audio" :src="track.filePath" type="audio/mp3")
+    audio(ref="audio", :src="require('../../../assets' + track.filePath)" type="audio/mp3")
     .artist-playlist__track-header
       .artist-playlist__track-avatar
         os-svg(name="disc", width="40px", height="40px").artist-playlist__track-avatar

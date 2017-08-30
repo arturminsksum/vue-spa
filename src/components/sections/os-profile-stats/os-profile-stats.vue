@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss">
 
-  @import "~assets/vars";
+  @import "../../../assets/vars";
 
   .profile-stats {
     background: $white;

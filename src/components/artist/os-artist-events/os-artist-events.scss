@@ -225,7 +225,7 @@
 .cal-wrapper .cal-header .l {
 
   &:after {
-    content: url(~assets/img/calendarLeftArrow.png);
+    content: url(../../../assets/img/calendarLeftArrow.png);
     position: absolute;
     top: 50%;
     right: 0;
@@ -237,7 +237,7 @@
 .cal-wrapper .cal-header .r {
 
   &:after {
-    content: url(~assets/img/calendarRightArrow.png);
+    content: url(../../../assets/img/calendarRightArrow.png);
     position: absolute;
     top: 50%;
     left: 0;

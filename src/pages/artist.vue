@@ -1,6 +1,4 @@
 <template lang="pug">
-div
-  os-header
   .container
     main.main
       os-artist-banner(

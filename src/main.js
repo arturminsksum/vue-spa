@@ -6,10 +6,13 @@ import App from './App'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import axios from 'axios'
+import VueAxios from 'vue-axios'
+import vueEventCalendar from 'vue-event-calendar'
+
+Vue.use(vueEventCalendar, {locale: 'en'})
+Vue.use(VueAxios, axios)
 
 sync(store, router)
-Vue.use(axios)
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

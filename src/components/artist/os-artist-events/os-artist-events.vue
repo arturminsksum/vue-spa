@@ -10,7 +10,7 @@
           .artist-concert__summary
             .artist-concert__summary-hrefs
               a(href="/").artist-concert__summary-href
-                img(:src="require('~assets/img/' + event.image)").artist-concert__summary-image
+                img(:src="require('../../../assets/img/' + event.image)").artist-concert__summary-image
               a(href="/").artist-concert__summary-date
                 span.artist-concert__summary-month {{event.dateMonth}}
                 span.artist-concert__summary-year {{event.dateYear}}
@@ -24,7 +24,7 @@
               .artist-concert__summary-dot
           transition(name='fade')
             .artist-concert__full(v-show='event.show')
-              img(src="~assets/img/turtle.png").img.artist-concert__full-image
+              img(src="../../../assets/img/turtle.png").img.artist-concert__full-image
               .artist-concert__full-info
                 p.artist-concert__full-text TJ´s Muse Bridge LISTEN & CHAT SHOW introduces ESP EVOLUTION music to MuseBoat family!
                 .artist-concert__full-container
@@ -33,6 +33,7 @@
                   p.artist-concert__full-time
                     time(datetime='14:00') @ 2:00pm
                 a.artist-concert__full-button Visit event page
+
 </template>
 
 <script>

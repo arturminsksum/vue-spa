@@ -7,11 +7,11 @@
 .artist-slider {
   overflow: hidden;
   position: relative;
-  padding-top: 30px;
+  padding-top: 10px;
 
   &__pagin {
     text-align: right;
-    margin: -15px 0 10px 0;
+    margin-top: 10px;
   }
 
   &__prev {

@@ -1,8 +1,8 @@
-@import "~assets/vars";
+@import "../../../assets/vars";
 
 .profile-gallery{
   display: flex;
-  flex-flow: raw wrap;    
+  flex-flow: raw wrap;
 
   &__picture{
     width: 800px;
@@ -14,22 +14,22 @@
     width: 80px;
     height: 600px;
     position: absolute;
-    top: 1px; 
+    top: 1px;
 
     &--next{
-      right: 0;      
-    } 
+      right: 0;
+    }
 
     &--next .svg{
       right: 12px;
-    }  
+    }
 
     &--prev{
       left: 0;
     }
 
     &--prev .svg{
-      left: 12px; 
+      left: 12px;
     }
   }
 
@@ -37,7 +37,7 @@
     fill: $light;
     position: absolute;
     top: 50%;
-    margin-top: -17px;      
+    margin-top: -17px;
   }
 
   &__comments-place{
@@ -47,32 +47,32 @@
 
   &__content{
     padding: 20px;
-  } 
+  }
 
   &__footer-modal{
     border-top: 1px solid $grey-border;
-  }   
+  }
 
   &__header-modal{
     display: flex;
-    padding: 10px 5px;    
+    padding: 10px 5px;
   }
 
   &__avatar{
     margin-right: 20px;
-    line-height: 0;    
+    line-height: 0;
   }
 
   &__artist-avatar{
     width: 60px;
-    border-radius: 50%;    
+    border-radius: 50%;
   }
 
   &__title{
     padding: 9px 0 6px 0;
     font-size: 16px;
     line-height: 18px;
-    color: $dark;    
+    color: $dark;
   }
 
   &__data{
@@ -86,7 +86,7 @@
   }
 
   &__list{
-    height: 400px;    
+    height: 400px;
   }
 
   &__item{
@@ -97,11 +97,11 @@
 
   &__item:first-child{
     border-top: 1px solid $grey-border;
-  }  
+  }
 
   &__manager-avatar{
     width: 30px;
-    margin-right: 10px;    
+    margin-right: 10px;
   }
 
   &__manager-avatar img{
@@ -109,26 +109,26 @@
   }
 
   &__comment-content{
-    
+
   }
 
   &__text{
     font-size: 12px;
     line-height: 18px;
-    color: $gallery-text;    
+    color: $gallery-text;
   }
 
   &__comment-author{
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;    
+    margin-top: 10px;
   }
 
   &__footer-modal{
     display: flex;
     padding: 20px 10px;
     border-top: 1px solid $grey-border;
-    align-items: baseline;    
+    align-items: baseline;
   }
 
   &__message{
@@ -139,13 +139,13 @@
     resize: none;
     background: $gallery-background;
     font-size: 14px;
-    line-height: 18px;    
+    line-height: 18px;
   }
 
   &__send{
     width: 20px;
     margin-left: 10px;
-  } 
+  }
 
   &__send .svg{
     fill: $gallery-write;
@@ -153,14 +153,14 @@
     &:hover{
       fill: darken($gallery-write, 10%);
       transition: .3s;
-    }    
-  } 
+    }
+  }
 
   &__close{
     fill: $gallery-close;
     position: absolute;
     top: -40px;
     right: -410px;
-    cursor: pointer; 
+    cursor: pointer;
   }
 }
