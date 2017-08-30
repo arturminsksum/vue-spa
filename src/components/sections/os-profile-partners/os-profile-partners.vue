@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import OsSvg from '~components/elements/os-svg'
+import OsSvg from '@/components/elements/os-svg'
 
 export default {
 
@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss">
 
-  @import "~assets/vars";
+  @import "../../../assets/vars";
 
   .profile-partners {
     padding: 20px;

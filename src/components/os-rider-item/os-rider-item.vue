@@ -3,7 +3,7 @@
     .rider-item__main
       .rider-item__info
         .rider-item__thumb
-          img(src="~assets/img/txt-file.png")
+          img(src="../../assets/img/txt-file.png")
         .rider-item__action
           .rider-item__name Concert rider
           .rider-item__buttons
@@ -120,7 +120,7 @@
 
 <script>
 
-import OsSvg from '~components/elements/os-svg'
+import OsSvg from '@/components/elements/os-svg'
 
 export default {
   name: 'OsRiderItem',

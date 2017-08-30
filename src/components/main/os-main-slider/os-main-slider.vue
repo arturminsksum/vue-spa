@@ -1,23 +1,25 @@
 <template lang="pug">
-  div.main-slider(v-swiper:myswiper='swiperOption')
-    .swiper-wrapper
-      .swiper-slide.main-slider__item(v-for='banner in banners')
-        div.main-slider__text {{banner.text}}
-        div.main-slider__divider
-          .divider
-        div.main-slider__person {{banner.person}}
-        div.main-slider__prof {{banner.prof}}
-    .swiper-pagination.swiper-pagination-bullets
+  swiper.main-slider(:options='swiperOption' ref="mySwiper")
+    swiper-slide.swiper-slide.main-slider__item(:key="index" v-for="banner, index in banners")
+      div.main-slider__text {{banner.text}}
+      div.main-slider__divider
+        .divider
+      div.main-slider__person {{banner.person}}
+      div.main-slider__prof {{banner.prof}}
+    .swiper-pagination.swiper-pagination-bullets(slot="pagination")
 </template>
 
 <script>
+
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 export default {
 
   name: 'OsMainSlider',
 
   components: {
-
+    swiper,
+    swiperSlide
   },
 
   data () {

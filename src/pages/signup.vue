@@ -4,7 +4,7 @@
       .signup__container
         .signup__title
           span.signup__title-text Realize your talent with
-          a.signup__title-logo(href="/")
+          a.signup__title-logo(href="#/")
             os-svg.signup__title-icon(name="onstage-logo-black" width="128" height="28")
         os-tabs.artist-tabs
           os-tabs-item(name='User')
@@ -132,7 +132,6 @@
 import OsSvg from '@/components/elements/os-svg'
 import OsTabs from '@/components/os-tabs/os-tabs'
 import OsTabsItem from '@/components/os-tabs/os-tabs-item'
-import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
 // class Errors {
@@ -288,7 +287,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      axios.post('http://165.227.140.41:1323/api/users/login', {
+      this.axios.post('http://165.227.140.41:1323/api/users/login', {
         email: this.formItems[0].model,
         password: this.formItems[2].model
       })

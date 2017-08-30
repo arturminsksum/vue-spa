@@ -1,19 +1,19 @@
 <template lang="pug">
   #app
-    //- os-header
+    os-header
     router-view
     os-footer
 </template>
 
 <script>
 
-// import OsHeader from './components/sections/os-header.vue'
-import OsFooter from './components/sections/os-footer.vue'
+import OsHeader from '@/components/sections/os-header.vue'
+import OsFooter from '@/components/sections/os-footer.vue'
 
 export default {
   name: 'app',
   components: {
-    // OsHeader,
+    OsHeader,
     OsFooter
   }
 }

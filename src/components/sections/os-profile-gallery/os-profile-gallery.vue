@@ -1,7 +1,7 @@
 <template lang="pug">
 .profile-gallery
   .profile-gallery__picture
-    img(:src="require('~assets/img/' + currentPhoto.poster)").img.profile-gallery__image
+    img(:src="require('../../../assets/img/' + currentPhoto.poster)").img.profile-gallery__image
     a(href="#", @click="showNext()").profile-gallery__button.profile-gallery__button--next
       os-svg(:name="arrowRight", width="20px", height="35px")
     a(href="#", @click="showPrev()").profile-gallery__button.profile-gallery__button--prev
@@ -12,7 +12,7 @@
     .profile-gallery__content
       .profile-gallery__header-modal
         .profile-gallery__avatar
-          img(:src="require('~assets/img/' + currentPhoto.artist.avatar)").profile-gallery__artist-avatar
+          img(:src="require('../../../assets/img/' + currentPhoto.artist.avatar)").profile-gallery__artist-avatar
         .profile-gallery__text
           h1.profile-gallery__title {{ currentPhoto.artist.name }}
           time.profile-gallery__data {{ currentPhoto.artist.data }}
@@ -20,7 +20,7 @@
         ul.profile-gallery__list
           li(v-for="manager in currentPhoto.managers", :key="manager").profile-gallery__item
             .profile-gallery__manager-avatar
-              img(:src="require('~assets/img/' + manager.avatar)")
+              img(:src="require('../../../assets/img/' + manager.avatar)")
             .profile-gallery__comment-content
               .profile-gallery__text {{ manager.text }}
               .profile-gallery__comment-author
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import OsSvg from '~components/elements/os-svg'
+import OsSvg from '@/components/elements/os-svg'
 
 export default {
   name: 'OsArtistmodalap',

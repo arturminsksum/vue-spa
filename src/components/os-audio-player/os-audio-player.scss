@@ -1,4 +1,4 @@
-@import "~assets/vars";
+@import "../../assets/vars";
 
 .audio-player-small {
   width: 353px;
@@ -142,7 +142,7 @@
   z-index: 997;
 
   &__image {
-    background: url('~assets/img/player-default.jpg') 50% 50% no-repeat;
+    background: url('../../assets/img/player-default.jpg') 50% 50% no-repeat;
     padding: 10px;
 
     &-icon {
