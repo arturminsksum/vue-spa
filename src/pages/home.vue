@@ -31,6 +31,7 @@
               textarea(placeholder="Type here" rows="1").post-create__textarea
             .post-create__footer
               .btn.btn--post.btn--green-invert Post
+
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
@@ -52,6 +53,23 @@
               .post-single__footer-left
               .post-single__footer-right
 
+          .post-single.bgc-white
+            .post-single__header
+              .post-single__header-block
+                .post-single__avatar
+                .post-single__user Major Lazer
+              .post-single__header-block
+                .post-single__date 3 hour ago
+                .post-single__drop
+                  .toggler
+                    .toggler__dot
+                    .toggler__dot
+                    .toggler__dot
+            .post-single__body
+              os-audio-track(:track="track")
+            .post-single__footer
+              .post-single__footer-left
+              .post-single__footer-right
 
         aside.aside-right.aside-right--home
           os-profile-stats
@@ -67,12 +85,11 @@
 <script>
 
 import OsHeader from '@/components/sections/os-header.vue'
+import OsSvg from '@/components/elements/os-svg'
 import OsProfileStats from '@/components/sections/os-profile-stats/os-profile-stats'
 import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-events'
-
-import OsSvg from '@/components/elements/os-svg'
-
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
+import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 
 export default {
 
@@ -81,11 +98,23 @@ export default {
     OsSvg,
     OsProfileStats,
     OsArtistEvents,
-    OsProfileAvatar
+    OsProfileAvatar,
+    OsAudioTrack
   },
 
   data () {
     return {
+      track: {
+        songName: 'Song name',
+        likes: 60,
+        sheared: 40,
+        listened: 1043,
+        talked: 3,
+        time: '05:00',
+        added: '3 months',
+        show: true,
+        filePath: '/audio/linkin_park_victimized.mp3'
+      }
     }
   },
 
@@ -98,29 +127,6 @@ export default {
 <style lang="scss">
 
   @import "../assets/vars";
-
-  .page-home {
-
-    &__events {
-      margin-top: 20px;
-
-      &-header {
-        padding: 15px 20px 10px 20px;
-        text-transform: uppercase;
-        display: flex;
-        font-size: 12px;
-        line-height: 18px;
-        color: $green-dark;
-      }
-
-      &-icon {
-        margin-right: 10px;
-        fill: $green-dark;
-      }
-
-    }
-
-  }
 
 
 </style>
