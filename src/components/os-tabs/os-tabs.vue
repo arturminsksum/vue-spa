@@ -21,7 +21,7 @@ export default {
   components: {
     OsSvg
   },
-
+  props: ['name'],
   data () {
     return {
       tabs: []
