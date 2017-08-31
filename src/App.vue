@@ -1,5 +1,5 @@
 <template lang="pug">
-  #app
+  #app.inner
     os-header
     router-view
     os-footer
