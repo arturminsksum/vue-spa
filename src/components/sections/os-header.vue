@@ -130,6 +130,10 @@ export default {
           url: '/'
         },
         {
+          title: 'Get PRO Account',
+          url: '/'
+        },
+        {
           title: 'Logout',
           onClick: () => {
             this.$store.dispatch('signOut')
