@@ -1,0 +1,163 @@
+@import "./vars";
+
+.container{
+
+  &-plans {
+    width: 970px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+.free-head {
+  background: $plans-free-bg;
+  color: $plans-free-head;
+}
+
+.chargeable-head {
+  background: $green;
+  color: $plans-pro-head;
+  border-radius: 0 8px 0 0;
+}
+
+.plans-header {
+  font-size: 40px;
+  line-height: 18px;
+  padding: 65px 0 45px 0;
+  text-align: center;
+  color: $dark-blue;
+}
+
+.plans-info {
+  display: flex;
+  margin-bottom: 50px;
+  color: $grey-text;
+  font-size: 15px;
+  line-height: 18px;
+  background: $white;
+  border-radius: 8px;
+
+  &__image {
+    flex: 1 1 275px;
+    position: relative;
+  }
+
+  &__name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $blue-bg-picture;
+    border-radius: 8px 0 0 8px;
+
+    &-text {
+      position: absolute;
+      top: 50%;
+      margin-top: -15px;
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      line-height: 18px;
+      color: $white;
+      opacity: 1;
+    }
+  }
+
+  &__free,
+  &__pro {
+    flex: 1 1 350px;
+    display: flex;
+    flex-flow: column;
+  }
+
+  &__pro {
+    border-left: 1px solid $plans-middle;
+  }
+
+  &__head {
+    font-size: 24px;
+    line-height: 18px;
+    padding: 25px 0 30px 0;
+    text-transform: capitalize;
+  }
+
+  &__head,
+  &__cost {
+    text-align: center;
+  }
+
+  &__cost {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 31px 0;
+    font-size: 76px;
+    line-height: 89px;
+
+    &.chargeable-cost {
+      color: $green;
+    }
+
+    &.free-cost {
+      color: $plans-free-cost;
+    }
+  }
+
+  &__prise {
+
+    position: relative;
+
+    &:before {
+      content: '$';
+      position: absolute;
+      top: -30px;
+      right: -15px;
+      font-size: 32px;
+      line-height: 89px;
+      color: $green;
+    }
+
+    &:after {
+      content: 'per month';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      font-size: 18px;
+      line-height: 18px;
+      color: $grey-text;
+    }
+  }
+
+  &__button {
+    font-size: 18px;
+    line-height: 18px;
+    color: $green;
+    padding: 10px 23px;
+    border: 3px solid $green;
+    border-radius: 30px;
+  }
+
+  &__list {
+    margin-top: 10px;
+
+    &--chargeable>li{
+      background: url('./img/li1.png') 15px 15px no-repeat;
+    }
+
+    &--free>li{
+      background: url('./img/li2.png') 15px 15px no-repeat;
+    }
+  }
+
+  &__item {
+    font-size: 15px;
+    line-height: 18px;
+    padding: 14px 0 14px 50px;
+    margin: 0 25px;
+    border-bottom: 1px solid $plans-bottom;
+  }
+
+  &__item:last-child {
+    border-bottom: none;
+  }
+}
