@@ -7,7 +7,7 @@
           a.signup__title-logo(href="#/")
             os-svg.signup__title-icon(name="onstage-logo-black" width="128" height="28")
         os-tabs.artist-tabs()
-          os-tabs-item(name='User')
+          os-tabs-item(name='User', :forms-data="formsData")
             form.form.form--signup(@submit.prevent="onSubmit", name='user-form', @keydown="formsData.user.errors.clear($event.target.name)")
               label.form__row.direction-col
                 div.field-wrapper
@@ -64,7 +64,7 @@
                 a.btn.btn--google.btn--40(href="")
                   os-svg(name="google" width="29" height="29")
                   span Register with Google
-          os-tabs-item(name='Musician')
+          os-tabs-item(name='Musician', :forms-data="formsData")
             form.form.form--signup#musician-form(@submit.prevent="onSubmit", name='musician-form')
               label.form__row.direction-col
                 div.field-wrapper
@@ -121,7 +121,7 @@
                   img(src="../assets/img/captcha.jpg" alt="captcha")
                 .form__submit
                   button.btn.btn--green.btn--40(type="submit") Sign Up
-          os-tabs-item(name='Agent')
+          os-tabs-item(name='Agent', :forms-data="formsData")
             form.form.form--signup#agent-form(@submit.prevent="onSubmit", name='agent-form', ref='agent-form')
               label.form__row.direction-col
                 div.field-wrapper
@@ -178,7 +178,7 @@
                   img(src="../assets/img/captcha.jpg" alt="captcha")
                 .form__submit
                   button.btn.btn--green.btn--40(type="submit") Sign Up
-          os-tabs-item(name='Club', :selected='true')
+          os-tabs-item(name='Club', :selected='true', :forms-data="formsData")
             form.form.form--signup#club-form(@submit.prevent="onSubmit", name='club-form', ref='club-form')
               label.form__row.direction-col
                 div.field-wrapper
