@@ -25,7 +25,7 @@
           | with the following, at PURCHASER'S sole cost and expense:
           br
           br
-          | A.  A stage for performance which must be a minimum of  two hundred and twenty  (220) square feet.  The stage must be flat, smooth and stable.  A close cropped gray carpet measuring six (6) feet by (6) feet for the drum kit.
+          | A.  A stage for performance which must be a minimum of  two hundred and twenty  (220) square feet.  The stage must be flat, smooth and stable.  A close cropped grey carpet measuring six (6) feet by (6) feet for the drum kit.
           br
           br
           | B.  A professional lighting system suitable to adequately illuminate the stage area.

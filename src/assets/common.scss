@@ -103,6 +103,7 @@ button {
 
 .btn {
   color: $white;
+  cursor: pointer;
   display: inline-block;
   text-align: center;
   transition-duration: 0.3s;
@@ -113,6 +114,17 @@ button {
   height: 30px;
   padding: 0 20px;
   outline: none;
+
+  &--border-thin {
+    border: 2px solid;
+  }
+
+  &--30-invert {
+    border-radius: 15px;
+    height: 30px;
+    line-height: 28px;
+    padding: 0 20px;
+  }
 
   &--20 {
     height: 20px;
@@ -181,6 +193,20 @@ button {
 
   }
 
+  &--dark-blue-invert {
+    background-color: $white;
+    border-style: solid;
+    border-color: $dark-blue;
+    color: $dark-blue;
+
+    &:hover {
+      background-color: $dark-blue;
+      color: $white;
+    }
+
+  }
+
+
   &--grey-invert {
     background-color: transparent;
     border: solid 2px $banner-grey;
@@ -211,20 +237,12 @@ button {
   &--google {
     background-color: #f14336;
   }
-
-  &--post{
-    border-radius: 15px;
-    border-width: 2px;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 20px;
-  }
 }
 
 .section {
   padding: 30px 0;
 
-  &--gray {
+  &--grey {
     background-color: $grey-bg;
   }
 
@@ -290,4 +308,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.content-block {
+  line-height: 1.5;
 }
