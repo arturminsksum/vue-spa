@@ -26,4 +26,22 @@ export default {
 
 <style lang="scss">
 
+  @import "../../assets/vars";
+
+  .svg {
+    top: 1px;
+    position: relative;
+    &--mr {
+      margin-right: 10px;
+    }
+    &--white {
+      fill: $white;
+    }
+    &--green {
+      fill: $green;
+    }
+    &--grey {
+      fill: $grey;
+    }
+  }
 </style>

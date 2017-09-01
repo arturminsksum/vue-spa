@@ -15,7 +15,7 @@
           a.btn.btn--40.btn--dark-blue(href="/artist")
             os-svg(name="start")
             span Start now
-    .section.section--gray
+    .section.section--grey
       .container
         h2.section__title
           span Tell us who you are
@@ -27,7 +27,7 @@
           span How it works
         os-main-describe
 
-    .section.section--gray
+    .section.section--grey
       .container
         h2.section__title
           span Simple Plans for Everyone

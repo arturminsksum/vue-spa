@@ -6,6 +6,8 @@ import Index from '@/pages/index'
 import Signup from '@/pages/signup'
 import Artist from '@/pages/artist'
 import Home from '@/pages/home'
+import Plans from '@/pages/plans'
+import Events from '@/pages/events'
 
 Vue.use(Router)
 
@@ -31,6 +33,16 @@ let router = new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/plans',
+      name: 'plans',
+      component: Plans
+    },
+    {
+      path: '/events',
+      name: 'events',
+      component: Events
     }
   ]
 })

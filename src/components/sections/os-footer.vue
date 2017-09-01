@@ -135,11 +135,11 @@ export default {
     }
 
     &__link {
-      color: $gray;
+      color: $grey;
       font-size: 17px;
 
       &:hover {
-        color: $gray-hover;
+        color: $grey-hover;
       }
     }
 

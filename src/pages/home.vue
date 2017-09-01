@@ -30,7 +30,7 @@
             .post-create__body
               textarea(placeholder="Type here" rows="1").post-create__textarea
             .post-create__footer
-              .btn.btn--post.btn--green-invert Post
+              button.btn.btn--green-invert.btn--border-thin.btn--30-invert Post
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
