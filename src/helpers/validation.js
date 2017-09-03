@@ -1,3 +1,4 @@
+import Vue from 'Vue'
 export default class Errors {
   constructor () {
     this.errors = {}
