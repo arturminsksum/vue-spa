@@ -8,7 +8,7 @@
           .header__signin
             a.link.link--white(href='' @click.prevent="showLoginModal = true") Sign in
           .header__register
-            a.btn.btn--30.btn--green(href="#/signup")
+            a.btn.btn--30.btn--green(href="/signup")
              | Free
              span.show-tablet &nbsp;1-month
              |  trial

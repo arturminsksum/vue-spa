@@ -1,5 +1,8 @@
 import Vue from 'Vue'
-export default class Errors {
+import axios from 'axios'
+import jwtDecode from 'jwt-decode'
+
+class Errors {
   constructor () {
     this.errors = {}
     this.availableErrors = {
@@ -86,5 +89,79 @@ export default class Errors {
       return
     }
     this.errors = {}
+  }
+}
+
+export default class Form {
+  constructor (data) {
+    this.originalData = data
+    for (let field in data) {
+      this[field] = data[field]
+    }
+
+    this.errors = new Errors()
+  }
+  /**
+   * get form data
+   */
+  data () {
+    let data = {}
+
+    for (let prop in this.originalData) {
+      data[prop] = this[prop]
+    }
+
+    return data
+  }
+  /**
+   * reset fields
+   */
+  reset () {
+    for (let field in this.originalData) {
+      this[field] = ''
+    }
+    this.errors.clear()
+  }
+
+  validate (data) {
+    let valid = true
+    let confirmFields = ['email', 'password']
+    for (let field in data) {
+      if (!data[field]) {
+        valid = false
+        field === 'termsConfirm' ? this.errors.record(field, this.errors.availableErrors.terms) : this.errors.record(field, this.errors.availableErrors.empty)
+      }
+      if (field === 'type' && data[field] === this.originalData[field]) {
+        valid = false
+        this.errors.record(field, this.errors.availableErrors.type)
+      }
+    }
+    for (let i = 0; i < confirmFields.length; i++) {
+      if (!this.validateConfirmFields(data, confirmFields[i])) {
+        let field = confirmFields[i]
+        valid = false
+        this.errors.record(`${field}Confirm`, this.errors.availableErrors[`${field}Confirm`])
+      }
+    }
+    return valid
+  }
+
+  validateConfirmFields (data, field) {
+    return data[field] === data[field + 'Confirm']
+  }
+
+  submit (requestType, url) {
+    if (!this.validate(this.data())) return
+    axios.post('http://165.227.140.41:1323/api/users/login', this.data())
+        .then((response) => {
+          let token = response.data.token
+          sessionStorage.setItem('token', token)
+          this.$store.dispatch('setUser', {user: jwtDecode(token)})
+          this.$router.replace({ path: '/artist' })
+        })
+        .catch((error) => {
+          if (error) {
+          }
+        })
   }
 }
