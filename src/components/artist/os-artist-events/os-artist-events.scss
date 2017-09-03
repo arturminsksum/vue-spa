@@ -59,6 +59,16 @@
   }
 }
 
+.modal-event {
+  .modal__container {
+    width: 970px;
+  }
+
+  &__body {
+    padding: 40px 30px 10px 30px;
+  }
+}
+
 .artist-concert {
   &__item {
     background-color: $grey-bg-text;

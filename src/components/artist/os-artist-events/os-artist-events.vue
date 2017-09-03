@@ -1,8 +1,68 @@
 <template lang="pug">
 .calendar
-  .calendar__add-event
+  .calendar__add-event(@click="showModalEvent = true")
     os-svg.svg--mr(name="plus", width="14px", height="14px")
     strong Add event
+  os-modal.modal-event(
+  modal-title="Create event"
+  v-if="showModalEvent"
+  @close="showModalEvent = false")
+    .modal-event__body(slot="body")
+      form.form.form--signup#club-form(@submit.prevent="formsData.event.submit", name='event-form', @keydown="formsData.event.errors.clear($event.target.id)")
+
+        label.form__row.direction-col
+          div.field-wrapper
+            .label.label--signup Event name
+            input#name.input(type="text" placeholder="Ex. Super Mega Festival", v-model="formsData.event.name", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('name')}")
+          div.field-wrapper(v-show="formsData.event.errors.has('name')")
+            span.error(v-text="formsData.event.errors.get('name')")
+
+        label.form__row.direction-col
+          div.field-wrapper
+            .label.label--signup Location
+            input#location.input(type="text" placeholder="Ex. Doodah King", v-model="formsData.event.location", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('location')}")
+          div.field-wrapper(v-show="formsData.event.errors.has('location')")
+            span.error(v-text="formsData.event.errors.get('location')")
+
+        label.form__row.direction-col
+          div.field-wrapper
+            .label.label--signup Time
+            input#time.input(type="datetime-local", v-model="formsData.event.time", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('time')}")
+          div.field-wrapper(v-show="formsData.event.errors.has('time')")
+            span.error(v-text="formsData.event.errors.get('time')")
+
+        label.form__row.direction-col
+          div.field-wrapper
+            .label.label--signup Ticket price
+            input#price.input(type="number" placeholder="Ex. 100", v-model="formsData.event.price", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('price')}")
+          div.field-wrapper(v-show="formsData.event.errors.has('price')")
+            span.error(v-text="formsData.event.errors.get('price')")
+
+        label.form__row.direction-col
+          div.field-wrapper
+            .label.label--signup Description
+            textarea#description.textarea(placeholder="Ex. Super Mega Festival in the world", rows="6", v-model="formsData.event.description", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('description')}")
+          div.field-wrapper(v-show="formsData.event.errors.has('description')")
+            span.error(v-text="formsData.event.errors.get('description')")
+
+        label.form__row.direction-col
+          div.field-wrapper
+            .label.label--signup Add tags
+            textarea#tags.textarea(placeholder="Ex. # classic rock # psychedelic rock # guitar # psychedelic rock", rows="3", v-model="formsData.event.tags", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('tags')}")
+          div.field-wrapper(v-show="formsData.event.errors.has('tags')")
+            span.error(v-text="formsData.event.errors.get('tags')")
+
+        label.form__row.direction-col
+          div.field-wrapper
+            .label.label--signup Upload poster
+            input#upload.textarea(type="file", :class="{required:formsData.event.errors.has('description')}")
+          div.field-wrapper(v-show="formsData.event.errors.has('description')")
+            span.error(v-text="formsData.event.errors.get('description')")
+
+        .form__row.form__row--start-end
+          .form__submit
+            button.btn.btn--green.btn--40(type="submit") Create event
+
   vue-event-calendar(:events='demoEvents')
     template(scope='props')
       .calendar__actions
@@ -58,16 +118,32 @@
 <script>
 
 import OsSvg from '@/components/elements/os-svg'
+import OsModal from '@/components/os-modal/os-modal.vue'
+import Form from '@/helpers/validation.js'
 
 export default {
   name: 'OsArtistEvents',
 
   components: {
-    OsSvg
+    OsSvg,
+    OsModal
   },
 
   data () {
     return {
+      showModalEvent: false,
+      formsData: {
+        event: new Form({
+          name: '',
+          location: '',
+          time: '',
+          price: '',
+          description: '',
+          tags: '',
+          upload: ''
+        })
+      },
+
       demoEvents: [
         {
           date: '2017/07/20',
