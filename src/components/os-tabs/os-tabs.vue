@@ -21,7 +21,7 @@ export default {
   components: {
     OsSvg
   },
-
+  props: ['formsData'],
   data () {
     return {
       tabs: []

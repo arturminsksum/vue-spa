@@ -1,6 +1,6 @@
 <template lang="pug">
   div.tabs-details__item(v-if='isActive')
-    slot
+    slot(:form-data="formsData")
 </template>
 
 <script>
@@ -15,7 +15,10 @@ export default {
       type: String,
       required: false
     },
-    selected: { default: false }
+    selected: { default: false },
+    formsData: {
+      type: Object
+    }
   },
 
   data () {
