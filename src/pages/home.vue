@@ -4,9 +4,9 @@
     main.main
       .page-wrapper.page-wrapper--grey
         aside.aside-left
-          .page-home__info
+          a.page-home__info(href="/artist")
             os-profile-avatar.page-home__avatar
-            a(href="").page-home__profile-name Profile Name
+            span.page-home__profile-name Profile Name
           .border-top
           .page-home__messager
             os-svg(name="message", width="15px", height="14px")

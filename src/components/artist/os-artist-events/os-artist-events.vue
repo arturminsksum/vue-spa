@@ -55,9 +55,7 @@
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Upload poster
-            input#upload.textarea(type="file", :class="{required:formsData.event.errors.has('description')}")
-          div.field-wrapper(v-show="formsData.event.errors.has('description')")
-            span.error(v-text="formsData.event.errors.get('description')")
+            input#upload.textarea(type="file")
 
         .form__row.form__row--start-end
           .form__submit
