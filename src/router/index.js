@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import JwtDecode from 'jwt-decode'
 import store from '@/store'
+import * as types from '@/store/mutation-types'
 import Index from '@/pages/index'
 import Signup from '@/pages/signup'
 import Artist from '@/pages/artist'
@@ -26,7 +27,7 @@ let router = new Router({
       component: Signup
     },
     {
-      path: '/artist',
+      path: '/user/:id',
       name: 'artist',
       component: Artist
     },
@@ -46,7 +47,7 @@ let router = new Router({
       component: Events
     },
     {
-      path: '/error',
+      path: '*',
       name: 'error',
       component: ErrorPage
     }
@@ -62,7 +63,7 @@ router.beforeEach(function (to, from, next) {
     if (!token) {
       next()
     } else {
-      vuexStore.dispatch('setUser', {user: JwtDecode(token)})
+      vuexStore.commit(types.SIGN_IN, {user: JwtDecode(token)})
       next()
     }
   } else {
