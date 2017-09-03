@@ -61,8 +61,11 @@
 .justify-space-between {
   justify-content: space-between !important;
 }
-.align-center{
+.align-center {
   align-items: center;
+}
+.required {
+  border: 1px solid #f44336 !important;
 }
 
 .form {
