@@ -8,6 +8,7 @@ import Artist from '@/pages/artist'
 import Home from '@/pages/home'
 import Plans from '@/pages/plans'
 import Events from '@/pages/events'
+import ErrorPage from '@/pages/error'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ let router = new Router({
       path: '/events',
       name: 'events',
       component: Events
+    },
+    {
+      path: '/error',
+      name: 'error',
+      component: ErrorPage
     }
   ]
 })
