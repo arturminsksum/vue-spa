@@ -68,7 +68,6 @@
             )
           .border-top.border-top--20
           os-artist-events
-      os-audio-player(v-if="false")
       os-modal.modal-rider(
       modal-title="Rider-list"
       v-if="showModalRider"
