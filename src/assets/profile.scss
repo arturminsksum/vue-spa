@@ -184,6 +184,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 10px;
   }
 
   &__header-block {
@@ -218,10 +219,13 @@
   }
 
   &__body {
-    padding: 20px 0;
+
   }
 
   &__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
   }
 
   &__footer-left {
@@ -231,14 +235,13 @@
   }
 
   &__news{
-
   }
   &__news-text{
     color: $dark;
     font-size: 13px;
     line-height: 1.5;
     text-align: justify;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   &__news-img {
     img {
@@ -246,4 +249,26 @@
     }
   }
 
+  &__photo {
+    cursor: pointer;
+  }
+
+  &__gallery {
+    display: flex;
+  }
+
+  &__gallery-item {
+    cursor: pointer;
+    position: relative;
+    & + & {
+      margin-left: 3px;
+    }
+  }
+
+  &__gallery-count {
+
+    font-family: Ubuntu;
+    font-size: 30px;
+    color: #ffffff;
+  }
 }

@@ -7,6 +7,8 @@ $border-color: #e6e6e6;
 $border-dark-color: #e1e1e1;
 $grey-border-img: #d4d4d4;
 $input-border: #c1c1c1;
+$plans-middle: #dedede;
+$plans-bottom: #dddddd;
 // button
 $dark-blue: #0f2843;
 $dark-blue-hover: #16487d;
@@ -15,8 +17,8 @@ $white-hover: #83ee76;
 $green: #28a151;
 $green-dark: #45ae68;
 $green-hover: #66c35b;
-$gray: #969696;
-$gray-hover: $white;
+$grey: #969696;
+$grey-hover: $white;
 $grey-dots: #c4c4c4;
 
 // text
@@ -33,11 +35,14 @@ $header-menu-divider: #051220;
 $banner-grey: #cdcdcd;
 $white: #fff;
 $light: #a6acb6;
-$rider-gray: #606060;
-$rider-gray: #a4aab6;
-$rider-gray-hover: #575c62;
+$rider-grey: #606060;
+$rider-grey: #a4aab6;
+$rider-grey-hover: #575c62;
 $slide-data: #a5aab2;
 $gallery-text: #636262;
+$plans-free-head: #535353;
+$plans-pro-head: #ededed;
+$plans-free-cost: #b1b0b0;
 
 // background
 
@@ -54,6 +59,9 @@ $player-avatar: #575c60;
 $bright-green: #81e976;
 $player-default: #a6acb6;
 $gallery-background: #f1f2f3;
+$plans-free-bg: #d0d0d0;
+$blue-bg-picture: rgba(63, 83, 105, 0.8);
+$bg-video-cover: rgba(0, 0, 0, 0.6);
 
 //icons
 $gold: #ffb74d;
@@ -64,7 +72,7 @@ $playlist-avatar: #c4c4c4;
 $full-playeer-button: #a7aeb8;
 $gallery-write: #a6acb6;
 $gallery-close: #868686;
-
+$gold: #ffb74d;
 
 $box-shadow: rgba(0, 0, 0, 0.07);
 
