@@ -18,7 +18,7 @@
             .post-create__header
               .post-create__tabs
                 .post-create__tab.post-create__tab--active
-                  os-svg(name="edit", width="14px", height="14px")
+                  os-svg.svg--green(name="edit", width="14px", height="14px")
                   span Whats new?
                 .post-create__tab
                   os-svg(name="photo", width="17px", height="14px")

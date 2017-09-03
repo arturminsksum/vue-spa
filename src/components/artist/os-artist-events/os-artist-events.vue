@@ -1,10 +1,29 @@
 <template lang="pug">
-.artist-events
-  .artist-events__calendar-toggler
-    .artist-events__calendar-months(@click="toggleMonth('month')", :class="{'artist-events__calendar-months--passive': isToggled('month')}") Months
-    .artist-events__calendar-year(@click="toggleMonth('year')", :class="{'artist-events__calendar-year--passive': isToggled('year')}") Year
+.calendar
+  .calendar__add-event
+    os-svg.svg--mr(name="plus", width="14px", height="14px")
+    strong Add event
   vue-event-calendar(:events='demoEvents')
     template(scope='props')
+      .calendar__actions
+        .calendar__actions-row
+          .calendar__actions-col
+            os-svg.svg--mr(name="edit", width="14px", height="14px")
+            span Edit event
+          .calendar__actions-col-divider
+          .calendar__actions-col
+            os-svg.svg--mr(name="delete", width="10px", height="15px")
+            span Delete
+        .calendar__actions-row-divider
+        .calendar__actions-row
+          .calendar__actions-col
+            os-svg.svg--mr(name="friends", width="12px", height="12px")
+            span Invite friends
+          .calendar__actions-col-divider
+          .calendar__actions-col
+            os-svg.svg--mr(name="share", width="14px", height="11px")
+            span Share
+
       ul.artist-concert
         li.artist-concert__item.event-item(v-for='(event, index) in demoEvents')
           .artist-concert__summary
@@ -80,20 +99,11 @@ export default {
           dateYear: '2016',
           show: false
         }
-      ],
-
-      monthShow: true,
-      toggledEl: 'month'
+      ]
     }
   },
 
   methods: {
-    toggleMonth: function (val) {
-      this.toggledEl = val
-    },
-    isToggled: function (val) {
-      return this.toggledEl !== val
-    }
   }
 }
 </script>
