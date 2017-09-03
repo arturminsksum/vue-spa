@@ -32,6 +32,7 @@
               textarea(placeholder="Type here" rows="1").post-create__textarea
             .post-create__footer
               button.btn.btn--green-invert.btn--border-thin.btn--30-invert Post
+
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
@@ -116,8 +117,6 @@
               .post-single__header-block
                 a(href="").post-single__avatar
                 a(href="").post-single__user Major Lazer
-                .post-single__avatar
-                .post-single__user Major Lazer
               .post-single__header-block
                 .post-single__date 3 hour ago
                 .post-single__drop
@@ -149,10 +148,6 @@
                 a(href="/").track-chart
                   os-svg(name="speach", width="12px", height="10px").track-chart_icon
                   span.track-chart_text 0
-              os-audio-track(:track="track")
-            .post-single__footer
-              .post-single__footer-left
-              .post-single__footer-right
 
         aside.aside-right.aside-right--home
           os-profile-stats
