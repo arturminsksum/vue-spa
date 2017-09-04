@@ -4,9 +4,9 @@
     main.main
       .page-wrapper.page-wrapper--grey
         aside.aside-left
-          .page-home__info
+          a.page-home__info(href="/artist")
             os-profile-avatar.page-home__avatar
-            a(href="").page-home__profile-name Profile Name
+            span.page-home__profile-name Profile Name
           .border-top
           .page-home__messager
             os-svg(name="message", width="15px", height="14px")
@@ -18,7 +18,7 @@
             .post-create__header
               .post-create__tabs
                 .post-create__tab.post-create__tab--active
-                  os-svg(name="edit", width="14px", height="14px")
+                  os-svg.svg--green(name="edit", width="14px", height="14px")
                   span Whats new?
                 .post-create__tab
                   os-svg(name="photo", width="17px", height="14px")

@@ -71,6 +71,11 @@ export default {
 
   @import "../assets/vars";
 
+  .main {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   .main-banner {
     text-align: center;
     padding: 30px 0;

@@ -1,38 +1,71 @@
 @import "../../../assets/vars";
 
-.artist-events {
+.calendar {
   padding: 20px;
   position: relative;
 
-  &__calendar {
+  &__add-event {
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1;
+    cursor: pointer;
+    color: $green;
+    fill: $green;
 
-    &-toggler {
-      position: absolute;
-      top: 18px;
-      right: 20px;
-      z-index: 100;
-      display: flex;
-      width: 115px;
-      padding: 2px;
-      border-radius: 20px;
-      justify-content: space-between;
-      background: $light;
-      cursor: pointer;
+    &:hover {
+      color: $green-hover;
+      fill: $green-hover;
     }
+  }
 
-    &-months,
-    &-year {
-      background: $white;
-      color: $font-color;
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 16px;
+  &__actions {
+    padding: 10px;
+    background-color: $grey-bg-text;
 
-      &--passive {
-        background: transparent;
-        color: $white;
+    &-row {
+      display: flex;
+
+      &-divider {
+        height: 2px;
+        margin: 0 10px;
+        background-color: $white;
       }
     }
+    &-col {
+      cursor: pointer;
+      font-size: 13px;
+      padding: 10px;
+      width: 50%;
+      text-align: center;
+      color: $font-color;
+      fill: $font-color;
+      @include trans(color, fill);
+
+      &:hover {
+        color: $green-hover;
+        fill: $green-hover;
+      }
+
+      &-divider {
+        height: 17px;
+        width: 2px;
+        margin-top: 10px;
+        background-color: $light-grey-bg;
+      }
+
+    }
+  }
+}
+
+.modal-event {
+  .modal__container {
+    width: 970px;
+  }
+
+  &__body {
+    padding: 40px 30px 10px 30px;
   }
 }
 

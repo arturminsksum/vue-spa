@@ -74,7 +74,7 @@
   }
 
   &__row {
-    align-items: top;
+    align-items: flex-start;
     display: flex;
     margin-bottom: 20px;
 
@@ -84,6 +84,10 @@
 
     &--align-top {
       align-items: flex-start;
+    }
+
+    &--start-end {
+      justify-content: flex-end;
     }
 
     &--bottom {
@@ -208,6 +212,19 @@
   }
 
 }
+
+.textarea {
+  font-size: 14px;
+  border-radius: 15px;
+  background-color: $white;
+  border: solid 1px $input-border;
+  padding: 8px 16px;
+  width: 100%;
+  outline: none;
+  resize: none;
+}
+
+
 
 .select {
   height: 30px;
