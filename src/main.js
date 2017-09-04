@@ -12,6 +12,8 @@ import vueEventCalendar from 'vue-event-calendar'
 Vue.use(vueEventCalendar, {locale: 'en'})
 Vue.use(VueAxios, axios)
 
+axios.defaults.baseURL = 'http://165.227.140.41:1323'
+
 sync(store, router)
 Vue.config.productionTip = false
 

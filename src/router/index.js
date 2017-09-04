@@ -28,7 +28,7 @@ let router = new Router({
     },
     {
       path: '/user/:id',
-      name: 'artist',
+      name: 'user',
       component: Artist
     },
     {

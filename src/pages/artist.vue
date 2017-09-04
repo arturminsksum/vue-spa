@@ -2,7 +2,7 @@
   .container
     main.main
       os-artist-banner(
-        :profile-name="user.name"
+        :user="user"
       )
       .page-wrapper
         aside.aside-left.aside-left--profile

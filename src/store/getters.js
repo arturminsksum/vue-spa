@@ -1,15 +1,15 @@
 const getters = {
   isUser: state => {
-    return state.user.role === 'user'
+    return state.currentUser.role === 'user'
   },
   isArtist: state => {
-    return state.user.role === 'artist'
+    return state.currentUser.role === 'artist'
   },
   isAgent: state => {
-    return state.user.role === 'agent'
+    return state.currentUser.role === 'agent'
   },
   isClub: state => {
-    return state.user.role === 'club'
+    return state.currentUser.role === 'club'
   }
 }
 
