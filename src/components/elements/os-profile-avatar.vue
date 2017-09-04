@@ -1,12 +1,13 @@
 <template lang="pug">
   .profile-avatar
-    img(src="../../assets/img/artist-avatar-01.jpg")
+    img(:src="path")
 </template>
 
 <script>
 
 export default {
-  name: 'OsProfileAvatar'
+  name: 'OsProfileAvatar',
+  props: ['path']
 }
 </script>
 

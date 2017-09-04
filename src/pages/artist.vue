@@ -2,7 +2,7 @@
   .container
     main.main
       os-artist-banner(
-        profile-name="Profile name"
+        :user="user"
       )
       .page-wrapper
         aside.aside-left.aside-left--profile
@@ -95,7 +95,8 @@ import OsProfilePartners from '@/components/sections/os-profile-partners/os-prof
 
 import OsSvg from '@/components/elements/os-svg'
 
-import { mapGetters } from 'vuex'
+import store from '@/store'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
 
@@ -202,7 +203,20 @@ export default {
       'isArtist',
       'isAgent',
       'isClub'
-    ])
+    ]),
+    ...mapState({
+      user: state => state.currentUser
+    })
+  },
+  beforeRouteEnter (to, from, next) {
+    store.dispatch('getUser', {id: to.params.id}).then(() => {
+      next()
+    })
+      .catch((error) => {
+        if (error) {
+          next(false)
+        }
+      })
   }
 }
 

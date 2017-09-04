@@ -85,7 +85,6 @@ import OsLogo from '@/components/elements/os-logo'
 import OsDropdown from '@/components/elements/os-dropdown'
 import OsNotifications from '@/components/elements/os-notifications'
 import { mapState } from 'vuex'
-import jwtDecode from 'jwt-decode'
 
 export default {
 
@@ -180,19 +179,14 @@ export default {
 
   methods: {
     onSubmit () {
-      this.axios.post('http://165.227.140.41:1323/api/users/login', this.user)
-        .then((response) => {
-          let token = response.data.token
-
+      this.$store.dispatch('login', this.user)
+        .then(() => {
           this.showLoginModal = false
-          sessionStorage.setItem('token', token)
-          this.$store.dispatch('setUser', {user: jwtDecode(token)})
-          this.$router.replace({path: '/artist'})
+          this.$router.replace('home')
         })
         .catch((error) => {
           if (error) {
             this.showLoginModal = false
-            this.$router.replace({path: '/'})
           }
         })
     },

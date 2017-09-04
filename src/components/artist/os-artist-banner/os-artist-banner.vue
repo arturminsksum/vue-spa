@@ -1,11 +1,11 @@
 <template lang="pug">
  .artist-banner
-        .artist-banner__bg
+        .artist-banner__bg(v-bind:style="{ backgroundImage: `url(${user.header_image})` }")
         .artist-banner__bottom
           .artist-banner__info
-            os-profile-avatar.artist-banner__avatar
+            os-profile-avatar(:path="user.avatar_image").artist-banner__avatar
             .artist-banner__about
-              p.artist-banner__name {{profileName}}
+              p.artist-banner__name {{user.name}}
               .artist-banner__block
                 .artist-banner__genre(v-if="!isUser")
                   a(href="").artist-banner__genre-link Blues rock
@@ -40,8 +40,8 @@ export default {
   },
 
   props: {
-    profileName: {
-      type: String
+    user: {
+      type: Object
     }
   },
 

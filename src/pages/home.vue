@@ -4,9 +4,9 @@
     main.main
       .page-wrapper.page-wrapper--grey
         aside.aside-left
-          a.page-home__info(href="/artist")
-            os-profile-avatar.page-home__avatar
-            span.page-home__profile-name Profile Name
+          router-link.page-home__info(:to="{ name: 'user', params: { id: 'me' }}")
+            os-profile-avatar.page-home__avatar(:path="user.avatar_image")
+            span.page-home__profile-name {{user.name}}
           .border-top
           .page-home__messager
             os-svg(name="message", width="15px", height="14px")
@@ -170,6 +170,8 @@ import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 
+import {mapState} from 'vuex'
+
 export default {
 
   components: {
@@ -198,7 +200,10 @@ export default {
     }
   },
 
-  methods: {
+  computed: {
+    ...mapState([
+      'user'
+    ])
   }
 }
 
