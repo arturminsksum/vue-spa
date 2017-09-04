@@ -126,12 +126,22 @@ export default {
       ],
       userDropdownItems: [
         {
+          title: 'My Profile',
+          url: '/artist',
+          onClick: () => {
+            this.$router.replace({path: '/artist'})
+          }
+        },
+        {
           title: 'Edit Account',
           url: '/'
         },
         {
           title: 'Get PRO Account',
-          url: '/'
+          url: '/plans',
+          onClick: () => {
+            this.$router.replace({path: '/plans'})
+          }
         },
         {
           title: 'Logout',
