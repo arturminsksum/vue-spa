@@ -1,10 +1,10 @@
 <template lang="pug">
 .profile-gallery
   .profile-gallery__picture
-    img(:src="require('../../../assets/img/' + currentPhoto.poster)").img.profile-gallery__image
-    a(href="#", @click="showNext()").profile-gallery__button.profile-gallery__button--next
+    img(:src="require('../../../assets/img/' + photos[currentNumber].poster)").img.profile-gallery__image
+    a(href="#", @click.prevent="showNext()").profile-gallery__button.profile-gallery__button--next
       os-svg(:name="arrowRight", width="20px", height="35px")
-    a(href="#", @click="showPrev()").profile-gallery__button.profile-gallery__button--prev
+    a(href="#", @click.prevent="showPrev()").profile-gallery__button.profile-gallery__button--prev
       os-svg(:name="arrowLeft", width="20px", height="35px")
     .profile-gallery__close(@click="$emit('close')")
       os-svg(name="close", width="25px", height="25px")
@@ -12,13 +12,13 @@
     .profile-gallery__content
       .profile-gallery__header-modal
         .profile-gallery__avatar
-          img(:src="require('../../../assets/img/' + currentPhoto.artist.avatar)").profile-gallery__artist-avatar
+          img(:src="require('../../../assets/img/' + photos[currentNumber].artist.avatar)").profile-gallery__artist-avatar
         .profile-gallery__text
-          h1.profile-gallery__title {{ currentPhoto.artist.name }}
-          time.profile-gallery__data {{ currentPhoto.artist.data }}
+          h1.profile-gallery__title {{ photos[currentNumber].artist.name }}
+          time.profile-gallery__data {{ photos[currentNumber].artist.data }}
       .profile-gallery__body-modal
         ul.profile-gallery__list
-          li(v-for="manager in currentPhoto.managers", :key="manager").profile-gallery__item
+          li(v-for="(manager,index) in photos[currentNumber].managers", :key="index").profile-gallery__item
             .profile-gallery__manager-avatar
               img(:src="require('../../../assets/img/' + manager.avatar)")
             .profile-gallery__comment-content
@@ -42,7 +42,7 @@ export default {
     OsSvg
   },
 
-  props: ['numOpen'],
+  props: ['numOpen', 'galleryPhotos'],
 
   data () {
     return {
@@ -51,208 +51,8 @@ export default {
       arrowLeft: 'gallery-left',
       send: 'paper-plane',
       currentText: '',
-
-      currentPhoto: {
-        poster: 'hinemachinem.jpg',
-        artist: {
-          avatar: 'avatar-1.png',
-          name: 'Artist Name',
-          data: '11.01.18'
-        },
-        managers: [
-          {
-            avatar: 'avatar-1.png',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-            author: 'Maneger Name',
-            date: '11.01.17'
-          }
-        ]
-      },
-
-      photos: [
-        {
-          poster: 'hinemachinem.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'hinemachinem.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'hinemachinem.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'hinemachinem.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'hinemachinem.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        }
-      ]
+      currentNumber: this.numOpen,
+      photos: this.galleryPhotos
     }
   },
   methods: {
@@ -263,14 +63,14 @@ export default {
       this.currentText = ''
     },
     showNext: function () {
-      this.numOpen = (this.numOpen === this.photos.length - 1) ? 0 : ++this.numOpen
-      this.currentPhoto = this.photos[this.numOpen]
-      console.log(this.numOpen)
+      this.currentNumber = (this.currentNumber === this.photos.length - 1) ? 0 : ++this.currentNumber
+      this.currentPhoto = this.photos[this.currentNumber]
+      console.log(this.currentNumber)
     },
     showPrev: function () {
-      this.numOpen = (this.numOpen === 0) ? (this.photos.length - 1) : --this.numOpen
-      this.currentPhoto = this.photos[this.numOpen]
-      console.log(this.numOpen)
+      this.currentNumber = (this.currentNumber === 0) ? (this.photos.length - 1) : --this.currentNumber
+      this.currentPhoto = this.photos[this.currentNumber]
+      console.log(this.currentNumber)
     }
   }
 }
