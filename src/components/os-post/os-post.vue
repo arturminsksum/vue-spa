@@ -17,18 +17,18 @@
           img(src="../../assets/img/event-banner.jpg")
         .post-event__info
           .post-event__row
-            .page-event__head Major Lazer presents TBRG Beat
-            .page-event__price
-              os-svg.svg--mr.svg--green(name="share", width="14px", height="11px")
+            .post-event__head Major Lazer presents TBRG Beat
+            .post-event__price
+              os-svg.svg--mr.svg--green(name="ticket", width="14px", height="14px")
               span $ 50
-          .page-event__place
+          .post-event__place
             os-svg.svg--mr.svg--green(name="marker", width="9px", height="14px")
             span 6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA
-          .page-event__where
-            .page-event__date
+          .post-event__where
+            .post-event__date
               os-svg.svg--mr.svg--green(name="calendar", width="13px", height="14px")
               span 18.10.2017
-            .page-event__time
+            .post-event__time
               os-svg.svg--mr.svg--green(name="clock", width="15px", height="15px")
               span 18:00
     .post-single__footer
