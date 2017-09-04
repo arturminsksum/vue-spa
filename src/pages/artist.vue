@@ -167,20 +167,16 @@ export default {
       ],
       agentClubs: [
         {
-          name: 'Ya ma hea',
-          place: 'USA'
+          name: 'Ya ma hea'
         },
         {
-          name: 'Reactor',
-          place: 'Minsk'
+          name: 'Reactor'
         },
         {
-          name: 'Re: Public',
-          place: 'Minsk'
+          name: 'Re: Public'
         },
         {
-          name: 'R-Club',
-          place: 'Minsk'
+          name: 'R-Club'
         }
       ],
       agentArtist: [
