@@ -33,6 +33,8 @@
             .post-create__footer
               button.btn.btn--green-invert.btn--border-thin.btn--30-invert Post
 
+          os-post
+
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
@@ -169,6 +171,7 @@ import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-event
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
+import OsPost from '@/components/os-post/os-post.vue'
 
 export default {
 
@@ -179,7 +182,8 @@ export default {
     OsArtistEvents,
     OsProfileAvatar,
     OsAudioTrack,
-    OsAudioPlayer
+    OsAudioPlayer,
+    OsPost
   },
 
   data () {
