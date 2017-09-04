@@ -23,19 +23,46 @@
             input#location.input(type="text" placeholder="Ex. Doodah King", v-model="formsData.event.location")
           div.field-wrapper(v-show="formsData.event.errors")
             span.error
+        .form__row
+          label.form__col
+            div.field-wrapper
+              .label.label--signup Date
+              input#date.input.input--small(type="date", v-model="formsData.event.time")
+            div.field-wrapper(v-show="formsData.event.errors")
+              span.error
 
-        label.form__row.direction-col
-          div.field-wrapper
-            .label.label--signup Time
-            input#time.input(type="datetime-local", v-model="formsData.event.time")
-          div.field-wrapper(v-show="formsData.event.errors")
-            span.error
-        label.form__row.direction-col
-          div.field-wrapper
-            .label.label--signup Ticket price
-            input#price.input(type="number" placeholder="Ex. 100", v-model="formsData.event.price")
-          div.field-wrapper(v-show="formsData.event.errors")
-            span.error
+          label.form__col
+            div.field-wrapper
+              .label.label--between Time
+              input#time.input.input--small(type="time", v-model="formsData.event.time")
+            div.field-wrapper(v-show="formsData.event.errors")
+              span.error
+
+        .form__row
+          label.form__col
+            div.field-wrapper
+              .label.label--signup Ticket price
+              input#price.input.input--small(type="number" placeholder="Ex. 100", v-model="formsData.event.price")
+            div.field-wrapper(v-show="formsData.event.errors")
+              span.error
+
+        .form__row
+          label.form__col.form__col--60
+            div.field-wrapper
+              .label.label--signup Add Artists
+              .form-search
+                input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.event.artist")
+                .form-search__icon
+                  os-svg(name="search", width="13px", height="14px")
+            div.field-wrapper(v-show="formsData.event.errors")
+              span.error
+          .form__col
+            button.form-plus
+              os-svg(name="plus", width="12px", height="12px")
+        .form-added
+          button.btn.btn--grey.btn--20(v-for="user, index in userTags", :key="index")
+            span {{user}}
+            os-svg(name="close", width="9px", height="9px")
 
         label.form__row.direction-col
           div.field-wrapper
@@ -44,18 +71,31 @@
           div.field-wrapper(v-show="formsData.event.errors")
             span.error
 
-        label.form__row.direction-col
-          div.field-wrapper
-            .label.label--signup Add tags
-            textarea#tags.textarea(placeholder="Ex. # classic rock # psychedelic rock # guitar # psychedelic rock", rows="3", v-model="formsData.event.tags")
-          div.field-wrapper(v-show="formsData.event.errors")
-            span.error
+        .form__row
+          label.form__col.form__col--60
+            div.field-wrapper
+              .label.label--signup Add tags
+              .form-search
+                input#tags.input(type="text" placeholder="Ex. rock", v-model="formsData.event.tags")
+                .form-search__icon
+                  os-svg(name="search", width="13px", height="14px")
+            div.field-wrapper(v-show="formsData.event.errors")
+              span.error
+          .form__col
+            button.form-plus
+              os-svg(name="plus", width="12px", height="12px")
+        .form-added
+          button.btn.btn--grey.btn--20(v-for="genre, index in genreTags", :key="index")
+            span # {{genre}}
+            os-svg(name="close", width="9px", height="9px")
 
-        label.form__row.direction-col
-          div.field-wrapper
-            .label.label--signup Upload poster
-            input#upload.textarea(type="file")
-
+        .form__row.form__row--align-center
+          .label.label--signup Upload poster
+          .upload__added(v-if="posterName !== ''")
+            span.upload__file-name {{posterName}}
+            button.upload__delete.btn.btn--grey(@click.prevent="deleteFile") Delete
+          label.upload__button.btn.btn--dark-blue Select
+            input.upload__input(type="file" ref="file" accept="image/jpeg, image/png" @change="uploadFile")
         .form__row.form__row--start-end
           .form__submit
             button.btn.btn--green.btn--40(type="submit") Create event
@@ -135,6 +175,13 @@ export default {
   data () {
     return {
       showModalEvent: false,
+
+      userTags: ['The Offsping', 'Prodigy'],
+
+      genreTags: ['blues rock', 'classic rock', 'psychedelic rock', 'guitar', 'psychedelic rock', 'classic rock', 'blues rock', 'guitar', 'blues rock'],
+
+      posterName: '',
+
       formsData: {
         /* event: new Form({
           name: '',
@@ -197,6 +244,13 @@ export default {
       const payload = {event: this.formsData.event}
       this.$store.commit('ADD_EVENT', payload)
       this.showModalEvent = false
+    },
+    uploadFile (event) {
+      this.posterName = event.target.files[0].name
+    },
+    deleteFile () {
+      this.$refs.file.value = ''
+      this.posterName = ''
     }
   }
 }
