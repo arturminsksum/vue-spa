@@ -116,7 +116,7 @@
 
 import OsSvg from '@/components/elements/os-svg'
 import OsModal from '@/components/os-modal/os-modal.vue'
-// import { mapState } from 'vuex'
+import { mapState } from 'vuex'
 // import Form from '@/helpers/validation.js'
 
 export default {
@@ -125,6 +125,11 @@ export default {
   components: {
     OsSvg,
     OsModal
+  },
+  computed: {
+    ...mapState([
+      'events'
+    ])
   },
 
   data () {
@@ -188,7 +193,11 @@ export default {
   },
 
   methods: {
-    submit: function () {}
+    submit: function () {
+      const payload = {event: this.formsData.event}
+      this.$store.commit('ADD_EVENT', payload)
+      this.showModalEvent = false
+    }
   }
 }
 </script>

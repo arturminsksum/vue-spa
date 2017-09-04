@@ -7,6 +7,9 @@ const mutations = {
   [types.SET_USER] (state, payload) {
     state.user = payload.user
     state.isLogin = true
+  },
+  [types.ADD_EVENT] (state, payload) {
+    state.events.push(payload.event)
   }
 }
 

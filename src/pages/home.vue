@@ -13,7 +13,6 @@
             span Open messager
 
         .page-content.page-content--home
-
           .post-create.bgc-white
             .post-create__header
               .post-create__tabs
@@ -169,6 +168,7 @@ import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-event
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
+import { mapState } from 'vuex'
 
 export default {
 
@@ -180,6 +180,11 @@ export default {
     OsProfileAvatar,
     OsAudioTrack,
     OsAudioPlayer
+  },
+  computed: {
+    ...mapState([
+      'events'
+    ])
   },
 
   data () {
@@ -207,6 +212,5 @@ export default {
 <style lang="scss">
 
   @import "../assets/vars";
-
 
 </style>

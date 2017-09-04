@@ -1,6 +1,7 @@
 const state = {
   isLogin: false,
-  user: {}
+  user: {},
+  events: []
 }
 
 export default state
