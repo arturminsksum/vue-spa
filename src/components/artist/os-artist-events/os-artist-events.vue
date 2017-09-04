@@ -8,49 +8,48 @@
   v-if="showModalEvent"
   @close="showModalEvent = false")
     .modal-event__body(slot="body")
-      form.form.form--signup#club-form(@submit.prevent="formsData.event.submit", name='event-form', @keydown="formsData.event.errors.clear($event.target.id)")
+      form.form.form--signup#club-form(@submit.prevent="submit", name='event-form')
 
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Event name
-            input#name.input(type="text" placeholder="Ex. Super Mega Festival", v-model="formsData.event.name", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('name')}")
-          div.field-wrapper(v-show="formsData.event.errors.has('name')")
-            span.error(v-text="formsData.event.errors.get('name')")
+            input#name.input(type="text" placeholder="Ex. Super Mega Festival", v-model="formsData.event.name")
+          div.field-wrapper(v-show="formsData.event.errors")
+            span.error
 
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Location
-            input#location.input(type="text" placeholder="Ex. Doodah King", v-model="formsData.event.location", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('location')}")
-          div.field-wrapper(v-show="formsData.event.errors.has('location')")
-            span.error(v-text="formsData.event.errors.get('location')")
+            input#location.input(type="text" placeholder="Ex. Doodah King", v-model="formsData.event.location")
+          div.field-wrapper(v-show="formsData.event.errors")
+            span.error
 
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Time
-            input#time.input(type="datetime-local", v-model="formsData.event.time", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('time')}")
-          div.field-wrapper(v-show="formsData.event.errors.has('time')")
-            span.error(v-text="formsData.event.errors.get('time')")
-
+            input#time.input(type="datetime-local", v-model="formsData.event.time")
+          div.field-wrapper(v-show="formsData.event.errors")
+            span.error
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Ticket price
-            input#price.input(type="number" placeholder="Ex. 100", v-model="formsData.event.price", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('price')}")
-          div.field-wrapper(v-show="formsData.event.errors.has('price')")
-            span.error(v-text="formsData.event.errors.get('price')")
+            input#price.input(type="number" placeholder="Ex. 100", v-model="formsData.event.price")
+          div.field-wrapper(v-show="formsData.event.errors")
+            span.error
 
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Description
-            textarea#description.textarea(placeholder="Ex. Super Mega Festival in the world", rows="6", v-model="formsData.event.description", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('description')}")
-          div.field-wrapper(v-show="formsData.event.errors.has('description')")
-            span.error(v-text="formsData.event.errors.get('description')")
+            textarea#description.textarea(placeholder="Ex. Super Mega Festival in the world", rows="6", v-model="formsData.event.description")
+          div.field-wrapper(v-show="formsData.event.errors")
+            span.error
 
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Add tags
-            textarea#tags.textarea(placeholder="Ex. # classic rock # psychedelic rock # guitar # psychedelic rock", rows="3", v-model="formsData.event.tags", @blur="formsData.event.errors.checkField($event)", :class="{required:formsData.event.errors.has('tags')}")
-          div.field-wrapper(v-show="formsData.event.errors.has('tags')")
-            span.error(v-text="formsData.event.errors.get('tags')")
+            textarea#tags.textarea(placeholder="Ex. # classic rock # psychedelic rock # guitar # psychedelic rock", rows="3", v-model="formsData.event.tags")
+          div.field-wrapper(v-show="formsData.event.errors")
+            span.error
 
         label.form__row.direction-col
           div.field-wrapper
@@ -117,7 +116,8 @@
 
 import OsSvg from '@/components/elements/os-svg'
 import OsModal from '@/components/os-modal/os-modal.vue'
-import Form from '@/helpers/validation.js'
+// import { mapState } from 'vuex'
+// import Form from '@/helpers/validation.js'
 
 export default {
   name: 'OsArtistEvents',
@@ -131,7 +131,7 @@ export default {
     return {
       showModalEvent: false,
       formsData: {
-        event: new Form({
+        /* event: new Form({
           name: '',
           location: '',
           time: '',
@@ -139,7 +139,17 @@ export default {
           description: '',
           tags: '',
           upload: ''
-        })
+        }) */
+        event: {
+          name: '',
+          location: '',
+          date: '',
+          time: '',
+          tags: [],
+          description: '',
+          price: '',
+          errors: false
+        }
       },
 
       demoEvents: [
@@ -178,6 +188,7 @@ export default {
   },
 
   methods: {
+    submit: function () {}
   }
 }
 </script>
