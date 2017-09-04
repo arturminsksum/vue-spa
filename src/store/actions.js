@@ -10,8 +10,11 @@ const actions = {
         let token = response.data.token
 
         sessionStorage.setItem('token', token)
-        commit(types.SIGN_IN, {user: jwtDecode(token)})
+        return getByToken(commit, {token: token})
       })
+  },
+  getByToken: ({commit}, payload) => {
+    return getByToken(commit, payload)
   },
   getUser: ({commit}, payload) => {
     var options = {}
@@ -27,11 +30,30 @@ const actions = {
           about = data.about.match(regex)
 
         data.place = about[0]
-        data.avatar_image = 'http://165.227.140.41:1323/' + data.avatar_image
-        data.header_image = 'http://165.227.140.41:1323/' + data.header_image
+        updateImageUrl(data)
+
         commit(types.SET_USER, {user: data})
       })
   }
+}
+
+function updateImageUrl (obj) {
+  var url = 'http://165.227.140.41:1323/'
+
+  obj.avatar_image = url + obj.avatar_image
+  obj.header_image = url + obj.header_image
+}
+
+function getByToken (commit, payload) {
+  let user = jwtDecode(payload.token)
+
+  return Vue.axios.get(`/api/users/${user.acc_id}`)
+    .then((response) => {
+      let data = response.data
+
+      updateImageUrl(data)
+      commit(types.SIGN_IN, {user: Object.assign(user, data)})
+    })
 }
 
 export default actions

@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import JwtDecode from 'jwt-decode'
 import store from '@/store'
-import * as types from '@/store/mutation-types'
 import Index from '@/pages/index'
 import Signup from '@/pages/signup'
 import Artist from '@/pages/artist'
@@ -63,7 +61,7 @@ router.beforeEach(function (to, from, next) {
     if (!token) {
       next()
     } else {
-      vuexStore.commit(types.SIGN_IN, {user: JwtDecode(token)})
+      vuexStore.dispatch('getByToken', {token: token})
       next()
     }
   } else {
