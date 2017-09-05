@@ -10,6 +10,9 @@ const mutations = {
   },
   [types.SET_USER] (state, payload) {
     state.currentUser = payload.user
+  },
+  [types.SET_RESIDENTS] (state, payload) {
+    state.residents = payload.list
   }
 }
 

@@ -23,7 +23,7 @@
         .page-content.page-content--profile
           .artist-center__artist-biography
             p.artist-center__describe {{user.description}}
-          os-artist-tags(v-if="!isUser && user.tags.length" :tags="user.tags")
+          os-artist-tags(v-if="!isUser && user.tags && user.tags.length" :tags="user.tags")
 
           os-artist-tabs
 
@@ -57,7 +57,7 @@
               header-title="Residents"
               svg-name="dynamic"
               :counter="41"
-              :items="agentClubs"
+              :items="residents"
             )
             .border-top.border-top--20
             os-profile-partners(
@@ -95,7 +95,6 @@ import OsProfilePartners from '@/components/sections/os-profile-partners/os-prof
 
 import OsSvg from '@/components/elements/os-svg'
 
-import store from '@/store'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
@@ -193,10 +192,40 @@ export default {
         {
           name: 'Lyapis'
         }
+      ],
+      residents: [
+        {
+          id: 16,
+          name: 'Сalvin Harris',
+          role: 'artist',
+          avatar_image: 'pictures/accounts/musicians/artist-avatar-02.jpg'
+        },
+        {
+          id: 17,
+          name: 'Kraftwerk',
+          role: 'artist',
+          avatar_image: 'pictures/accounts/musicians/artist-avatar-01.jpg'
+        },
+        {
+          id: 20,
+          name: "Кавер-бэнд pinK'Kode",
+          role: 'artist',
+          avatar_image: 'pictures/accounts/musicians/artist-avatar-03.jpg'
+        }
       ]
     }
   },
-
+  methods: {
+    fetchData () {
+      this.$store.dispatch('getUser', {id: this.$route.params.id})
+        .catch((error) => {
+          if (error) {
+            debugger
+//            next(false)
+          }
+        })
+    }
+  },
   computed: {
     ...mapGetters([
       'isUser',
@@ -208,16 +237,12 @@ export default {
       user: state => state.currentUser
     })
   },
-  beforeRouteEnter (to, from, next) {
-    store.dispatch('getUser', {id: to.params.id})
-      .then(() => {
-        next()
-      })
-      .catch((error) => {
-        if (error) {
-          next(false)
-        }
-      })
+  created () {
+    this.fetchData()
+  },
+  watch: {
+    // в случае изменения маршрута запрашиваем данные вновь
+    '$route': 'fetchData'
   }
 }
 

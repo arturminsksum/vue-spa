@@ -8,14 +8,14 @@
           .header__signin
             a.link.link--white(href='' @click.prevent="showLoginModal = true") Sign in
           .header__register
-            a.btn.btn--30.btn--green(href="/signup")
+            router-link.btn.btn--30.btn--green(:to="{name: 'signup'}")
              | Free
              span.show-tablet &nbsp;1-month
              |  trial
         .header__registered(v-else)
           ul.header-menu
             li.header-menu__item(v-for="item in artistMenu")
-              a.header-menu__link(:href="`/${item.link}`") {{item.text}}
+              router-link.header-menu__link(:to="{name:item.link}") {{item.text}}
           .header-search
             input.header-search__input(type="text" placeholder="search")
             os-svg.header-search__icon(name="search", width="13px", height="14px")
@@ -58,8 +58,8 @@
             .form__links
               .form__start
                 span.form__start-text Don't have an account?&nbsp;
-                a(href="/signup").form__start-link Get started
-              a(href="/signup").form__forgot Forgot Password?
+                router-link(to="{name:'signup'}").form__start-link Get started
+              router-link(to="{name:'signup'}").form__forgot Forgot Password?
 
           .form__row.form__row--space-between
             .form__captcha

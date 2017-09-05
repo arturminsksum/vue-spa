@@ -12,7 +12,7 @@
           br
           | Find ways to promote your music with live performances.
         .main-banner__button
-          a.btn.btn--40.btn--dark-blue(href="/artist")
+          router-link.btn.btn--40.btn--dark-blue(:to="{name: 'user', params:{id: 'me'}}")
             os-svg(name="start")
             span Start now
     .section.section--grey

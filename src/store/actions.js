@@ -42,6 +42,18 @@ const actions = {
 
         commit(types.SET_USER, {user: data})
       })
+  },
+  getResidents: ({commit}, payload) => {
+    var options = {
+      Authorization: 'Bearer ' + sessionStorage.getItem('token')
+    }
+
+    return Vue.axios.get(`/api/users/${payload.id}/residents`, {headers: options})
+      .then((response) => {
+        let data = response.data
+
+        commit(types.SET_RESIDENTS, {list: data})
+      })
   }
 }
 

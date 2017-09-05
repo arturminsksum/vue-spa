@@ -1,7 +1,8 @@
 const state = {
   isLogin: false,
   user: {},
-  currentUser: {}
+  currentUser: {},
+  residents: {}
 }
 
 export default state

@@ -7,7 +7,8 @@
     .profile-partners__body
       .profile-partners__item(:key="index" v-for="item,index in items")
         .profile-partners__img
-        .profile-partners__name {{item.name}}
+        router-link.profile-partners__name(v-if="item.id" :to="{ name: 'user', params: { id: item.id }}") {{item.name}}
+        .profile-partners__name(v-else) {{item.name}}
         .profile-partners__place(v-if="item.place")
           os-svg(name="marker", width="9px", height="14px").profile-partners__place-icon
           .profile-partners__place-name {{item.place}}
