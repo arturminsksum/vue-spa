@@ -6,7 +6,7 @@
       .profile-partners__header-number {{counter}}
     .profile-partners__body
       .profile-partners__item(:key="index" v-for="item,index in items")
-        .profile-partners__img
+        .profile-partners__img(:style="{ backgroundImage: `url(${item.avatar_image})` }")
         router-link.profile-partners__name(v-if="item.id" :to="{ name: 'user', params: { id: item.id }}") {{item.name}}
         .profile-partners__name(v-else) {{item.name}}
         .profile-partners__place(v-if="item.place")

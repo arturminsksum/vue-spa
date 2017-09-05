@@ -1,6 +1,6 @@
 <template lang="pug">
  .artist-banner
-        .artist-banner__bg(v-bind:style="{ backgroundImage: `url(${user.header_image})` }")
+        .artist-banner__bg(:style="{ backgroundImage: `url(${user.header_image})` }")
         .artist-banner__bottom
           .artist-banner__info
             os-profile-avatar(:path="user.avatar_image").artist-banner__avatar

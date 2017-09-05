@@ -198,19 +198,19 @@ export default {
           id: 16,
           name: 'Сalvin Harris',
           role: 'artist',
-          avatar_image: 'pictures/accounts/musicians/artist-avatar-02.jpg'
+          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-02.jpg'
         },
         {
           id: 17,
           name: 'Kraftwerk',
           role: 'artist',
-          avatar_image: 'pictures/accounts/musicians/artist-avatar-01.jpg'
+          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-01.jpg'
         },
         {
           id: 20,
           name: "Кавер-бэнд pinK'Kode",
           role: 'artist',
-          avatar_image: 'pictures/accounts/musicians/artist-avatar-03.jpg'
+          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-03.jpg'
         }
       ]
     }
@@ -220,8 +220,7 @@ export default {
       this.$store.dispatch('getUser', {id: this.$route.params.id})
         .catch((error) => {
           if (error) {
-            debugger
-//            next(false)
+            this.$router.push({name: 'home'})
           }
         })
     }
