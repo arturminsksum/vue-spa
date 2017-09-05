@@ -22,8 +22,8 @@
 
         .page-content.page-content--profile
           .artist-center__artist-biography
-            p.artist-center__describe James Marshall "Jimi" Hendrix (born Johnny Allen Hendrix; November 27, 1942 – September 18, 1970) was an American rock guitarist, singer, and songwriter. Although his mainstream career spanned only four years, he is widely regarded as one of the most influential electric guitarists in the history of popular music, and one of the most celebrated musicians of the 20th century...The Rock and Roll Hall of Fame describes him as "arguably the greatest instrumentalist in the history of rock music"...Fame describes him as "arguably the greatest instrumentalist in the history of rock music".
-          os-artist-tags(v-if="!isUser")
+            p.artist-center__describe {{user.description}}
+          os-artist-tags(v-if="!isUser && user.tags.length" :tags="user.tags")
 
           os-artist-tabs
 
@@ -209,9 +209,10 @@ export default {
     })
   },
   beforeRouteEnter (to, from, next) {
-    store.dispatch('getUser', {id: to.params.id}).then(() => {
-      next()
-    })
+    store.dispatch('getUser', {id: to.params.id})
+      .then(() => {
+        next()
+      })
       .catch((error) => {
         if (error) {
           next(false)

@@ -26,10 +26,18 @@ const actions = {
     return Vue.axios.get(`/api/users/${payload.id}`, {headers: options})
       .then((response) => {
         let data = response.data,
-          regex = /[^\n]+(?:\r?\n|$)/g,
-          about = data.about.match(regex)
+          about = data.about.split('\n\n');
 
-        data.place = about[0]
+        ['description', 'tags', 'genre', 'location'].forEach((key) => {
+          if (key === 'genre' && about.length === 1) {
+            data[key] = ''
+          } else {
+            data[key] = about.pop()
+          }
+        })
+
+        data.tags = processTags(data.tags)
+
         updateImageUrl(data)
 
         commit(types.SET_USER, {user: data})
@@ -42,6 +50,14 @@ function updateImageUrl (obj) {
 
   obj.avatar_image = url + obj.avatar_image
   obj.header_image = url + obj.header_image
+}
+
+function processTags (tags) {
+  var result = tags || ''
+
+  return result.split(' ').map((item) => {
+    return item.replace('#', '').replace(',', '')
+  }).filter(Boolean)
 }
 
 function getByToken (commit, payload) {
