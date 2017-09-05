@@ -22,12 +22,6 @@
       ul.pagin
         li.pagin__item(v-for="(text, index) in ['<<','<','1','2','3','4','>','>>']", key="index")
           span.pagin__text {{index}}
-    os-modal.modal-gallery(
-      modal-title="Gallery"
-      v-if="showModalGallery"
-      no-header)
-      .modal__body(slot="body")
-        os-profile-gallery.modal__gallery(@close="showModalGallery = false", :num-open="openedPhoto")
 </template>
 
 <script>

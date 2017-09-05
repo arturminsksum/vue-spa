@@ -97,7 +97,7 @@
             .post-single__body
               .post-single__video
                 .video
-                  iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
+                  //- iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
                   .bg-cover
                     os-svg(name="playVideo", width="60px", height="60px").video__icon
             .post-single__footer
@@ -125,18 +125,14 @@
                     .toggler__dot
                     .toggler__dot
                     .toggler__dot
-            .post-single__body
+            .post-single__body(@click="openGallery")
               .post-single__photo
-                img(src="../assets/img/post-img.jpg").img
+                img(:src="require('../assets/img/' + photos[0].poster)" ref="image").img
               .post-single__gallery
-                .post-single__gallery-item
-                  img(src="../assets/img/post-img.jpg").img
-                .post-single__gallery-item
-                  img(src="../assets/img/post-img.jpg").img
-                .post-single__gallery-item
-                  img(src="../assets/img/post-img.jpg").img
-                  .bg-cover
-                    .post-single__gallery-count +9
+                .post-single__gallery-item(v-for="(item, index) in photos", :key="index", v-if="index != 0 && index < 4")
+                  img(:src="require('../assets/img/' + photos[index].poster)" ref="image").img
+                  .bg-cover(v-if="index === 3")
+                    .post-single__gallery-count +{{ setIndex(index) }}
             .post-single__footer
               .post-single__footer-left
                 a(href="/").track-like
@@ -159,6 +155,13 @@
             .border-top.border-top--20
             os-artist-events
         os-audio-player
+
+      os-modal.modal-gallery(
+      modal-title="Gallery"
+      v-if="showModalGallery"
+      no-header)
+        .modal__body(slot="body")
+          os-profile-gallery.modal__gallery(@close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
 </template>
 
 <script>
@@ -170,6 +173,8 @@ import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-event
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
+import OsModal from '@/components/os-modal/os-modal.vue'
+import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
 import { mapState } from 'vuex'
 import OsPost from '@/components/os-post/os-post.vue'
 
@@ -183,6 +188,8 @@ export default {
     OsProfileAvatar,
     OsAudioTrack,
     OsAudioPlayer,
+    OsModal,
+    OsProfileGallery,
     OsPost
   },
   computed: {
@@ -194,6 +201,9 @@ export default {
 
   data () {
     return {
+      showModalGallery: false,
+      pictureNumber: '',
+
       track: {
         songName: 'Song name',
         likes: 60,
@@ -205,6 +215,120 @@ export default {
         show: true,
         filePath: '/audio/linkin_park_victimized.mp3'
       },
+
+      photos: [
+        {
+          poster: 'gallery-04.jpg',
+          artist: {
+            avatar: 'avatar-1.png',
+            name: 'Artist Name',
+            data: '11.01.18'
+          },
+          managers: [
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            }
+          ]
+        },
+        {
+          poster: 'gallery-02.jpg',
+          artist: {
+            avatar: 'avatar-1.png',
+            name: 'Artist Name',
+            data: '11.01.18'
+          },
+          managers: [
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            }
+          ]
+        },
+        {
+          poster: 'gallery-03.jpg',
+          artist: {
+            avatar: 'avatar-1.png',
+            name: 'Artist Name',
+            data: '11.01.18'
+          },
+          managers: [
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            }
+          ]
+        },
+        {
+          poster: 'gallery-01.jpg',
+          artist: {
+            avatar: 'avatar-1.png',
+            name: 'Artist Name',
+            data: '11.01.18'
+          },
+          managers: [
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            }
+          ]
+        },
+        {
+          poster: 'gallery-05.jpg',
+          artist: {
+            avatar: 'avatar-1.png',
+            name: 'Artist Name',
+            data: '11.01.18'
+          },
+          managers: [
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            }
+          ]
+        }
+      ],
+
       posts: []
      /* events: [
         {
@@ -220,6 +344,39 @@ export default {
           poster: 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg' // '../../assets/img/event-banner.jpg'
         }
       ] // temp! Events are subclass of posts */
+
+    }
+  },
+
+  methods: {
+    openGallery: function (event) {
+      let imgs = this.$refs.image,
+        self = event.target
+
+      if (self.className === 'bg-cover' || self.className === 'post-single__gallery-count') {
+        var x = imgs.length,
+          i = imgs.length
+      } else if (self.className === 'img') {
+        while (i--) {
+          if (imgs[i] === self) {
+            x = i + 1
+            break
+          }
+        }
+        if (!x) {
+          x = 0
+        }
+      } else {
+        x = 0
+      }
+      this.pictureNumber = x
+      this.showModalGallery = true
+    },
+
+    setIndex: function (arrNumber) {
+      let number = arrNumber + 1,
+        endNumber = this.photos.length - number
+      return endNumber
     }
   }
 }
@@ -229,5 +386,12 @@ export default {
 <style lang="scss">
 
   @import "../assets/vars";
+
+  .modal-gallery{
+
+    .modal__container {
+      width: 1170px;
+    }
+  }
 
 </style>
