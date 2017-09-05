@@ -18,7 +18,8 @@
               router-link.header-menu__link(:to="{name:item.link}") {{item.text}}
           .header-search
             input.header-search__input(type="text" placeholder="search")
-            os-svg.header-search__icon(name="search", width="13px", height="14px")
+            .header-search__icon
+              os-svg.svg--white(name="search", width="13px", height="14px")
           .header-upload
             os-svg.header-upload__icon(name="upload", width="20px", height="20px")
             span.header-upload__text Upload

@@ -13,7 +13,6 @@
             span Open messager
 
         .page-content.page-content--home
-
           .post-create.bgc-white
             .post-create__header
               .post-create__tabs
@@ -32,6 +31,8 @@
               textarea(placeholder="Type here" rows="1").post-create__textarea
             .post-create__footer
               button.btn.btn--green-invert.btn--border-thin.btn--30-invert Post
+
+          os-post(v-for='event in events', :key="event.id", :event='event')
 
           .post-single.bgc-white
             .post-single__header
@@ -169,6 +170,8 @@ import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-event
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
+import { mapState } from 'vuex'
+import OsPost from '@/components/os-post/os-post.vue'
 
 import {mapState} from 'vuex'
 
@@ -181,7 +184,13 @@ export default {
     OsArtistEvents,
     OsProfileAvatar,
     OsAudioTrack,
-    OsAudioPlayer
+    OsAudioPlayer,
+    OsPost
+  },
+  computed: {
+    ...mapState([
+      'events'
+    ])
   },
 
   data () {
@@ -196,7 +205,22 @@ export default {
         added: '3 months',
         show: true,
         filePath: '/audio/linkin_park_victimized.mp3'
-      }
+      },
+      posts: []
+     /* events: [
+        {
+          name: 'ffesfe',
+          location: '6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA',
+          date: '18.10.2017',
+          time: '12.05',
+          tags: ['tag'],
+          description: 'fesfe',
+          price: '50',
+          errors: false,
+          id: new Date().getTime(),
+          poster: 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg' // '../../assets/img/event-banner.jpg'
+        }
+      ] // temp! Events are subclass of posts */
     }
   },
 
@@ -212,6 +236,5 @@ export default {
 <style lang="scss">
 
   @import "../assets/vars";
-
 
 </style>

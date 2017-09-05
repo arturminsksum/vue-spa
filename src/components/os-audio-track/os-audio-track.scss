@@ -136,7 +136,8 @@
 
   &-like,
   &-share,
-  &-chart {
+  &-chart,
+  &-add {
 
     &:hover {
       color: $green;
@@ -145,7 +146,8 @@
 
   &-like:hover > &-like_icon,
   &-share:hover > &-share_icon,
-  &-chart:hover > &-chart_icon {
+  &-chart:hover > &-chart_icon,
+  &-add:hover > &-add_icon {
     fill: $green;
   }
 }

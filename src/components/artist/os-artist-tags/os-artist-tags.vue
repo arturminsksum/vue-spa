@@ -1,7 +1,7 @@
 <template lang="pug">
 .artist-hashtags
   .artist-tags(:class="{'artist-tags--active': availibleTags}")
-    a(href="" v-for="tag in tags" key="index").artist-tags__link.btn.btn--grey.btn--20
+    a(href="" v-for="tag, index in artistTags", :key="index").artist-tags__link.btn.btn--grey.btn--20
       span # {{tag}}
   .artist-hashtags__dots(@click="availibleTags = !availibleTags", :class="{'artist-hashtags__dots--active': availibleTags}")
     span.artist-hashtags__dot
@@ -12,14 +12,11 @@
 <script>
 export default {
   name: 'OsArtistTags',
-  props: {
-    tags: {
-      type: Array
-    }
-  },
 
   data () {
     return {
+      artistTags: ['blues rock', 'classic rock', 'psychedelic rock', 'guitar', 'psychedelic rock', 'classic rock', 'blues rock', 'guitar', 'blues rock', 'classic rock', 'psychedelic rock', 'guitar', 'guitar', 'classic rock', 'psychedelic rock', 'blues rock'],
+
       availibleTags: false
     }
   }

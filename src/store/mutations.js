@@ -13,6 +13,9 @@ const mutations = {
   },
   [types.SET_RESIDENTS] (state, payload) {
     state.residents = payload.list
+  },
+  [types.ADD_EVENT] (state, payload) {
+    state.events.splice(0, 0, payload.event)
   }
 }
 

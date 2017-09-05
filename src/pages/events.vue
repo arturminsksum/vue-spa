@@ -30,7 +30,7 @@
                 span share
               .page-event__buy
                 .page-event__price
-                  os-svg.svg--mr.svg--green(name="share", width="14px", height="11px")
+                  os-svg.svg--mr.svg--green(name="ticket", width="14px", height="14px")
                   span $ 50
                 .page-event__button
                   button.btn.btn--dark-blue-invert.btn--border-thin.btn--30-invert buy tickets
