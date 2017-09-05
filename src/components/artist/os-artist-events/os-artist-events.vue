@@ -153,7 +153,8 @@ export default {
           tags: [],
           description: '',
           price: '',
-          errors: false
+          errors: false,
+          id: new Date().getTime()
         }
       },
 

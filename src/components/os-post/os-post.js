@@ -6,9 +6,10 @@ export default {
   components: {
     OsSvg
   },
-
-  props: {
-  },
+  /**
+   * post - Object. Fileds: type, data
+   */
+  props: ['post'],
 
   data () {
     return {

@@ -32,7 +32,7 @@
             .post-create__footer
               button.btn.btn--green-invert.btn--border-thin.btn--30-invert Post
 
-          os-post
+          os-post(v-for='event in events', :key="event.id", :post='event')
 
           .post-single.bgc-white
             .post-single__header
@@ -187,7 +187,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'events'
+      // 'events'
     ])
   },
 
@@ -203,7 +203,14 @@ export default {
         added: '3 months',
         show: true,
         filePath: '/audio/linkin_park_victimized.mp3'
-      }
+      },
+      posts: [],
+      events: [
+        {
+          id: new Date().getTime(),
+          price: 50
+        }
+      ] // temp! Events are subclass of posts
     }
   },
 
