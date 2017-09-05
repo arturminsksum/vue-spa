@@ -14,7 +14,7 @@
     .post-single__body
       .post-event
         .post-event__banner
-          a(router-link:to="{name: 'events'}")
+          router-link(:to="{name: 'events'}")
             img.img(:src="event.poster")
         .post-event__info
           .post-event__row
