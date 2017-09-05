@@ -14,7 +14,7 @@
     .post-single__body
       .post-event
         .post-event__banner
-          img(src="../../assets/img/event-banner.jpg")
+          img.img(src="../../assets/img/event-banner.jpg")
         .post-event__info
           .post-event__row
             .post-event__head Major Lazer presents TBRG Beat
