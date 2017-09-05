@@ -173,8 +173,6 @@ import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 import { mapState } from 'vuex'
 import OsPost from '@/components/os-post/os-post.vue'
 
-import {mapState} from 'vuex'
-
 export default {
 
   components: {
@@ -189,7 +187,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'events'
+      'events',
+      'user'
     ])
   },
 
@@ -222,12 +221,6 @@ export default {
         }
       ] // temp! Events are subclass of posts */
     }
-  },
-
-  computed: {
-    ...mapState([
-      'user'
-    ])
   }
 }
 
