@@ -36,19 +36,19 @@ export default {
       links: [
         {
           text: 'Artists',
-          href: '/artist'
+          href: ''
         },
         {
           text: 'Clubs',
-          href: '/clubs'
+          href: ''
         },
         {
           text: 'Managers',
-          href: '/managers'
+          href: ''
         },
         {
           text: 'FAQ',
-          href: '/faq'
+          href: ''
         }
       ],
       icons: [

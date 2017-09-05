@@ -116,7 +116,7 @@ export default {
           text: 'Home'
         },
         {
-          link: 'promote',
+          link: '',
           text: 'Promote'
         },
         {

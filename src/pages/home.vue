@@ -97,7 +97,7 @@
             .post-single__body
               .post-single__video
                 .video
-                  iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
+                  //- iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
                   .bg-cover
                     os-svg(name="playVideo", width="60px", height="60px").video__icon
             .post-single__footer
@@ -218,7 +218,7 @@ export default {
 
       photos: [
         {
-          poster: 'post-img.jpg',
+          poster: 'gallery-04.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
@@ -240,7 +240,7 @@ export default {
           ]
         },
         {
-          poster: 'britishFlag.jpg',
+          poster: 'gallery-02.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
@@ -262,7 +262,7 @@ export default {
           ]
         },
         {
-          poster: 'fiveMembers.jpg',
+          poster: 'gallery-03.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
@@ -278,7 +278,7 @@ export default {
           ]
         },
         {
-          poster: 'friendsConcert.jpg',
+          poster: 'gallery-01.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
@@ -300,7 +300,7 @@ export default {
           ]
         },
         {
-          poster: 'beforeConcert.jpg',
+          poster: 'gallery-05.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
@@ -319,38 +319,6 @@ export default {
               author: 'Maneger Name',
               date: '11.01.17'
             },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'geometria.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'hinemachinem.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
             {
               avatar: 'avatar-1.png',
               text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
