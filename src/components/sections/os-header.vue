@@ -126,9 +126,9 @@ export default {
       userDropdownItems: [
         {
           title: 'My Profile',
-          url: '/artist',
+          url: '/user/me',
           onClick: () => {
-            this.$router.replace({path: '/artist'})
+            this.$router.push({name: 'user', params: { id: 'me' }})
           }
         },
         {
@@ -139,7 +139,7 @@ export default {
           title: 'Get PRO Account',
           url: '/plans',
           onClick: () => {
-            this.$router.replace({path: '/plans'})
+            this.$router.push({name: 'plans'})
           }
         },
         {
@@ -147,7 +147,7 @@ export default {
           onClick: () => {
             this.$store.dispatch('signOut')
             sessionStorage.clear()
-            this.$router.replace({path: '/'})
+            this.$router.replace({name: 'index'})
           }
         }
       ],
@@ -182,7 +182,7 @@ export default {
       this.$store.dispatch('login', this.user)
         .then(() => {
           this.showLoginModal = false
-          this.$router.replace('home')
+          this.$router.replace({name: 'home'})
         })
         .catch((error) => {
           if (error) {
