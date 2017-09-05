@@ -9,7 +9,7 @@ export default {
   /**
    * post - Object. Fileds: type, data
    */
-  props: ['post'],
+  props: ['event'],
 
   data () {
     return {

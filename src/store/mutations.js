@@ -9,7 +9,8 @@ const mutations = {
     state.isLogin = true
   },
   [types.ADD_EVENT] (state, payload) {
-    state.events.push(payload.event)
+    debugger
+    state.events.splice(0, 0, payload.event)
   }
 }
 

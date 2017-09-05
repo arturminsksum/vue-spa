@@ -14,23 +14,24 @@
     .post-single__body
       .post-event
         .post-event__banner
-          img.img(src="../../assets/img/event-banner.jpg")
+          a(router-link:to="{name: 'events'}")
+            img.img(:src="event.poster")
         .post-event__info
           .post-event__row
-            .post-event__head Major Lazer presents TBRG Beat
+            .post-event__head {{event.name}}
             .post-event__price
               os-svg.svg--mr.svg--green(name="ticket", width="14px", height="14px")
-              span $ 50
+              span $ {{event.price}}
           .post-event__place
             os-svg.svg--mr.svg--green(name="marker", width="9px", height="14px")
-            span 6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA
+            span {{event.location}}
           .post-event__where
             .post-event__date
               os-svg.svg--mr.svg--green(name="calendar", width="13px", height="14px")
-              span 18.10.2017
+              span {{event.date}}
             .post-event__time
               os-svg.svg--mr.svg--green(name="clock", width="15px", height="15px")
-              span 18:00
+              span {{event.time}}
     .post-single__footer
       .post-single__footer-left
         a(href="/").track-like

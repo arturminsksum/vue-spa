@@ -27,7 +27,7 @@
           label.form__col
             div.field-wrapper
               .label.label--signup Date
-              input#date.input.input--small(type="date", v-model="formsData.event.time")
+              input#date.input.input--small(type="date", v-model="formsData.event.date")
             div.field-wrapper(v-show="formsData.event.errors")
               span.error
 
@@ -51,16 +51,16 @@
             div.field-wrapper
               .label.label--signup Add Artists
               .form-search
-                input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.event.artist")
+                input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.addedArtist")
                 .form-search__icon
                   os-svg(name="search", width="13px", height="14px")
             div.field-wrapper(v-show="formsData.event.errors")
               span.error
           .form__col
-            button.form-plus
+            button.form-plus(@click.prevent="addArtist")
               os-svg(name="plus", width="12px", height="12px")
         .form-added
-          button.btn.btn--grey.btn--20(v-for="user, index in userTags", :key="index")
+          button.btn.btn--grey.btn--20(v-for="user, index in artistTags", :key="index")
             span {{user}}
             os-svg(name="close", width="9px", height="9px")
 
@@ -76,13 +76,13 @@
             div.field-wrapper
               .label.label--signup Add tags
               .form-search
-                input#tags.input(type="text" placeholder="Ex. rock", v-model="formsData.event.tags")
+                input#tags.input(type="text" placeholder="Ex. rock", v-model="formsData.addedTag")
                 .form-search__icon
                   os-svg(name="search", width="13px", height="14px")
             div.field-wrapper(v-show="formsData.event.errors")
               span.error
           .form__col
-            button.form-plus
+            button.form-plus(@click.prevent="addTag()")
               os-svg(name="plus", width="12px", height="12px")
         .form-added
           button.btn.btn--grey.btn--20(v-for="genre, index in genreTags", :key="index")
@@ -176,7 +176,7 @@ export default {
     return {
       showModalEvent: false,
 
-      userTags: ['The Offsping', 'Prodigy'],
+      artistTags: ['The Offsping', 'Prodigy'],
 
       genreTags: ['blues rock', 'classic rock', 'psychedelic rock', 'guitar', 'psychedelic rock', 'classic rock', 'blues rock', 'guitar', 'blues rock'],
 
@@ -197,12 +197,16 @@ export default {
           location: '',
           date: '',
           time: '',
-          tags: [],
+          tags: this.genreTags,
           description: '',
           price: '',
           errors: false,
-          id: new Date().getTime()
-        }
+          id: new Date().getTime(),
+          poster: '',
+          artist: this.artistTags
+        },
+        addedTag: '',
+        addedArtist: ''
       },
 
       demoEvents: [
@@ -242,16 +246,29 @@ export default {
 
   methods: {
     submit: function () {
-      const payload = {event: this.formsData.event}
+      const data = Object.assign({}, this.formsData.event)
+      const payload = Object.assign({}, {event: data})
       this.$store.commit('ADD_EVENT', payload)
       this.showModalEvent = false
     },
     uploadFile (event) {
-      this.posterName = event.target.files[0].name
+      this.$set(this.formsData.event, 'poster', 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg') // event.target.files[0].name
     },
     deleteFile () {
       this.$refs.file.value = ''
       this.posterName = ''
+    },
+    addTag () {
+      debugger
+      const value = this.formsData.addedTag
+      this.genreTags.splice(0, 0, value)
+      this.formsData.addedTag = ''
+    },
+    addArtist () {
+      debugger
+      const value = this.formsData.addedArtist
+      this.artistTags.splice(0, 0, value)
+      this.formsData.addedArtist = ''
     }
   }
 }
