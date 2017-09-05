@@ -12,7 +12,7 @@
           br
           | Find ways to promote your music with live performances.
         .main-banner__button
-          a.btn.btn--40.btn--dark-blue(href="/artist")
+          router-link.btn.btn--40.btn--dark-blue(:to="{name: 'signup'}")
             os-svg(name="start")
             span Start now
     .section.section--grey
@@ -30,8 +30,17 @@
     .section.section--grey
       .container
         h2.section__title
-          span Simple Plans for Everyone
-        os-main-plan
+          span Top events
+        .main-adv.row
+          .main-adv__item.six.columns
+            router-link.main-adv__banner(:to="{name:'events'}")
+              img.img(src="../assets/img/main-advert-01.jpg")
+          .main-adv__item.six.columns
+            router-link.main-adv__banner(:to="{name:'events'}")
+              img.img(src="../assets/img/main-advert-02.jpg")
+            router-link.main-adv__banner(:to="{name:'events'}")
+              img.img(src="../assets/img/main-advert-03.jpg")
+
 
     .section
       .container
@@ -48,7 +57,6 @@
 import OsSvg from '@/components/elements/os-svg'
 import OsMainFeature from '@/components/main/os-main-feature/os-main-feature'
 import OsMainDescribe from '@/components/main/os-main-describe/os-main-describe'
-import OsMainPlan from '@/components/main/os-main-plan/os-main-plan'
 import OsMainSlider from '@/components/main/os-main-slider/os-main-slider'
 
 export default {
@@ -59,7 +67,6 @@ export default {
     OsSvg,
     OsMainFeature,
     OsMainDescribe,
-    OsMainPlan,
     OsMainSlider
   }
 
@@ -144,6 +151,18 @@ export default {
           margin-right: 15px;
           width: auto;
         }
+      }
+    }
+  }
+
+  .main-adv {
+    &__banner {
+      border-radius: 15px;
+      display: inline-block;
+      overflow: hidden;
+
+      & + & {
+        margin-top: 16px;
       }
     }
   }

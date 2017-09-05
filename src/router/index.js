@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import JwtDecode from 'jwt-decode'
 import store from '@/store'
 import Index from '@/pages/index'
 import Signup from '@/pages/signup'
@@ -13,7 +12,6 @@ import ErrorPage from '@/pages/error'
 Vue.use(Router)
 
 let router = new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
@@ -26,8 +24,8 @@ let router = new Router({
       component: Signup
     },
     {
-      path: '/artist',
-      name: 'artist',
+      path: '/user/:id',
+      name: 'user',
       component: Artist
     },
     {
@@ -46,7 +44,7 @@ let router = new Router({
       component: Events
     },
     {
-      path: '/error',
+      path: '*',
       name: 'error',
       component: ErrorPage
     }
@@ -62,7 +60,7 @@ router.beforeEach(function (to, from, next) {
     if (!token) {
       next()
     } else {
-      vuexStore.dispatch('setUser', {user: JwtDecode(token)})
+      vuexStore.dispatch('getByToken', {token: token})
       next()
     }
   } else {

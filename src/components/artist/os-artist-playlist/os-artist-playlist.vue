@@ -147,7 +147,7 @@ export default {
       var music = this.current.song
       if (music.paused) {
         if (this.prev.song && this.prev.song !== this.current.song) {
-          var prevMusic = this.prev.song
+          let prevMusic = this.prev.song
           prevMusic.pause()
           prevMusic.currentTime = 0
 
@@ -161,7 +161,7 @@ export default {
           this.current.delay = 1000 * (music.duration - music.currentTime)
         }
 
-        var me = this.playlistTracks[index]
+        let me = this.playlistTracks[index]
         this.current.timeoutId = setTimeout((index) => {
           me.show = true
           this.current.played = true

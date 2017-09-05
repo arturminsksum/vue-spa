@@ -35,19 +35,19 @@ export default {
   data () {
     return {
       describes: [
-        { img: 'post.jpg',
+        { img: 'describe-find.png',
           title: 'Find',
           text: 'You can be a musician who is looking for a manager. Or you are a manager - you are always looking for new talents and fresh ideas for the show Our service will help you find each other'
         },
-        { img: 'post.jpg',
+        { img: 'describe-organize.png',
           title: 'Organize',
           text: "It's always great to organize concerts and festivals, especially when you can quickly find artists, who will create a pleasant atmosphere and help you to have a wonderful time"
         },
-        { img: 'post.jpg',
+        { img: 'describe-show.png',
           title: 'Show',
           text: 'You can unite people, organizing unforgettable shows, finding all the necessary people who will help you in this.'
         },
-        { img: 'post.jpg',
+        { img: 'describe-popular.png',
           title: 'Be popular',
           text: 'Find new ways to promote your music, get the best offers, enjoy.'
         }

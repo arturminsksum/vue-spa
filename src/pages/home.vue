@@ -4,16 +4,15 @@
     main.main
       .page-wrapper.page-wrapper--grey
         aside.aside-left
-          a.page-home__info(href="/artist")
-            os-profile-avatar.page-home__avatar
-            span.page-home__profile-name Profile Name
+          router-link.page-home__info(:to="{ name: 'user', params: { id: 'me' }}")
+            os-profile-avatar.page-home__avatar(:path="user.avatar_image")
+            span.page-home__profile-name {{user.name}}
           .border-top
           .page-home__messager
             os-svg(name="message", width="15px", height="14px")
             span Open messager
 
         .page-content.page-content--home
-
           .post-create.bgc-white
             .post-create__header
               .post-create__tabs
@@ -32,6 +31,8 @@
               textarea(placeholder="Type here" rows="1").post-create__textarea
             .post-create__footer
               button.btn.btn--green-invert.btn--border-thin.btn--30-invert Post
+
+          os-post(v-for='event in events', :key="event.id", :event='event')
 
           .post-single.bgc-white
             .post-single__header
@@ -174,6 +175,8 @@ import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 import OsModal from '@/components/os-modal/os-modal.vue'
 import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
+import { mapState } from 'vuex'
+import OsPost from '@/components/os-post/os-post.vue'
 
 export default {
 
@@ -186,7 +189,14 @@ export default {
     OsAudioTrack,
     OsAudioPlayer,
     OsModal,
-    OsProfileGallery
+    OsProfileGallery,
+    OsPost
+  },
+  computed: {
+    ...mapState([
+      'events',
+      'user'
+    ])
   },
 
   data () {
@@ -349,19 +359,36 @@ export default {
             }
           ]
         }
-      ]
+      ],
+
+      posts: []
+     /* events: [
+        {
+          name: 'ffesfe',
+          location: '6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA',
+          date: '18.10.2017',
+          time: '12.05',
+          tags: ['tag'],
+          description: 'fesfe',
+          price: '50',
+          errors: false,
+          id: new Date().getTime(),
+          poster: 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg' // '../../assets/img/event-banner.jpg'
+        }
+      ] // temp! Events are subclass of posts */
+
     }
   },
 
   methods: {
     openGallery: function (event) {
-      var imgs = this.$refs.image
-      var self = event.target
+      let imgs = this.$refs.image,
+        self = event.target
 
       if (self.className === 'bg-cover' || self.className === 'post-single__gallery-count') {
-        var x = imgs.length
+        var x = imgs.length,
+          i = imgs.length
       } else if (self.className === 'img') {
-        var i = imgs.length
         while (i--) {
           if (imgs[i] === self) {
             x = i + 1
@@ -379,8 +406,8 @@ export default {
     },
 
     setIndex: function (arrNumber) {
-      let number = arrNumber + 1
-      let endNumber = this.photos.length - number
+      let number = arrNumber + 1,
+        endNumber = this.photos.length - number
       return endNumber
     }
   }
@@ -398,4 +425,5 @@ export default {
       width: 1170px;
     }
   }
+
 </style>

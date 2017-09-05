@@ -8,17 +8,18 @@
           .header__signin
             a.link.link--white(href='' @click.prevent="showLoginModal = true") Sign in
           .header__register
-            a.btn.btn--30.btn--green(href="/signup")
+            router-link.btn.btn--30.btn--green(:to="{name: 'signup'}")
              | Free
              span.show-tablet &nbsp;1-month
              |  trial
         .header__registered(v-else)
           ul.header-menu
             li.header-menu__item(v-for="item in artistMenu")
-              a.header-menu__link(:href="`/${item.link}`") {{item.text}}
+              router-link.header-menu__link(:to="{name:item.link}") {{item.text}}
           .header-search
             input.header-search__input(type="text" placeholder="search")
-            os-svg.header-search__icon(name="search", width="13px", height="14px")
+            .header-search__icon
+              os-svg.svg--white(name="search", width="13px", height="14px")
           .header-upload
             os-svg.header-upload__icon(name="upload", width="20px", height="20px")
             span.header-upload__text Upload
@@ -58,8 +59,8 @@
             .form__links
               .form__start
                 span.form__start-text Don't have an account?&nbsp;
-                a(href="/signup").form__start-link Get started
-              a(href="/signup").form__forgot Forgot Password?
+                router-link(to="{name:'signup'}").form__start-link Get started
+              router-link(to="{name:'signup'}").form__forgot Forgot Password?
 
           .form__row.form__row--space-between
             .form__captcha
@@ -85,7 +86,6 @@ import OsLogo from '@/components/elements/os-logo'
 import OsDropdown from '@/components/elements/os-dropdown'
 import OsNotifications from '@/components/elements/os-notifications'
 import { mapState } from 'vuex'
-import jwtDecode from 'jwt-decode'
 
 export default {
 
@@ -126,19 +126,29 @@ export default {
       ],
       userDropdownItems: [
         {
+          title: 'My Profile',
+          url: '/user/me',
+          onClick: () => {
+            this.$router.push({name: 'user', params: { id: 'me' }})
+          }
+        },
+        {
           title: 'Edit Account',
           url: '/'
         },
         {
           title: 'Get PRO Account',
-          url: '/'
+          url: '/plans',
+          onClick: () => {
+            this.$router.push({name: 'plans'})
+          }
         },
         {
           title: 'Logout',
           onClick: () => {
             this.$store.dispatch('signOut')
             sessionStorage.clear()
-            this.$router.replace({path: '/'})
+            this.$router.replace({name: 'index'})
           }
         }
       ],
@@ -170,19 +180,14 @@ export default {
 
   methods: {
     onSubmit () {
-      this.axios.post('http://165.227.140.41:1323/api/users/login', this.user)
-        .then((response) => {
-          let token = response.data.token
-
+      this.$store.dispatch('login', this.user)
+        .then(() => {
           this.showLoginModal = false
-          sessionStorage.setItem('token', token)
-          this.$store.dispatch('setUser', {user: jwtDecode(token)})
-          this.$router.replace({path: '/artist'})
+          this.$router.replace({name: 'home'})
         })
         .catch((error) => {
           if (error) {
             this.showLoginModal = false
-            this.$router.replace({path: '/'})
           }
         })
     },

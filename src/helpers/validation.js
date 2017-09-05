@@ -124,8 +124,8 @@ export default class Form {
   }
 
   validate (data) {
-    let valid = true
-    let confirmFields = ['email', 'password']
+    let valid = true,
+      confirmFields = ['email', 'password']
     for (let field in data) {
       if (!data[field]) {
         valid = false

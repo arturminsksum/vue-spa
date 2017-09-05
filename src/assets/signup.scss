@@ -86,6 +86,10 @@
       align-items: flex-start;
     }
 
+    &--align-center {
+      align-items: center;
+    }
+
     &--start-end {
       justify-content: flex-end;
     }
@@ -94,6 +98,8 @@
       border-top: 1px solid $grey-border;
       padding: 30px 0;
       margin-bottom: 0;
+      font-weight: bold;
+      font-size: 17px;
 
       .btn {
         flex-basis: 50%;
@@ -104,9 +110,6 @@
     }
 
     .btn {
-      font-size: 17px;
-      font-weight: bold;
-
       .svg {
         margin-right: 20px;
         vertical-align: middle;
@@ -146,6 +149,8 @@
 
   &__submit {
     .btn {
+      font-weight: bold;
+      font-size: 17px;
       width: 180px;
     }
   }
@@ -211,6 +216,24 @@
 
   }
 
+  &--small {
+    width: 150px;
+  }
+
+}
+.upload {
+  &__input {
+    display: none;
+  }
+  &__file-name {
+    margin-right: 20px;
+  }
+  &__delete {
+    margin-right: 20px;
+  }
+  &__button {
+
+  }
 }
 
 .textarea {
@@ -223,8 +246,6 @@
   outline: none;
   resize: none;
 }
-
-
 
 .select {
   height: 30px;
@@ -240,6 +261,47 @@
   }
 
 }
+
+.form-plus {
+  background-color: $bg-form-plus;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.form-added {
+  margin: -10px 0 10px 135px;
+
+  .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .svg {
+    margin-left: 10px;
+  }
+}
+
+.form-search {
+  position: relative;
+  width: 100%;
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .svg {
+    margin: 8px 16px;
+    fill: $light-grey-bg;
+  }
+}
+
+
 
 .checkbox {
   &__input {

@@ -28,7 +28,7 @@
                 .author__comment-data {{ manager.date }}
     .profile-gallery__footer-modal
       textarea(placeholder="Leave Comment" v-model="currentText").profile-gallery__message
-      button(@click="addToComments()").profile-gallery__send
+      button.profile-gallery__send
         os-svg(:name="send", width="18px", height="16px")
 </template>
 
@@ -56,21 +56,18 @@ export default {
     }
   },
   methods: {
-    addToComments: function () {
-      let newComment = {avatar: 'avatar-1.png', text: this.currentText, author: 'Maneger Name', date: '11.01.17'}
-      this.currentPhoto.managers.push(newComment)
-      console.log(newComment)
-      this.currentText = ''
-    },
+    // addToComments: function () {
+    //   let newComment = {avatar: 'avatar-1.png', text: this.currentText, author: 'Maneger Name', date: '11.01.17'}
+    //   this.currentPhoto.managers.push(newComment)
+    //   this.currentText = ''
+    // },
     showNext: function () {
       this.currentNumber = (this.currentNumber === this.photos.length - 1) ? 0 : ++this.currentNumber
       this.currentPhoto = this.photos[this.currentNumber]
-      console.log(this.currentNumber)
     },
     showPrev: function () {
       this.currentNumber = (this.currentNumber === 0) ? (this.photos.length - 1) : --this.currentNumber
       this.currentPhoto = this.photos[this.currentNumber]
-      console.log(this.currentNumber)
     }
   }
 }
