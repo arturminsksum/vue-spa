@@ -18,11 +18,6 @@ export default {
 
 <style scoped>
 
-.header,
-.footer {
-  display: none;
-}
-
 .error-page {
   color: #000;
   background: #fff;
@@ -34,6 +29,7 @@ export default {
   font-family: "SF UI Text", "Helvetica Neue", "Lucida Grande";
   text-align: center;
   padding-top: 20%;
+  z-index: 1;
 }
 .error-code {
   display: inline-block;
