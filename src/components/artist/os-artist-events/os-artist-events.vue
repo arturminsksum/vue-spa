@@ -259,13 +259,11 @@ export default {
       this.posterName = ''
     },
     addTag () {
-      debugger
       const value = this.formsData.addedTag
       this.genreTags.splice(0, 0, value)
       this.formsData.addedTag = ''
     },
     addArtist () {
-      debugger
       const value = this.formsData.addedArtist
       this.artistTags.splice(0, 0, value)
       this.formsData.addedArtist = ''
