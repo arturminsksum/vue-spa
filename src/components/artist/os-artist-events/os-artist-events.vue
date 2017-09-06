@@ -5,7 +5,7 @@
     strong Add event
   os-modal.modal-event(
   modal-title="Create event"
-  v-if="!showModalEvent"
+  v-if="showModalEvent"
   @close="showModalEvent = false")
     .modal-event__body(slot="body")
       form.form.form--signup#club-form(@submit.prevent="submit", name='event-form')
@@ -84,15 +84,15 @@
               .label.label--signup Add tags
               .form-search
                 input#tags.input(type="text" placeholder="Ex. rock", v-model="formsData.addedTag")
-                .form-search__icon
-                  os-svg(name="search", width="13px", height="14px")
+                //- .form-search__icon
+                //-   os-svg(name="search", width="13px", height="14px")
             div.field-wrapper(v-show="formsData.event.errors")
               span.error
           .form__col
             button.form-plus(@click.prevent="addTag()")
               os-svg(name="plus", width="12px", height="12px")
         .form-added
-          button.btn.btn--grey.btn--20(v-for="genre, index in genreTags", :key="index")
+          .btn.btn--grey.btn--20(v-for="genre, index in genreTags", :key="index")
             span # {{genre}}
             os-svg(name="close", width="9px", height="9px")
 
@@ -187,7 +187,7 @@ export default {
 
       checkedArtists: [],
 
-      genreTags: ['blues rock', 'classic rock', 'psychedelic rock', 'guitar', 'psychedelic rock', 'classic rock', 'blues rock', 'guitar', 'blues rock'],
+      genreTags: [],
 
       posterName: '',
 
