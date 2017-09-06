@@ -19,6 +19,10 @@
             .artist-share__list
               a(:href="item.link" v-for="item in artistShare" key="index").artist-share__link
                 os-svg(:name="item.icon", width="14px", height="14px")
+          .aside-adv
+            img.img(src="../assets/img/sidebar-banner-01.jpg")
+          .aside-adv
+            img.img(src="../assets/img/sidebar-banner-02.jpg")
 
         .page-content.page-content--profile
           .artist-center__artist-biography

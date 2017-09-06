@@ -17,8 +17,8 @@
           .plans-info__head.chargeable-head {{ proHead }}
           .plans-info__body.chargeable
             .plans-info__cost.chargeable-cost
-              .plans-info__prise {{ proCost }}
-              a(href="/").plans-info__button {{ proButton }}
+              .plans-info__price {{ proCost }}
+              a.btn.btn--green-invert.plans-info__button(href="/") {{ proButton }}
             .plans-info__advantages
               ul.plans-info__list--chargeable
                 li(v-for="advantage, index in plan.proAdvantages", :key="index").plans-info__item {{ advantage }}
@@ -26,14 +26,11 @@
 
 <script>
 
-import OsHeader from '@/components/sections/os-header.vue'
-
 import OsSvg from '@/components/elements/os-svg'
 
 export default {
 
   components: {
-    OsHeader,
     OsSvg
   },
 
