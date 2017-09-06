@@ -1,5 +1,26 @@
 @import "../../../assets/vars";
 
+
+
+.event-artist {
+
+  &__row {
+    display: flex;
+  }
+  &__input {
+    display: none;
+
+    &:checked + .event-artist__label {
+      background-color: $dark-blue-hover;
+      color: $white;
+    }
+  }
+  &__label {
+    background-color: $bg-form-plus;
+    margin-right: 20px;
+  }
+}
+
 .calendar {
   padding: 20px;
   position: relative;

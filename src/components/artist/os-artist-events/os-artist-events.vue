@@ -5,7 +5,7 @@
     strong Add event
   os-modal.modal-event(
   modal-title="Create event"
-  v-if="showModalEvent"
+  v-if="!showModalEvent"
   @close="showModalEvent = false")
     .modal-event__body(slot="body")
       form.form.form--signup#club-form(@submit.prevent="submit", name='event-form')
@@ -47,22 +47,29 @@
               span.error
 
         .form__row
-          label.form__col.form__col--60
+          .form__col
             div.field-wrapper
               .label.label--signup Add Artists
-              .form-search
-                input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.addedArtist")
-                .form-search__icon
-                  os-svg(name="search", width="13px", height="14px")
-            div.field-wrapper(v-show="formsData.event.errors")
-              span.error
-          .form__col
-            button.form-plus(@click.prevent="addArtist")
-              os-svg(name="plus", width="12px", height="12px")
-        .form-added
-          button.btn.btn--grey.btn--20(v-for="user, index in artistTags", :key="index")
-            span {{user}}
-            os-svg(name="close", width="9px", height="9px")
+              .event-artist__row
+                .event-artist(v-for="n in 3")
+                  input.event-artist__input(:id="`artist${n}`" type="checkbox", :value="n", v-model="checkedArtists")
+                  label.btn.btn--20(:for="`artist${n}`").event-artist__label Artist{{n}}
+
+
+
+        //-       .form-search
+        //-         input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.addedArtist")
+        //-         .form-search__icon
+        //-           os-svg(name="search", width="13px", height="14px")
+        //-     div.field-wrapper(v-show="formsData.event.errors")
+        //-       span.error
+        //-   .form__col
+        //-     button.form-plus(@click.prevent="addArtist")
+        //-       os-svg(name="plus", width="12px", height="12px")
+        //- .form-added
+        //-   button.btn.btn--grey.btn--20(v-for="user, index in artistTags", :key="index")
+        //-     span {{user}}
+        //-     os-svg(name="close", width="9px", height="9px")
 
         label.form__row.direction-col
           div.field-wrapper
@@ -176,7 +183,9 @@ export default {
     return {
       showModalEvent: false,
 
-      artistTags: ['The Offsping', 'Prodigy'],
+      // artistTags: ['The Offsping', 'Prodigy'],
+
+      checkedArtists: [],
 
       genreTags: ['blues rock', 'classic rock', 'psychedelic rock', 'guitar', 'psychedelic rock', 'classic rock', 'blues rock', 'guitar', 'blues rock'],
 
@@ -203,7 +212,7 @@ export default {
           errors: false,
           id: new Date().getTime(),
           poster: '',
-          artist: this.artistTags
+          artist: this.checkedArtists
         },
         addedTag: '',
         addedArtist: ''
