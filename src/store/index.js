@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 import actions from './actions'
 import mutations from './mutations'
 import state from './state'
@@ -12,6 +13,9 @@ export default new Vuex.Store({
   state,
   getters,
   actions,
-  mutations
-
+  mutations,
+  plugins: [createPersistedState({
+    paths: ['events'],
+    storage: window.sessionStorage
+  })]
 })
