@@ -7,9 +7,9 @@ div.audio-player
       .audio-player-small-top
         .audio-player-small-top__controls
           button(@click="makePlay()" v-if="isPlay()").audio-player-small-top__controls-play
-            os-svg(name="play", width="16px", height="17px")
+            os-svg(name="play", width="16px", height="16px")
           button(@click="makePlay()" v-else).audio-player-small-top__controls-stop
-            os-svg(name="stop", width="17px", height="17px")
+            os-svg(name="stop", width="16px", height="16px")
           button.audio-player-small-top__controls-prev
             os-svg(name="prev-track", width="7px", height="10px")
           button.audio-player-small-top__controls-next

@@ -68,7 +68,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/mozgi_policai.mp3'
+          filePath: '/audio/linkin_park_victimized.mp3'
         },
         {
           songName: 'Song name',
@@ -79,7 +79,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/linkin_park_victimized.mp3'
+          filePath: '/audio/placebo_every_you_every_me.mp3'
         },
         {
           songName: 'Song name',
@@ -90,7 +90,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/placebo_every_you_every_me.mp3'
+          filePath: '/audio/placebo_i_know.mp3'
         },
         {
           songName: 'Song name',
@@ -101,7 +101,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/5sec.mp3'
+          filePath: '/audio/linkin_park_victimized.mp3'
         }
       ],
 
