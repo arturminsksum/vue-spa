@@ -334,6 +334,10 @@ export default {
           }
         })
     }
+  },
+
+  mounted () {
+    document.body.style.overflow = 'hidden'
   }
 }
 

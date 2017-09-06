@@ -10,10 +10,13 @@
   background-color: rgb(15, 40, 67);
   display: table;
   transition: opacity .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
 
   &__wrap {
-    display: table-cell;
-    vertical-align: middle;
+    max-height: 100%;
   }
 
   &__container {
