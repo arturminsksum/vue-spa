@@ -25,8 +25,8 @@
             span.header-upload__text Upload
           .header-artist
             .header-artist__avatar
-              img(src="../../assets/img/artist.jpg")
-            .header-artist__name(@click.prevent="toggleUserDropdown") {{userData.name}}
+              img(:src="user.avatar_image")
+            .header-artist__name(@click.prevent="toggleUserDropdown") {{user.name}}
               os-svg.header-artist__arrow(name="arrow-down", width="11px", height="6px", :class="{'dropdown-opened': dropdownIsOpened}")
               os-dropdown(:menu-items="userDropdownItems", :is-opened="dropdownIsOpened")
           .header-notify
@@ -48,10 +48,10 @@
         form.form.form--signup(@submit.prevent="onSubmit")
           label.form__row
             .label.label--signup E-mail
-            input.input(type="email", placeholder="Ex. franksinatra@example.com", v-model="user.email")
+            input.input(type="email", placeholder="Ex. franksinatra@example.com", v-model="credentials.email")
           label.form__row
             .label.label--signup Password
-            input.input(type="password", v-model="user.password")
+            input.input(type="password", v-model="credentials.password")
           .form__row.form__row--space-between.form__row--align-top
             .checkbox
               input.checkbox__input(type="checkbox"  id="terms")
@@ -101,7 +101,7 @@ export default {
 
   data () {
     return {
-      user: {
+      credentials: {
         email: '',
         password: ''
       },
@@ -171,16 +171,14 @@ export default {
 
   computed: {
     ...mapState([
-      'isLogin'
-    ]),
-    userData () {
-      return (({name}) => ({name}))(this.$store.state.user)
-    }
+      'isLogin',
+      'user'
+    ])
   },
 
   methods: {
     onSubmit () {
-      this.$store.dispatch('login', this.user)
+      this.$store.dispatch('login', this.credentials)
         .then(() => {
           this.showLoginModal = false
           this.$router.replace({name: 'home'})

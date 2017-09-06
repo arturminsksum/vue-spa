@@ -146,6 +146,10 @@
       border-radius: 50%;
       overflow: hidden;
       margin-right: 8px;
+
+      img {
+        @include img;
+      }
     }
 
     &__name {
