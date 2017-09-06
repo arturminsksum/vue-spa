@@ -14,8 +14,9 @@ ul.artist-playlist__content
             span.artist-playlist__track-name {{track.songName}}
           .artist-playlist__track-dt
             .artist-playlist__track-date(:class="{'artist-playlist__track-date--active': !track.show}") {{track.added}}
-            .artist-playlist__track-time(ref="time", :class="{'artist-playlist__track-time--active': !track.show}") {{ duration }}
-        .artist-playlist__track-melody__display Здесь Будет Нечто
+            .artist-playlist__track-time(ref="time", :class="{'artist-playlist__track-time--active': !track.show}") {{ track.time }}
+        .artist-playlist__track-melody__display
+          os-svg(name="wave", width="652px", height="40px")
     .artist-playlist__track-footer
       .artist-playlist__track-footer__left
         a(href="/").artist-playlist__track-like

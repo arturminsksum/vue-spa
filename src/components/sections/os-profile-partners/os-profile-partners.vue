@@ -88,6 +88,8 @@ export default {
       margin-bottom: 10px;
     }
     &__name{
+      color: $font-color;
+      word-wrap: break-word;
       margin-bottom: 5px;
     }
     &__place{

@@ -97,7 +97,7 @@
             .post-single__body
               .post-single__video
                 .video
-                  //- iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
+                  iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
                   .bg-cover
                     os-svg(name="playVideo", width="60px", height="60px").video__icon
             .post-single__footer
@@ -154,7 +154,6 @@
               .page-home__events-text 5 events invitations
             .border-top.border-top--20
             os-artist-events
-        os-audio-player
 
       os-modal.modal-gallery(
       modal-title="Gallery"
@@ -172,7 +171,6 @@ import OsProfileStats from '@/components/sections/os-profile-stats/os-profile-st
 import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-events'
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
-import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 import OsModal from '@/components/os-modal/os-modal.vue'
 import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
 import { mapState } from 'vuex'
@@ -187,7 +185,6 @@ export default {
     OsArtistEvents,
     OsProfileAvatar,
     OsAudioTrack,
-    OsAudioPlayer,
     OsModal,
     OsProfileGallery,
     OsPost
