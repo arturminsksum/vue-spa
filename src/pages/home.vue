@@ -13,7 +13,6 @@
             span Open messager
 
         .page-content.page-content--home
-
           .post-create.bgc-white
             .post-create__header
               .post-create__tabs
@@ -32,6 +31,8 @@
               textarea(placeholder="Type here" rows="1").post-create__textarea
             .post-create__footer
               button.btn.btn--green-invert.btn--border-thin.btn--30-invert Post
+
+          os-post(v-for='event in events', :key="event.id", :event='event')
 
           .post-single.bgc-white
             .post-single__header
@@ -76,7 +77,7 @@
                     .toggler__dot
                     .toggler__dot
             .post-single__body
-              os-audio-track(:track="track")
+              os-audio-track(:track="track", @isAudioShow=" showPlayer = $event")
             .post-single__footer
               .post-single__footer-left
               .post-single__footer-right
@@ -124,16 +125,14 @@
                     .toggler__dot
                     .toggler__dot
                     .toggler__dot
-            .post-single__body
+            .post-single__body(@click="openGallery")
               .post-single__photo
-                img(:src="require('../assets/img/' + photos[0].poster)", @click="openGallery(0)").img
+                img(:src="require('../assets/img/' + photos[0].poster)" ref="image").img
               .post-single__gallery
-                .post-single__gallery-item(v-for="(item, index) in photos", :key="index", v-if="index != 0 && index < 3")
-                  img(:src="require('../assets/img/' + photos[index].poster)", @click="openGallery(index)").img
-                .post-single__gallery-item
-                  img(:src="require('../assets/img/' + photos[3].poster)", @click="openGallery(3)").img
-                  .bg-cover(@click="openGallery(3)")
-                    .post-single__gallery-count +9
+                .post-single__gallery-item(v-for="(item, index) in photos", :key="index", v-if="index != 0 && index < 4")
+                  img(:src="require('../assets/img/' + photos[index].poster)" ref="image").img
+                  .bg-cover(v-if="index === 3")
+                    .post-single__gallery-count +{{ setIndex(index) }}
             .post-single__footer
               .post-single__footer-left
                 a(href="/").track-like
@@ -155,7 +154,6 @@
               .page-home__events-text 5 events invitations
             .border-top.border-top--20
             os-artist-events
-        os-audio-player
 
       os-modal.modal-gallery(
       modal-title="Gallery"
@@ -163,6 +161,7 @@
       no-header)
         .modal__body(slot="body")
           os-profile-gallery.modal__gallery(@close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
+      os-audio-player(:audioActive="showPlayer")
 </template>
 
 <script>
@@ -173,11 +172,11 @@ import OsProfileStats from '@/components/sections/os-profile-stats/os-profile-st
 import OsArtistEvents from '@/components/artist/os-artist-events/os-artist-events'
 import OsProfileAvatar from '@/components/elements/os-profile-avatar.vue'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
-import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 import OsModal from '@/components/os-modal/os-modal.vue'
 import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
-
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
+import OsPost from '@/components/os-post/os-post.vue'
+import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 
 export default {
 
@@ -188,15 +187,23 @@ export default {
     OsArtistEvents,
     OsProfileAvatar,
     OsAudioTrack,
-    OsAudioPlayer,
     OsModal,
-    OsProfileGallery
+    OsProfileGallery,
+    OsPost,
+    OsAudioPlayer
+  },
+  computed: {
+    ...mapState([
+      'events',
+      'user'
+    ])
   },
 
   data () {
     return {
       showModalGallery: false,
       pictureNumber: '',
+      showPlayer: false,
 
       track: {
         songName: 'Song name',
@@ -212,7 +219,7 @@ export default {
 
       photos: [
         {
-          poster: 'post-img.jpg',
+          poster: 'gallery-04.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
@@ -234,19 +241,13 @@ export default {
           ]
         },
         {
-          poster: 'britishFlag.jpg',
+          poster: 'gallery-02.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
             data: '11.01.18'
           },
           managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
             {
               avatar: 'avatar-1.png',
               text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
@@ -262,139 +263,7 @@ export default {
           ]
         },
         {
-          poster: 'fiveMembers.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'friendsConcert.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'beforeConcert.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'geometria.jpg',
+          poster: 'gallery-03.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
@@ -410,13 +279,47 @@ export default {
           ]
         },
         {
-          poster: 'hinemachinem.jpg',
+          poster: 'gallery-01.jpg',
           artist: {
             avatar: 'avatar-1.png',
             name: 'Artist Name',
             data: '11.01.18'
           },
           managers: [
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            }
+          ]
+        },
+        {
+          poster: 'gallery-05.jpg',
+          artist: {
+            avatar: 'avatar-1.png',
+            name: 'Artist Name',
+            data: '11.01.18'
+          },
+          managers: [
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
+            {
+              avatar: 'avatar-1.png',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+              author: 'Maneger Name',
+              date: '11.01.17'
+            },
             {
               avatar: 'avatar-1.png',
               text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
@@ -425,20 +328,56 @@ export default {
             }
           ]
         }
-      ]
+      ],
+
+      posts: []
+     /* events: [
+        {
+          name: 'ffesfe',
+          location: '6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA',
+          date: '18.10.2017',
+          time: '12.05',
+          tags: ['tag'],
+          description: 'fesfe',
+          price: '50',
+          errors: false,
+          id: new Date().getTime(),
+          poster: 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg' // '../../assets/img/event-banner.jpg'
+        }
+      ] // temp! Events are subclass of posts */
+
     }
   },
 
-  computed: {
-    ...mapState([
-      'user'
-    ])
-  },
-  
   methods: {
-    openGallery: function (num) {
+    openGallery: function (event) {
+      let imgs = this.$refs.image,
+        self = event.target
+
+      if (self.className === 'bg-cover' || self.className === 'post-single__gallery-count') {
+        var x = imgs.length,
+          i = imgs.length
+      } else if (self.className === 'img') {
+        while (i--) {
+          if (imgs[i] === self) {
+            x = i + 1
+            break
+          }
+        }
+        if (!x) {
+          x = 0
+        }
+      } else {
+        x = 0
+      }
+      this.pictureNumber = x
       this.showModalGallery = true
-      this.pictureNumber = num
+    },
+
+    setIndex: function (arrNumber) {
+      let number = arrNumber + 1,
+        endNumber = this.photos.length - number
+      return endNumber
     }
   }
 }
@@ -455,4 +394,5 @@ export default {
       width: 1170px;
     }
   }
+
 </style>

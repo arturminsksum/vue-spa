@@ -19,11 +19,15 @@
             .artist-share__list
               a(:href="item.link" v-for="item in artistShare" key="index").artist-share__link
                 os-svg(:name="item.icon", width="14px", height="14px")
+          .aside-adv
+            img.img(src="../assets/img/sidebar-banner-01.jpg")
+          .aside-adv
+            img.img(src="../assets/img/sidebar-banner-02.jpg")
 
         .page-content.page-content--profile
           .artist-center__artist-biography
-            p.artist-center__describe James Marshall "Jimi" Hendrix (born Johnny Allen Hendrix; November 27, 1942 – September 18, 1970) was an American rock guitarist, singer, and songwriter. Although his mainstream career spanned only four years, he is widely regarded as one of the most influential electric guitarists in the history of popular music, and one of the most celebrated musicians of the 20th century...The Rock and Roll Hall of Fame describes him as "arguably the greatest instrumentalist in the history of rock music"...Fame describes him as "arguably the greatest instrumentalist in the history of rock music".
-          os-artist-tags(v-if="!isUser")
+            p.artist-center__describe {{user.description}}
+          os-artist-tags(v-if="!isUser && user.tags && user.tags.length" :tags="user.tags")
 
           os-artist-tabs
 
@@ -57,7 +61,7 @@
               header-title="Residents"
               svg-name="dynamic"
               :counter="41"
-              :items="agentClubs"
+              :items="residents"
             )
             .border-top.border-top--20
             os-profile-partners(
@@ -95,7 +99,6 @@ import OsProfilePartners from '@/components/sections/os-profile-partners/os-prof
 
 import OsSvg from '@/components/elements/os-svg'
 
-import store from '@/store'
 import { mapGetters, mapState } from 'vuex'
 
 export default {
@@ -193,10 +196,39 @@ export default {
         {
           name: 'Lyapis'
         }
+      ],
+      residents: [
+        {
+          id: 16,
+          name: 'Сalvin Harris',
+          role: 'artist',
+          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-02.jpg'
+        },
+        {
+          id: 17,
+          name: 'Kraftwerk',
+          role: 'artist',
+          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-01.jpg'
+        },
+        {
+          id: 20,
+          name: "Кавер-бэнд pinK'Kode",
+          role: 'artist',
+          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-03.jpg'
+        }
       ]
     }
   },
-
+  methods: {
+    fetchData () {
+      this.$store.dispatch('getUser', {id: this.$route.params.id})
+        .catch((error) => {
+          if (error) {
+            this.$router.push({name: 'home'})
+          }
+        })
+    }
+  },
   computed: {
     ...mapGetters([
       'isUser',
@@ -208,15 +240,12 @@ export default {
       user: state => state.currentUser
     })
   },
-  beforeRouteEnter (to, from, next) {
-    store.dispatch('getUser', {id: to.params.id}).then(() => {
-      next()
-    })
-      .catch((error) => {
-        if (error) {
-          next(false)
-        }
-      })
+  created () {
+    this.fetchData()
+  },
+  watch: {
+    // в случае изменения маршрута запрашиваем данные вновь
+    '$route': 'fetchData'
   }
 }
 

@@ -10,7 +10,7 @@
 
     &:after {
       content: '';
-      background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+      background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.8)), to(transparent));
       position: absolute;
       left: 0;
       right: 0;

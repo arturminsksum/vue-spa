@@ -40,6 +40,8 @@
     &-melody {
       flex: 1;
       margin-left: 30px;
+      position: relative;
+      overflow: hidden;
 
       &__manager {
         display: flex;
@@ -51,6 +53,12 @@
         display: flex;
         align-items: center;
       }
+
+      &__display {
+        position: absolute;
+        top: 30px;
+      }
+
     }
 
     &-button-play,

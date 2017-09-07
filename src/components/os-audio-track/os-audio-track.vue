@@ -7,14 +7,15 @@
       .track-melody
         .track-melody__manager
           .track-melody__invoce
-            a(href="/" @click.prevent="track.show = !track.show" @click="play(track.filePath, index)").track-play
+            a(href="/" @click.prevent="toggleSong()").track-play
               os-svg(name="play", width="15px", height="20px", v-show="track.show")
               os-svg(name="stop", width="15px", height="15px", v-show="!track.show").track-button-stop
             span.track-name {{track.songName}}
           .track-dt
             .track-date(:class="{'track-date--active': !track.show}") {{track.added}}
             .track-time(ref="time", :class="{'track-time--active': !track.show}") {{ track.time }}
-        .track-melody__display Здесь Будет Нечто
+        .track-melody__display
+          os-svg(name="wave", width="652px", height="40px")
     .track-footer
       .track-footer__left
         a(href="/").track-like

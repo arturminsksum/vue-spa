@@ -8,24 +8,25 @@
           .header__signin
             a.link.link--white(href='' @click.prevent="showLoginModal = true") Sign in
           .header__register
-            a.btn.btn--30.btn--green(href="/signup")
+            router-link.btn.btn--30.btn--green(:to="{name: 'signup'}")
              | Free
              span.show-tablet &nbsp;1-month
              |  trial
         .header__registered(v-else)
           ul.header-menu
             li.header-menu__item(v-for="item in artistMenu")
-              a.header-menu__link(:href="`/${item.link}`") {{item.text}}
+              router-link.header-menu__link(:to="{name:item.link}") {{item.text}}
           .header-search
             input.header-search__input(type="text" placeholder="search")
-            os-svg.header-search__icon(name="search", width="13px", height="14px")
+            .header-search__icon
+              os-svg.svg--white(name="search", width="13px", height="14px")
           .header-upload
             os-svg.header-upload__icon(name="upload", width="20px", height="20px")
             span.header-upload__text Upload
           .header-artist
             .header-artist__avatar
-              img(src="../../assets/img/artist.jpg")
-            .header-artist__name(@click.prevent="toggleUserDropdown") {{userData.name}}
+              img(:src="user.avatar_image")
+            .header-artist__name(@click.prevent="toggleUserDropdown") {{user.name}}
               os-svg.header-artist__arrow(name="arrow-down", width="11px", height="6px", :class="{'dropdown-opened': dropdownIsOpened}")
               os-dropdown(:menu-items="userDropdownItems", :is-opened="dropdownIsOpened")
           .header-notify
@@ -47,10 +48,10 @@
         form.form.form--signup(@submit.prevent="onSubmit")
           label.form__row
             .label.label--signup E-mail
-            input.input(type="email", placeholder="Ex. franksinatra@example.com", v-model="user.email")
+            input.input(type="email", placeholder="Ex. franksinatra@example.com", v-model="credentials.email")
           label.form__row
             .label.label--signup Password
-            input.input(type="password", v-model="user.password")
+            input.input(type="password", v-model="credentials.password")
           .form__row.form__row--space-between.form__row--align-top
             .checkbox
               input.checkbox__input(type="checkbox"  id="terms")
@@ -58,8 +59,8 @@
             .form__links
               .form__start
                 span.form__start-text Don't have an account?&nbsp;
-                a(href="/signup").form__start-link Get started
-              a(href="/signup").form__forgot Forgot Password?
+                router-link(to="{name:'signup'}").form__start-link Get started
+              router-link(to="{name:'signup'}").form__forgot Forgot Password?
 
           .form__row.form__row--space-between
             .form__captcha
@@ -100,7 +101,7 @@ export default {
 
   data () {
     return {
-      user: {
+      credentials: {
         email: '',
         password: ''
       },
@@ -115,7 +116,7 @@ export default {
           text: 'Home'
         },
         {
-          link: 'promote',
+          link: '',
           text: 'Promote'
         },
         {
@@ -126,9 +127,9 @@ export default {
       userDropdownItems: [
         {
           title: 'My Profile',
-          url: '/artist',
+          url: '/user/me',
           onClick: () => {
-            this.$router.replace({path: '/artist'})
+            this.$router.push({name: 'user', params: { id: 'me' }})
           }
         },
         {
@@ -139,7 +140,7 @@ export default {
           title: 'Get PRO Account',
           url: '/plans',
           onClick: () => {
-            this.$router.replace({path: '/plans'})
+            this.$router.push({name: 'plans'})
           }
         },
         {
@@ -147,7 +148,7 @@ export default {
           onClick: () => {
             this.$store.dispatch('signOut')
             sessionStorage.clear()
-            this.$router.replace({path: '/'})
+            this.$router.replace({name: 'index'})
           }
         }
       ],
@@ -170,19 +171,17 @@ export default {
 
   computed: {
     ...mapState([
-      'isLogin'
-    ]),
-    userData () {
-      return (({name}) => ({name}))(this.$store.state.user)
-    }
+      'isLogin',
+      'user'
+    ])
   },
 
   methods: {
     onSubmit () {
-      this.$store.dispatch('login', this.user)
+      this.$store.dispatch('login', this.credentials)
         .then(() => {
           this.showLoginModal = false
-          this.$router.replace('home')
+          this.$router.replace({name: 'home'})
         })
         .catch((error) => {
           if (error) {

@@ -14,8 +14,9 @@ ul.artist-playlist__content
             span.artist-playlist__track-name {{track.songName}}
           .artist-playlist__track-dt
             .artist-playlist__track-date(:class="{'artist-playlist__track-date--active': !track.show}") {{track.added}}
-            .artist-playlist__track-time(ref="time", :class="{'artist-playlist__track-time--active': !track.show}") {{ duration }}
-        .artist-playlist__track-melody__display Здесь Будет Нечто
+            .artist-playlist__track-time(ref="time", :class="{'artist-playlist__track-time--active': !track.show}") {{ track.time }}
+        .artist-playlist__track-melody__display
+          os-svg(name="wave", width="652px", height="40px")
     .artist-playlist__track-footer
       .artist-playlist__track-footer__left
         a(href="/").artist-playlist__track-like
@@ -67,7 +68,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/mozgi_policai.mp3'
+          filePath: '/audio/linkin_park_victimized.mp3'
         },
         {
           songName: 'Song name',
@@ -78,7 +79,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/linkin_park_victimized.mp3'
+          filePath: '/audio/placebo_every_you_every_me.mp3'
         },
         {
           songName: 'Song name',
@@ -89,7 +90,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/placebo_every_you_every_me.mp3'
+          filePath: '/audio/placebo_i_know.mp3'
         },
         {
           songName: 'Song name',
@@ -100,7 +101,7 @@ export default {
           time: '05:00',
           added: '3 months',
           show: true,
-          filePath: '/audio/5sec.mp3'
+          filePath: '/audio/linkin_park_victimized.mp3'
         }
       ],
 

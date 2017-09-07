@@ -103,14 +103,16 @@
       }
 
     }
-
-    .svg {
+    &__icon {
       position: absolute;
       top: 0;
       right: 0;
       cursor: pointer;
+      line-height: 0;
+    }
+
+    .svg {
       margin: 8px 16px;
-      fill: $white;
     }
 
   }
@@ -144,6 +146,10 @@
       border-radius: 50%;
       overflow: hidden;
       margin-right: 8px;
+
+      img {
+        @include img;
+      }
     }
 
     &__name {

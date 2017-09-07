@@ -1,14 +1,12 @@
 <template lang="pug">
   div.logo
-    a(v-if="isLogin"  href="/")
+    router-link( to="/")
       os-svg(name="onstage-logo")
-    os-svg(v-else name="onstage-logo")
 </template>
 
 <script>
 
 import OsSvg from '@/components/elements/os-svg'
-import { mapState } from 'vuex'
 
 export default {
 
@@ -16,12 +14,6 @@ export default {
 
   components: {
     OsSvg
-  },
-
-  computed: {
-    ...mapState([
-      'isLogin'
-    ])
   }
 
 }
