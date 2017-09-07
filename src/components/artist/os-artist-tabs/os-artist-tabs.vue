@@ -2,7 +2,8 @@
 
   os-tabs.artist-tabs
     os-tabs-item(name='Tracks', iconName="diagram", :selected='true')
-      os-artist-playlist
+      .artist-tabs__track(v-for="(song, index) in playlistTracks", :key="index")
+        os-audio-track(:track="song")
     os-tabs-item(name='Video', iconName="video")
       os-swiper-slider(is-video)
     os-tabs-item(name='Photo', iconName="photo")
@@ -30,7 +31,7 @@ import OsTabsItem from '@/components/os-tabs/os-tabs-item'
 import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
 import OsSwiperSlider from '@/components/os-swiper-slider'
 import OsSvg from '@/components/elements/os-svg'
-import OsArtistPlaylist from '@/components/artist/os-artist-playlist/os-artist-playlist'
+import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsModal from '@/components/os-modal/os-modal.vue'
 
 export default {
@@ -41,7 +42,7 @@ export default {
     OsSvg,
     OsTabs,
     OsTabsItem,
-    OsArtistPlaylist,
+    OsAudioTrack,
     OsProfileGallery,
     OsModal
   },
@@ -50,7 +51,53 @@ export default {
     return {
       tabActive: 'video',
       openedPhoto: '',
-      showModalGallery: false
+      showModalGallery: false,
+      playlistTracks: [
+        {
+          songName: 'Song name',
+          likes: 55,
+          sheared: 55,
+          listened: 1043,
+          talked: 3,
+          time: '05:00',
+          added: '3 months',
+          show: true,
+          filePath: '/audio/linkin_park_victimized.mp3'
+        },
+        {
+          songName: 'Song name',
+          likes: 60,
+          sheared: 40,
+          listened: 1043,
+          talked: 3,
+          time: '05:00',
+          added: '3 months',
+          show: true,
+          filePath: '/audio/placebo_every_you_every_me.mp3'
+        },
+        {
+          songName: 'Song name',
+          likes: 20,
+          sheared: 100,
+          listened: 1043,
+          talked: 0,
+          time: '05:00',
+          added: '3 months',
+          show: true,
+          filePath: '/audio/placebo_i_know.mp3'
+        },
+        {
+          songName: 'Song name',
+          likes: 55,
+          sheared: 55,
+          listened: 1043,
+          talked: 999,
+          time: '05:00',
+          added: '3 months',
+          show: true,
+          filePath: '/audio/linkin_park_victimized.mp3'
+        }
+      ]
     }
   },
   methods: {
