@@ -3,7 +3,7 @@
   os-tabs.artist-tabs
     os-tabs-item(name='Tracks', iconName="diagram", :selected='true')
       .artist-tabs__track(v-for="(song, index) in playlistTracks", :key="index")
-        os-audio-track(:track="song", :trackedNow="currentTrack", @setComposition="currentTrack = $event", @playComposition="currentTrack = $event")
+        os-audio-track(:track="song", :trackedNow="currentTrack", @setComposition="currentTrack = $event", @isAudioShow="showPlayer = $event")
     os-tabs-item(name='Video', iconName="video")
       os-swiper-slider(is-video)
     os-tabs-item(name='Photo', iconName="photo")
@@ -65,7 +65,9 @@ export default {
           time: '05:00',
           added: '3 months',
           stoped: true,
-          filePath: '/audio/linkin_park_victimized.mp3'
+          filePath: '/audio/linkin_park_victimized.mp3',
+          timeoutId: '',
+          delay: ''
         },
         {
           songName: 'Song name',
@@ -76,7 +78,9 @@ export default {
           time: '05:00',
           added: '3 months',
           stoped: true,
-          filePath: '/audio/placebo_every_you_every_me.mp3'
+          filePath: '/audio/placebo_every_you_every_me.mp3',
+          timeoutId: '',
+          delay: ''
         },
         {
           songName: 'Song name',
@@ -87,7 +91,9 @@ export default {
           time: '05:00',
           added: '3 months',
           stoped: true,
-          filePath: '/audio/placebo_i_know.mp3'
+          filePath: '/audio/placebo_i_know.mp3',
+          timeoutId: '',
+          delay: ''
         },
         {
           songName: 'Song name',
@@ -98,7 +104,22 @@ export default {
           time: '05:00',
           added: '3 months',
           stoped: true,
-          filePath: '/audio/linkin_park_victimized.mp3'
+          filePath: '/audio/linkin_park_victimized.mp3',
+          timeoutId: '',
+          delay: ''
+        },
+        {
+          songName: 'Song name',
+          likes: 55,
+          sheared: 55,
+          listened: 1043,
+          talked: 999,
+          time: '05:00',
+          added: '3 months',
+          stoped: true,
+          filePath: '/audio/water.mp3',
+          timeoutId: '',
+          delay: ''
         }
       ]
     }

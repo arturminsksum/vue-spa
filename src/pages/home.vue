@@ -214,7 +214,9 @@ export default {
         time: '05:00',
         added: '3 months',
         stoped: true,
-        filePath: '/audio/linkin_park_victimized.mp3'
+        filePath: '/audio/water.mp3',
+        timeoutId: '',
+        delay: ''
       },
 
       photos: [

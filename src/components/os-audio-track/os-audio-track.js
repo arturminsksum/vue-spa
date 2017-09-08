@@ -15,6 +15,8 @@ export default {
 
   data () {
     return {
+      timeoutId: '',
+      delay: ''
     }
   },
 
@@ -25,7 +27,6 @@ export default {
         self = this
 
       if (this.trackedNow === '' || typeof this.trackedNow === 'object') {
-        console.log('can you see me')
         if (music !== this.trackedNow.currentSong && typeof this.trackedNow === 'object') {
           this.trackedNow.currentSong.pause()
           this.trackedNow.currentSong.currentTime = 0
@@ -38,17 +39,17 @@ export default {
       }
 
       if (music.paused) {
-        this.trackedNow.delay = 1000 * (music.duration - music.currentTime)
-        this.trackedNow.timeoutId = setTimeout(() => {
-          self.trackedNow.stoped = true
-        }, this.trackedNow.delay)
+        this.audioActive = !this.audioActive
+        this.$emit('isAudioShow', this.audioActive)
         music.play()
+        this.track.delay = 1000 * (music.duration - music.currentTime)
+        this.track.timeoutId = setTimeout(() => {
+          self.track.stoped = true
+        }, this.track.delay)
       } else {
         music.pause()
-        clearTimeout(this.trackedNow.timeoutId)
+        clearTimeout(this.track.timeoutId)
       }
-      this.audioActive = !this.audioActive
-      this.$emit('isAudioShow', this.audioActive)
     }
   }
 }
