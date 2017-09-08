@@ -3,7 +3,7 @@
   os-tabs.artist-tabs
     os-tabs-item(name='Tracks', iconName="diagram", :selected='true')
       .artist-tabs__track(v-for="(song, index) in playlistTracks", :key="index")
-        os-audio-track(:track="song")
+        os-audio-track(:track="song", :trackedNow="currentTrack", @setComposition="currentTrack = $event", @playComposition="currentTrack = $event")
     os-tabs-item(name='Video', iconName="video")
       os-swiper-slider(is-video)
     os-tabs-item(name='Photo', iconName="photo")
@@ -23,16 +23,17 @@
       ul.pagin
         li.pagin__item(v-for="(text, index) in ['<<','<','1','2','3','4','>','>>']", key="index")
           span.pagin__text {{index}}
+    os-audio-player(:audioActive="showPlayer")
 </template>
 
 <script>
 import OsTabs from '@/components/os-tabs/os-tabs'
 import OsTabsItem from '@/components/os-tabs/os-tabs-item'
-import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
 import OsSwiperSlider from '@/components/os-swiper-slider'
 import OsSvg from '@/components/elements/os-svg'
 import OsAudioTrack from '@/components/os-audio-track/os-audio-track.vue'
 import OsModal from '@/components/os-modal/os-modal.vue'
+import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 
 export default {
   name: 'OsArtistTabs',
@@ -43,8 +44,8 @@ export default {
     OsTabs,
     OsTabsItem,
     OsAudioTrack,
-    OsProfileGallery,
-    OsModal
+    OsModal,
+    OsAudioPlayer
   },
 
   data () {
@@ -52,6 +53,8 @@ export default {
       tabActive: 'video',
       openedPhoto: '',
       showModalGallery: false,
+      showPlayer: false,
+      currentTrack: '',
       playlistTracks: [
         {
           songName: 'Song name',
@@ -61,7 +64,7 @@ export default {
           talked: 3,
           time: '05:00',
           added: '3 months',
-          show: true,
+          stoped: true,
           filePath: '/audio/linkin_park_victimized.mp3'
         },
         {
@@ -72,7 +75,7 @@ export default {
           talked: 3,
           time: '05:00',
           added: '3 months',
-          show: true,
+          stoped: true,
           filePath: '/audio/placebo_every_you_every_me.mp3'
         },
         {
@@ -83,7 +86,7 @@ export default {
           talked: 0,
           time: '05:00',
           added: '3 months',
-          show: true,
+          stoped: true,
           filePath: '/audio/placebo_i_know.mp3'
         },
         {
@@ -94,7 +97,7 @@ export default {
           talked: 999,
           time: '05:00',
           added: '3 months',
-          show: true,
+          stoped: true,
           filePath: '/audio/linkin_park_victimized.mp3'
         }
       ]
@@ -106,7 +109,6 @@ export default {
       this.showModalGallery = true
       console.log(this.openedPhoto)
     }
-
   }
 }
 </script>

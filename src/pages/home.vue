@@ -213,7 +213,7 @@ export default {
         talked: 3,
         time: '05:00',
         added: '3 months',
-        show: true,
+        stoped: true,
         filePath: '/audio/linkin_park_victimized.mp3'
       },
 
