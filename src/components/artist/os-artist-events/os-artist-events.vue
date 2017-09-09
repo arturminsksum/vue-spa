@@ -55,8 +55,6 @@
                   input.event-artist__input(:id="`artist${n}`" type="checkbox", :value="n", v-model="checkedArtists")
                   label.btn.btn--20(:for="`artist${n}`").event-artist__label Artist{{n}}
 
-
-
         //-       .form-search
         //-         input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.addedArtist")
         //-         .form-search__icon
@@ -89,12 +87,13 @@
             div.field-wrapper(v-show="formsData.event.errors")
               span.error
           .form__col
-            button.form-plus(@click.prevent="addTag()")
+            button.form-plus(@click.prevent="addTag")
               os-svg(name="plus", width="12px", height="12px")
         .form-added
-          .btn.btn--grey.btn--20(v-for="genre, index in genreTags", :key="index")
-            span # {{genre}}
-            os-svg(name="close", width="9px", height="9px")
+          template(v-for="genre, index in genreTags")
+            .btn.btn--grey.btn--20(:data-id="genre" @click="removeTag")
+              span # {{genre}}
+              os-svg(name="close", width="9px", height="9px")
 
         .form__row.form__row--align-center
           .label.label--signup Upload poster
@@ -272,6 +271,15 @@ export default {
       this.genreTags.splice(0, 0, value)
       this.formsData.addedTag = ''
     },
+
+    removeTag () {
+      const tag = arguments[0].currentTarget.getAttribute('data-id')
+
+      this.genreTags = this.genreTags.filter((item) => {
+        return item !== tag
+      })
+    },
+
     addArtist () {
       const value = this.formsData.addedArtist
       this.artistTags.splice(0, 0, value)

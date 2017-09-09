@@ -192,6 +192,7 @@ export default {
     OsPost,
     OsAudioPlayer
   },
+
   computed: {
     ...mapState([
       'events',
