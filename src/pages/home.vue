@@ -4,7 +4,7 @@
     main.main
       .page-wrapper.page-wrapper--grey
         aside.aside-left
-          router-link.page-home__info(:to="{ name: 'user', params: { id: 'me' }}")
+          router-link.page-home__info(:to="`/${user.role}/me`")
             os-profile-avatar.page-home__avatar(:path="user.avatar_image")
             span.page-home__profile-name {{user.name}}
           .border-top

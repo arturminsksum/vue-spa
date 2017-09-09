@@ -26,6 +26,7 @@ let router = new Router({
     {
       path: '/user/:id',
       name: 'user',
+      alias: ['/artist/:id', '/club/:id', '/agent/:id'],
       component: Artist
     },
     {
@@ -54,13 +55,17 @@ let router = new Router({
 router.beforeEach(function (to, from, next) {
   var vuexStore = this
 
-  if (!vuexStore.state.isLogin) {
-    const token = sessionStorage.getItem('token')
+  if (to.fullPath !== '/') {
+    if (!vuexStore.state.isLogin) {
+      const token = sessionStorage.getItem('token')
 
-    if (!token) {
-      next()
+      if (!token) {
+        next({name: 'index'})
+      } else {
+        vuexStore.dispatch('getByToken', {token: token})
+        next()
+      }
     } else {
-      vuexStore.dispatch('getByToken', {token: token})
       next()
     }
   } else {
