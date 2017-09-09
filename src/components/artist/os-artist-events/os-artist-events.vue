@@ -260,6 +260,7 @@ export default {
       const payload = Object.assign({}, {event: data})
       this.$store.commit('ADD_EVENT', payload)
       this.showModalEvent = false
+      this.axios.post()
     },
     uploadFile (event) {
       this.$set(this.formsData.event, 'poster', 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg') // event.target.files[0].name

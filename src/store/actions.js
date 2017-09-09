@@ -54,7 +54,8 @@ const actions = {
 
         commit(types.SET_RESIDENTS, {list: data})
       })
-  }
+  },
+
 }
 
 function updateImageUrl (obj) {
@@ -83,5 +84,7 @@ function getByToken (commit, payload) {
       commit(types.SIGN_IN, {user: Object.assign(user, data)})
     })
 }
+
+function getBoard ()
 
 export default actions
