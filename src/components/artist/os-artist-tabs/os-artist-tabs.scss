@@ -2,6 +2,10 @@
 
 .artist-tabs {
   padding-top: 10px;
+
+  &__track {
+    margin: 1px 0 2px 0;
+  }
 }
 
 .artist-slider {
@@ -172,9 +176,3 @@
 
 }
 
-.modal-gallery{
-
-  .modal__container {
-    width: 1170px;
-  }
-}

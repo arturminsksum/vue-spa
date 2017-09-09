@@ -136,6 +136,7 @@
 .audio-player-full {
   width: 350px;
   position: fixed;
+  border-radius: 5px 5px 0 0;
   bottom: 0;
   left: 50%;
   transform: translateX(230px);
@@ -145,7 +146,9 @@
 
   &__image {
     background: url('../../assets/img/player-default.jpg') 50% 50% no-repeat;
+    background-size: cover;
     padding: 10px;
+    border-radius: 5px 5px 0 0;
 
     &-icon {
       display: flex;

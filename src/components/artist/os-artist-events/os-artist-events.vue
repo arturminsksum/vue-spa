@@ -55,8 +55,6 @@
                   input.event-artist__input(:id="`artist${n}`" type="checkbox", :value="n", v-model="checkedArtists")
                   label.btn.btn--20(:for="`artist${n}`").event-artist__label Artist{{n}}
 
-
-
         //-       .form-search
         //-         input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.addedArtist")
         //-         .form-search__icon
@@ -273,6 +271,7 @@ export default {
       this.genreTags.splice(0, 0, value)
       this.formsData.addedTag = ''
     },
+
     removeTag () {
       const tag = arguments[0].currentTarget.getAttribute('data-id')
 
@@ -280,6 +279,7 @@ export default {
         return item !== tag
       })
     },
+
     addArtist () {
       const value = this.formsData.addedArtist
       this.artistTags.splice(0, 0, value)

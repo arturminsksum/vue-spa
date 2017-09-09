@@ -127,26 +127,6 @@
   }
 }
 
-.artist-playlist {
-  margin-top: 20px;
-
-  &__header {
-    padding: 10px 0;
-    color: $green;
-
-    &-text {
-      display: inline-block;
-      margin-left: 12px;
-    }
-
-    &-icon {
-      fill: $green;
-    }
-
-  }
-
-}
-
 .modal-rider {
   .modal__container {
     width: 970px;

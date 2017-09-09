@@ -7,7 +7,9 @@ export default {
     OsSvg
   },
 
-  props: ['audioActive'],
+  props: {
+    audioActive: Boolean
+  },
 
   data () {
     return {

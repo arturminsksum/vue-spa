@@ -77,7 +77,7 @@
                     .toggler__dot
                     .toggler__dot
             .post-single__body
-              os-audio-track(:track="track")
+              os-audio-track(:track="track", :isPlay="track.playing", @showPlayer="showPlayer = true")
             .post-single__footer
               .post-single__footer-left
               .post-single__footer-right
@@ -161,6 +161,7 @@
       no-header)
         .modal__body(slot="body")
           os-profile-gallery.modal__gallery(@close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
+      os-audio-player(:audioActive="showPlayer")
 </template>
 
 <script>
@@ -175,6 +176,7 @@ import OsModal from '@/components/os-modal/os-modal.vue'
 import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
 import { mapState } from 'vuex'
 import OsPost from '@/components/os-post/os-post.vue'
+import OsAudioPlayer from '@/components/os-audio-player/os-audio-player.vue'
 
 export default {
 
@@ -187,8 +189,10 @@ export default {
     OsAudioTrack,
     OsModal,
     OsProfileGallery,
-    OsPost
+    OsPost,
+    OsAudioPlayer
   },
+
   computed: {
     ...mapState([
       'events',
@@ -200,6 +204,7 @@ export default {
     return {
       showModalGallery: false,
       pictureNumber: '',
+      showPlayer: false,
 
       track: {
         songName: 'Song name',
@@ -209,8 +214,10 @@ export default {
         talked: 3,
         time: '05:00',
         added: '3 months',
-        show: true,
-        filePath: '/audio/linkin_park_victimized.mp3'
+        playing: false,
+        filePath: '/audio/linkin_park_victimized.mp3',
+        timeoutId: '',
+        delay: ''
       },
 
       photos: [
