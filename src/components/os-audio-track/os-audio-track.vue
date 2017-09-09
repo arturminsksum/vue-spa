@@ -7,13 +7,13 @@
       .track-melody
         .track-melody__manager
           .track-melody__invoce
-            a(href="/" @click.prevent="track.show = !track.show").track-play
-              os-svg(name="play", width="15px", height="20px", v-show="track.show")
-              os-svg(name="stop", width="15px", height="15px", v-show="!track.show").track-button-stop
+            span.track-play
+              os-svg(name="play", width="15px", height="20px", v-show="!track.playing" @click.native="trackPlay")
+              os-svg(name="stop", width="15px", height="15px", v-show="track.playing" @click.native="trackStop").track-button-stop
             span.track-name {{track.songName}}
           .track-dt
-            .track-date(:class="{'track-date--active': !track.show}") {{track.added}}
-            .track-time(ref="time", :class="{'track-time--active': !track.show}") {{ track.time }}
+            .track-date(:class="{'track-date--active': track.playing}") {{track.added}}
+            .track-time(ref="time", :class="{'track-time--active': track.playing}") {{ track.time }}
         .track-melody__display
           os-svg(name="wave", width="652px", height="40px")
     .track-footer
