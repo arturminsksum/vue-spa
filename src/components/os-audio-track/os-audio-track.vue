@@ -7,9 +7,12 @@
       .track-melody
         .track-melody__manager
           .track-melody__invoce
-            a(href="/" @click.prevent="toggleSong").track-play
-              os-svg(name="play", width="15px", height="20px", v-show="track.stoped")
-              os-svg(name="stop", width="15px", height="15px", v-show="!track.stoped").track-button-stop
+            //- span(@click="toggleSong").track-play
+            span.track-play
+              //- os-svg(name="play", width="15px", height="20px", v-show="track.stoped")
+              //- os-svg(name="stop", width="15px", height="15px", v-show="!track.stoped").track-button-stop
+              os-svg(name="play", width="15px", height="20px", v-show="!track.playing" @click.native="trackPlay")
+              os-svg(name="stop", width="15px", height="15px", v-show="track.playing" @click.native="trackStop").track-button-stop
             span.track-name {{track.songName}}
           .track-dt
             .track-date(:class="{'track-date--active': !track.stoped}") {{track.added}}

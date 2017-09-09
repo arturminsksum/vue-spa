@@ -3,7 +3,7 @@
   os-tabs.artist-tabs
     os-tabs-item(name='Tracks', iconName="diagram", :selected='true')
       .artist-tabs__track(v-for="(song, index) in playlistTracks", :key="index")
-        os-audio-track(:track="song", :trackedNow="currentTrack", @setComposition="currentTrack = $event", @isAudioShow="showPlayer = $event")
+        os-audio-track(:track="song", :isPlay="song.playing" @stopAllTracks="stopAllTracks" @showPlayer="showPlayer = true")
     os-tabs-item(name='Video', iconName="video")
       os-swiper-slider(is-video)
     os-tabs-item(name='Photo', iconName="photo")
@@ -22,7 +22,7 @@
                 span.events-list__place-name Toronto, USA
       ul.pagin
         li.pagin__item(v-for="(text, index) in ['<<','<','1','2','3','4','>','>>']", key="index")
-          span.pagin__text {{index}}
+          span.pagin__text {{text}}
     os-audio-player(:audioActive="showPlayer")
 </template>
 
@@ -57,78 +57,66 @@ export default {
       currentTrack: '',
       playlistTracks: [
         {
-          songName: 'Song name',
+          songName: 'Song 1',
           likes: 55,
           sheared: 55,
           listened: 1043,
           talked: 3,
           time: '05:00',
           added: '3 months',
-          stoped: true,
+          playing: false,
           filePath: '/audio/linkin_park_victimized.mp3',
           timeoutId: '',
           delay: ''
         },
         {
-          songName: 'Song name',
+          songName: 'Song 2',
           likes: 60,
           sheared: 40,
           listened: 1043,
           talked: 3,
           time: '05:00',
           added: '3 months',
-          stoped: true,
+          playing: false,
           filePath: '/audio/placebo_every_you_every_me.mp3',
           timeoutId: '',
           delay: ''
         },
         {
-          songName: 'Song name',
+          songName: 'Song 3',
           likes: 20,
           sheared: 100,
           listened: 1043,
           talked: 0,
           time: '05:00',
           added: '3 months',
-          stoped: true,
+          playing: false,
           filePath: '/audio/placebo_i_know.mp3',
           timeoutId: '',
           delay: ''
         },
         {
-          songName: 'Song name',
+          songName: 'Song 4',
           likes: 55,
           sheared: 55,
           listened: 1043,
           talked: 999,
           time: '05:00',
           added: '3 months',
-          stoped: true,
+          playing: false,
           filePath: '/audio/linkin_park_victimized.mp3',
-          timeoutId: '',
-          delay: ''
-        },
-        {
-          songName: 'Song name',
-          likes: 55,
-          sheared: 55,
-          listened: 1043,
-          talked: 999,
-          time: '05:00',
-          added: '3 months',
-          stoped: true,
-          filePath: '/audio/water.mp3',
           timeoutId: '',
           delay: ''
         }
       ]
     }
   },
+
   methods: {
-    showPhoto: function (x) {
-      this.openedPhoto = x - 1
-      this.showModalGallery = true
-      console.log(this.openedPhoto)
+    stopAllTracks () {
+      this.playlistTracks.forEach(track => {
+        track.playing = false
+      })
     }
   }
 }

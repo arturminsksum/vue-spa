@@ -77,7 +77,7 @@
                     .toggler__dot
                     .toggler__dot
             .post-single__body
-              os-audio-track(:track="track", @isAudioShow=" showPlayer = $event")
+              os-audio-track(:track="track", :isPlay="track.playing", @showPlayer="showPlayer = true")
             .post-single__footer
               .post-single__footer-left
               .post-single__footer-right
@@ -213,8 +213,8 @@ export default {
         talked: 3,
         time: '05:00',
         added: '3 months',
-        stoped: true,
-        filePath: '/audio/water.mp3',
+        playing: false,
+        filePath: '/audio/linkin_park_victimized.mp3',
         timeoutId: '',
         delay: ''
       },
