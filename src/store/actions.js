@@ -54,7 +54,7 @@ const actions = {
 
         commit(types.SET_RESIDENTS, {list: data})
       })
-  },
+  }
 
 }
 
@@ -85,6 +85,6 @@ function getByToken (commit, payload) {
     })
 }
 
-function getBoard ()
+// function getBoard () {}
 
 export default actions
