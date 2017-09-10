@@ -2,7 +2,8 @@
   .post-single.bgc-white
     os-post-header(:name="post.author.name")
     os-post-body(:post="post")
-    os-post-footer
+    //v-if is temp. delete it after audio player will be updated
+    os-post-footer(:type='post.type' v-if="!post.tracks")
 </template>
 
 <script>

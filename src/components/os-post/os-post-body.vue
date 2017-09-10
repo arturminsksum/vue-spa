@@ -22,15 +22,20 @@
             span {{post.time}}
     .post-single__news(v-else)
       .post-single__news-text(v-if='post.description') {{post.description}}
-      .post-single__news-img(v-if="post.gallery")
-        //-img(:src="require('../../assets/img/' + post.gallery[0])" ref="image").img
-        .post-single__gallery(v-if="post.gallery.length > 1")
-          .post-single__gallery-item(v-for="(item, index) in post.gallery", :key="index", v-if="index != 0 && index < 3")
-            img(:src="require('../../assets/img/' + post.gallery[index])" ref="image").img
+      .post-single__news-img(v-if="post.gallery", @click='openImage')
+        .post-single__photo
+          img.img(:src="require('../../assets/img/' + post.gallery[0].source)" ref="image")
+        .post-single__gallery
+          .post-single__gallery-item(v-for="(item, index) in post.gallery", :key="index", v-if="index != 0 && index < 4")
+            img.img(:src="require('../../assets/img/' + item.source)" ref="image")
             .bg-cover(v-if="index === 3")
               .post-single__gallery-count +{{ setIndex(index) }}
-        //
-      //os-audio-track(v-if='post.tracks' :track="post.tracks.[0]", :isPlay="post.track.playing", @showPlayer="showPlayer = true")
+      .post-single__video(v-if='post.video')
+        .video
+          iframe(width='854', height='480', :src='post.video.source', frameborder='0', allowfullscreen='')
+          .bg-cover
+            os-svg(name="playVideo", width="60px", height="60px").video__icon
+      os-audio-track(v-if='post.tracks.length > 0' v-for='track in post.tracks' :key='track.songName', :track="track", :isPlay="track.playing", @showPlayer="showPlayer = true")
 </template>
 
 <script>
@@ -46,6 +51,16 @@ export default {
   },
   data () {
     return {}
+  },
+  methods: {
+    setIndex: function (arrNumber) {
+      let number = arrNumber + 1,
+        endNumber = this.post.gallery.length - number
+      return endNumber
+    },
+    openImage: function (index) {
+      console.log()
+    }
   }
 }
 </script>

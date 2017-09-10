@@ -182,11 +182,24 @@ export default {
         {
           type: 'news',
           author: {
-            name: '',
+            name: '1111',
             surname: '',
             id: 12318968745
           },
           description: 'feshyyfe',
+          video: {
+            thumbnail: '',
+            source: 'https://www.youtube.com/embed/sdQqgVzex_w'
+          }
+        },
+        {
+          type: 'news',
+          author: {
+            name: '22222',
+            surname: '',
+            id: 123184968745
+          },
+          description: 'grsfe',
           tracks: [
             {
               songName: 'Song name',
@@ -199,16 +212,33 @@ export default {
               show: true,
               filePath: '/audio/linkin_park_victimized.mp3'
             }
-          ],
+          ]
+        },
+        {
+          type: 'news',
+          author: {
+            name: '3333',
+            surname: '',
+            id: 123184968745
+          },
+          description: 'gfessfe',
           gallery: [
             {
-              source: ''
+              source: 'gallery-01.jpg'
+            },
+            {
+              source: 'gallery-02.jpg'
+            },
+            {
+              source: 'gallery-03.jpg'
+            },
+            {
+              source: 'gallery-04.jpg'
+            },
+            {
+              source: 'gallery-05.jpg'
             }
-          ],
-          video: {
-            thumbnail: '',
-            source: ''
-          }
+          ]
         }
       ]
      /* events: [
