@@ -60,7 +60,7 @@
             os-profile-partners(
               header-title="Residents"
               svg-name="dynamic"
-              :counter="41"
+              :counter="residents.length"
               :items="residents"
             )
             .border-top.border-top--20
@@ -244,7 +244,6 @@ export default {
     this.fetchData()
   },
   watch: {
-    // в случае изменения маршрута запрашиваем данные вновь
     '$route': 'fetchData'
   }
 }

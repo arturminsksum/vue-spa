@@ -127,9 +127,8 @@ export default {
       userDropdownItems: [
         {
           title: 'My Profile',
-          url: '/user/me',
           onClick: () => {
-            this.$router.push({name: 'user', params: { id: 'me' }})
+            this.$router.push({path: `/${this.user.role}/me`})
           }
         },
         {
@@ -138,10 +137,7 @@ export default {
         },
         {
           title: 'Get PRO Account',
-          url: '/plans',
-          onClick: () => {
-            this.$router.push({name: 'plans'})
-          }
+          url: '/plans'
         },
         {
           title: 'Logout',
