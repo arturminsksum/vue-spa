@@ -23,7 +23,7 @@
           span.track-like_text {{track.likes}}
         a(href="/").track-share
           os-svg(name="share", width="12px", height="10px").track-share_icon
-          span.track-like_text {{track.sheared}}
+          span.track-like_text {{track.shared}}
         a(href="/").track-add
           os-svg(name="plus", width="10px", height="10px").track-add_icon
           span.track-add_text Add to playlist
