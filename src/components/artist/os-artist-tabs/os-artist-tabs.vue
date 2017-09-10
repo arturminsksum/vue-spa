@@ -65,9 +65,7 @@ export default {
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/linkin_park_victimized.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/linkin_park_victimized.mp3'
         },
         {
           songName: 'Song 2',
@@ -78,9 +76,7 @@ export default {
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/placebo_every_you_every_me.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/placebo_every_you_every_me.mp3'
         },
         {
           songName: 'Song 3',
@@ -91,9 +87,7 @@ export default {
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/placebo_i_know.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/placebo_i_know.mp3'
         },
         {
           songName: 'Song 4',
@@ -104,9 +98,7 @@ export default {
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/linkin_park_victimized.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/linkin_park_victimized.mp3'
         }
       ]
     }
