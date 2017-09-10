@@ -16,6 +16,9 @@ const mutations = {
   },
   [types.ADD_EVENT] (state, payload) {
     state.events.splice(0, 0, payload.event)
+  },
+  [types.SET_TRACKS] (state, payload) {
+    state.tracks = payload.list
   }
 }
 

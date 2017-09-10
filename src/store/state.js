@@ -3,7 +3,8 @@ const state = {
   user: {},
   currentUser: {},
   residents: [],
-  events: []
+  events: [],
+  tracks: []
 }
 
 export default state

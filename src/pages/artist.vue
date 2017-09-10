@@ -205,6 +205,7 @@ export default {
         .then(() => {
           // all requests should be here because beforeEach doesn't work on page refresh (maybe need a fix)
           this.$store.dispatch('getResidents', {id: this.$route.params.id})
+          this.$store.dispatch('getTracks', {id: this.$route.params.id})
         })
         .catch((error) => {
           if (error) {
@@ -222,7 +223,8 @@ export default {
     ]),
     ...mapState({
       user: state => state.currentUser,
-      residents: state => state.residents
+      residents: state => state.residents,
+      tracks: state => state.tracks
     })
   },
   created () {

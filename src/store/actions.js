@@ -53,6 +53,16 @@ const actions = {
         data.forEach((obj) => updateImageUrl(obj))
         commit(types.SET_RESIDENTS, {list: data})
       })
+  },
+  getTracks: ({commit, state}, payload) => {
+    console.log('getTracks')
+    var id = getCorrectUserId(payload.id, state.user.id)
+
+    return Vue.axios.get(`/api/users/${id}/music/`)
+      .then((response) => {
+        let data = response.data
+        commit(types.SET_TRACKS, {list: data})
+      })
   }
 }
 
