@@ -38,7 +38,7 @@ export default {
   },
 
   updated () {
-    console.log('updated')
+    this.checkTagsCapacity()
   }
 }
 </script>
