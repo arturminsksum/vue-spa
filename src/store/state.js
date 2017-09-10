@@ -2,8 +2,9 @@ const state = {
   isLogin: false,
   user: {},
   currentUser: {},
-  residents: {},
-  events: []
+  residents: [],
+  events: [],
+  tracks: []
 }
 
 export default state

@@ -27,7 +27,7 @@
         .page-content.page-content--profile
           .artist-center__artist-biography
             p.artist-center__describe {{user.description}}
-          os-artist-tags(v-if="!isUser && user.tags && user.tags.length" :tags="user.tags")
+          os-artist-tags(v-if="!isUser && user.tags && user.tags.length", :tags="user.tags")
 
           os-artist-tabs
 
@@ -196,32 +196,17 @@ export default {
         {
           name: 'Lyapis'
         }
-      ],
-      residents: [
-        {
-          id: 16,
-          name: 'Сalvin Harris',
-          role: 'artist',
-          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-02.jpg'
-        },
-        {
-          id: 17,
-          name: 'Kraftwerk',
-          role: 'artist',
-          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-01.jpg'
-        },
-        {
-          id: 20,
-          name: "Кавер-бэнд pinK'Kode",
-          role: 'artist',
-          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-03.jpg'
-        }
       ]
     }
   },
   methods: {
     fetchData () {
       this.$store.dispatch('getUser', {id: this.$route.params.id})
+        .then(() => {
+          // all requests should be here because beforeEach doesn't work on page refresh (maybe need a fix)
+          this.$store.dispatch('getResidents', {id: this.$route.params.id})
+          this.$store.dispatch('getTracks', {id: this.$route.params.id})
+        })
         .catch((error) => {
           if (error) {
             this.$router.push({name: 'home'})
@@ -237,7 +222,9 @@ export default {
       'isClub'
     ]),
     ...mapState({
-      user: state => state.currentUser
+      user: state => state.currentUser,
+      residents: state => state.residents,
+      tracks: state => state.tracks
     })
   },
   created () {

@@ -11,6 +11,10 @@
           .page-home__messager
             os-svg(name="message", width="15px", height="14px")
             span Open messager
+          .aside-adv
+            img.img(src="../assets/img/sidebar-banner-01.jpg")
+          .aside-adv
+            img.img(src="../assets/img/sidebar-banner-02.jpg")
 
         .page-content.page-content--home
           .post-create.bgc-white
