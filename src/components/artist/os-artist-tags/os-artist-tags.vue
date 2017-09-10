@@ -37,8 +37,8 @@ export default {
     }
   },
 
-  mounted () {
-    this.checkTagsCapacity()
+  updated () {
+    console.log('updated')
   }
 }
 </script>
