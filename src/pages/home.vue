@@ -213,7 +213,7 @@ export default {
       track: {
         songName: 'Song name',
         likes: 60,
-        sheared: 40,
+        shared: 40,
         listened: 1043,
         talked: 3,
         time: '05:00',

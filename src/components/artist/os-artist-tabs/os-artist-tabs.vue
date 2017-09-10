@@ -59,7 +59,7 @@ export default {
         {
           songName: 'Song 1',
           likes: 55,
-          sheared: 55,
+          shared: 55,
           listened: 1043,
           talked: 3,
           time: '05:00',
@@ -70,7 +70,7 @@ export default {
         {
           songName: 'Song 2',
           likes: 60,
-          sheared: 40,
+          shared: 40,
           listened: 1043,
           talked: 3,
           time: '05:00',
@@ -81,7 +81,7 @@ export default {
         {
           songName: 'Song 3',
           likes: 20,
-          sheared: 100,
+          shared: 100,
           listened: 1043,
           talked: 0,
           time: '05:00',
@@ -92,7 +92,7 @@ export default {
         {
           songName: 'Song 4',
           likes: 55,
-          sheared: 55,
+          shared: 55,
           listened: 1043,
           talked: 999,
           time: '05:00',
