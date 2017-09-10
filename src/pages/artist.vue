@@ -27,7 +27,7 @@
         .page-content.page-content--profile
           .artist-center__artist-biography
             p.artist-center__describe {{user.description}}
-          os-artist-tags(v-if="!isUser && user.tags && user.tags.length" :tags="user.tags")
+          os-artist-tags(v-if="!isUser && user.tags && user.tags.length", :tags="user.tags")
 
           os-artist-tabs
 
