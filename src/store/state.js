@@ -3,7 +3,12 @@ const state = {
   user: {},
   currentUser: {},
   residents: {},
-  events: []
+  events: [], // temp events will be in posts as a type
+  posts: [],
+  modalWindow: {
+    showModalGallery: false,
+    pictureNumber: 0
+  }
 }
 
 export default state

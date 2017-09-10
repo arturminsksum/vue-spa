@@ -251,9 +251,9 @@
   &__news-img {
     img {
       @include img;
+      cursor: pointer;
     }
   }
-
   &__photo {
     cursor: pointer;
   }

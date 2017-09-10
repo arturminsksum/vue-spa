@@ -26,7 +26,7 @@
       v-if="showModalGallery"
       no-header)
         .modal__body(slot="body")
-          os-profile-gallery.modal__gallery(@close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
+          os-profile-gallery.modal__gallery(v-on:show-image='openModal' @close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
       os-audio-player(:audioActive="showPlayer")
 </template>
 
@@ -64,11 +64,20 @@ export default {
       'user'
     ])
   },
+  methods: {
+    openModal: function (data) {
+      console.log(111111)
+      this.showModalGallery = data.showModalGallery
+      this.pictureNumber = data.pictureNumber
+      this.photos = data.galleryPhotos
+    }
+  },
   data () {
     return {
       showModalGallery: false,
       pictureNumber: '',
-      showPlayer: false
+      showPlayer: false,
+      photos: []
 /*
       photos: [
         {

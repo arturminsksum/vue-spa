@@ -9,12 +9,16 @@
 
 import OsHeader from '@/components/sections/os-header.vue'
 import OsFooter from '@/components/sections/os-footer.vue'
+import OsModal from '@/components/os-modal/os-modal.vue'
+import OsProfileGallery from '@/components/sections/os-profile-gallery/os-profile-gallery'
 
 export default {
   name: 'app',
   components: {
     OsHeader,
-    OsFooter
+    OsFooter,
+    OsModal,
+    OsProfileGallery
   }
 }
 </script>
