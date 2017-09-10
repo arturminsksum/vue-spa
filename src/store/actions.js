@@ -43,15 +43,14 @@ const actions = {
         commit(types.SET_USER, {user: data})
       })
   },
-  getResidents: ({commit}, payload) => {
-    var options = {
-      Authorization: 'Bearer ' + sessionStorage.getItem('token')
-    }
+  getResidents: ({commit, state}, payload) => {
+    var id = getCorrectUserId(payload.id, state.user.id)
 
-    return Vue.axios.get(`/api/users/${payload.id}/residents`, {headers: options})
+    return Vue.axios.get(`/api/users/${id}/residents/`)
       .then((response) => {
         let data = response.data
 
+        data.forEach((obj) => updateImageUrl(obj))
         commit(types.SET_RESIDENTS, {list: data})
       })
   }
@@ -82,6 +81,10 @@ function getByToken (commit, payload) {
       updateImageUrl(data)
       commit(types.SIGN_IN, {user: Object.assign(user, data)})
     })
+}
+
+function getCorrectUserId (id, userId) {
+  return id === 'me' ? userId : id
 }
 
 export default actions
