@@ -6,12 +6,12 @@
           os-logo
         ul.footer__list(v-for="n in 3")
           li.footer__item(v-for="link in links")
-            a.footer__link(:href="link.href") {{link.text}}
+            router-link.footer__link(to="") {{link.text}}
 
         .footer__follow
           .footer__follow-title Follow us
           .footer__follow-share
-            a.footer__follow-icon(:href="icon.href", :title="icon.title", v-for="icon in icons")
+            router-link.footer__follow-icon(to="", :key="index", :title="icon.title", v-for="icon, index in icons")
               os-svg.footer__follow-svg(:name="icon.name", :class="`footer__follow-svg--${icon.name}`")
       .footer__bottom
         .footer__copyright © 2015 - 2017 Onstage

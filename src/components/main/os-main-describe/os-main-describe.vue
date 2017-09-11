@@ -13,21 +13,6 @@
 
 <script>
 
-// const DESKTOP_WIDTH = 1200
-// const TABLET_WIDTH = 768
-
-// function isDesktop () {
-//   return window.innerWidth >= DESKTOP_WIDTH
-// }
-
-// function isMobile () {
-//   return window.innerWidth < TABLET_WIDTH
-// }
-
-// function isTablet () {
-//   return window.innerWidth >= TABLET_WIDTH && window.innerWidth < DESKTOP_WIDTH
-// }
-
 export default {
 
   name: 'OsMainDescribe',
@@ -52,13 +37,8 @@ export default {
           text: 'Find new ways to promote your music, get the best offers, enjoy.'
         }
       ]
-      // isMobile: false
     }
   }
-
-  // mounted () {
-  //   this.isMobile = isMobile()
-  // }
 }
 </script>
 
