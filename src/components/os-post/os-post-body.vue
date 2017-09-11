@@ -27,7 +27,7 @@
         img.img(:src="require('../../assets/img/' + post.gallery[0].source)" ref="image" :data-index="0")
         .post-single__gallery
           .post-single__gallery-item(v-for="(item, index) in post.gallery", :key="index", v-if="index !== 0 && index < 4")
-            img.img(:src="require('../../assets/img/' + item.source)", ref="image", :data-index="index+1")
+            img.img(:src="require('../../assets/img/' + item.source)", ref="image", :data-index="index")
             .bg-cover(v-if="index === 3")
               .post-single__gallery-count +{{ setIndex(index) }}
       .post-single__video(v-if='post.video')
@@ -58,12 +58,14 @@ export default {
         endNumber = this.post.gallery.length - number
       return endNumber
     },
+    // This is TEMP method. Rewrite when State will be ready. delete this method from all elems upper
     openImage: function (event) {
       const index = event.dataset.index
       this.$emit('show-image', {
         showModalGallery: true,
         pictureNumber: index,
-        galleryPhotos: this.post.gallery
+        galleryPhotos: this.post.gallery,
+        author: this.post.author
       })
     }
   }

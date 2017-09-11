@@ -1,7 +1,7 @@
 <template lang="pug">
-  .post-single.bgc-white(v-on:show-image='openModal')
+  .post-single.bgc-white
     os-post-header(:name="post.author.name")
-    os-post-body(:post="post")
+    os-post-body(:post="post", v-on:show-image='openModal')
     //v-if is temp. delete it after audio player will be updated
     os-post-footer(:type='post.type' v-if="!post.tracks")
 </template>
@@ -35,7 +35,7 @@ export default {
 
   methods: {
     openModal: function (data) {
-      console.log(1111)
+      this.$emit('show-image', data)
     },
     openGallery: function (event) {
       let imgs = this.$refs.image,

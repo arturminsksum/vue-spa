@@ -2,7 +2,7 @@
   .page-content.page-content--home
     os-post-create
     div(v-for='post in posts', :key="post.id")
-      os-post(:post='post')
+      os-post(:post='post', v-on:show-image='openModal')
 </template>
 
 <script>
@@ -28,6 +28,11 @@ export default {
     ...mapState([
       'events'
     ])
+  },
+  methods: {
+    openModal: function (data) {
+      this.$emit('show-image', data)
+    }
   },
   data () {
     return {
@@ -166,7 +171,9 @@ export default {
         {
           author: {
             name: 'Club',
-            id: 156484878
+            id: 156484878,
+            publishDate: 1505161842421,
+            avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
           },
           type: 'event',
           location: '6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA',
@@ -184,7 +191,9 @@ export default {
           author: {
             name: '1111',
             surname: '',
-            id: 12318968745
+            id: 12318968745,
+            publishDate: 1505161842421,
+            avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
           },
           description: 'feshyyfe',
           video: {
@@ -197,7 +206,9 @@ export default {
           author: {
             name: '22222',
             surname: '',
-            id: 123184968745
+            id: 123184968745,
+            publishDate: 1505161842421,
+            avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
           },
           description: 'grsfe',
           tracks: [
@@ -219,43 +230,80 @@ export default {
           author: {
             name: '3333',
             surname: '',
-            id: 123184968745
+            id: 1505161842421,
+            publishDate: 1505161842421,
+            avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
           },
           description: 'gfessfe',
           gallery: [
             {
-              source: 'gallery-01.jpg'
+              source: 'gallery-01.jpg',
+              comments: [
+                {
+                  author: {
+                    name: 'Fefsgsr',
+                    avatar: 'artist-avatar-02.jpg'
+                  },
+                  publishDate: 1505161842421,
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+                }
+              ]
             },
             {
-              source: 'gallery-02.jpg'
+              source: 'gallery-02.jpg',
+              comments: [
+                {
+                  author: {
+                    name: 'Fefsgsr',
+                    avatar: 'artist-avatar-02.jpg'
+                  },
+                  publishDate: 1505161842421,
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+                }
+              ]
             },
             {
-              source: 'gallery-03.jpg'
+              source: 'gallery-03.jpg',
+              comments: [
+                {
+                  author: {
+                    name: 'Fefsgsr',
+                    avatar: 'artist-avatar-02.jpg'
+                  },
+                  publishDate: 1505161842421,
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+                }
+              ]
             },
             {
-              source: 'gallery-04.jpg'
+              source: 'gallery-04.jpg',
+              comments: [
+                {
+                  author: {
+                    name: 'Fefsgsr',
+                    avatar: 'artist-avatar-02.jpg'
+                  },
+                  publishDate: 1505161842421,
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+                }
+              ]
             },
             {
-              source: 'gallery-05.jpg'
+              source: 'gallery-05.jpg',
+              comments: [
+                {
+                  author: {
+                    name: 'Fefsgsr',
+                    avatar: 'artist-avatar-02.jpg',
+                    publishDate: 1505161842421,
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+                  }
+                }
+              ]
             }
           ]
         }
       ]
-     /* events: [
-        {
-          name: 'ffesfe',
-          location: '6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA',
-          date: '18.10.2017',
-          time: '12.05',
-          tags: ['tag'],
-          description: 'fesfe',
-          price: '50',
-          errors: false,
-          id: new Date().getTime(),
-          poster: 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg' // '../../assets/img/event-banner.jpg'
-        }
-      ] // temp! Events are subclass of posts */
-
     }
   }
 }

@@ -23,7 +23,12 @@ export default {
   },
 
   methods: {
-
+    closeModal: function (target) {
+      debugger
+      if (target.className.indexOf('modal__mask') > -1) {
+        this.$emit('close')
+      }
+    }
   },
   mounted () {
     document.body.style.overflow = 'hidden'

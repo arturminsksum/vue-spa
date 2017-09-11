@@ -11,7 +11,7 @@
           .page-home__messager
             os-svg(name="message", width="15px", height="14px")
             span Open messager
-        os-board
+        os-board(v-on:show-image='openModal')
         aside.aside-right.aside-right--home
           os-profile-stats
           .page-home__events.bgc-white
@@ -26,7 +26,7 @@
       v-if="showModalGallery"
       no-header)
         .modal__body(slot="body")
-          os-profile-gallery.modal__gallery(v-on:show-image='openModal' @close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
+          os-profile-gallery.modal__gallery(@close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos", :author="author" )
       os-audio-player(:audioActive="showPlayer")
 </template>
 
@@ -66,10 +66,10 @@ export default {
   },
   methods: {
     openModal: function (data) {
-      console.log(111111)
       this.showModalGallery = data.showModalGallery
       this.pictureNumber = data.pictureNumber
       this.photos = data.galleryPhotos
+      this.author = data.author // Temp param, need to be taken from state
     }
   },
   data () {

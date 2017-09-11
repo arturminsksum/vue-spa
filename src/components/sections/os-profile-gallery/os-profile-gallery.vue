@@ -1,7 +1,7 @@
 <template lang="pug">
 .profile-gallery
   .profile-gallery__picture
-    img(:src="require('../../../assets/img/' + photos[currentNumber].poster)").img.profile-gallery__image
+    img(:src="require('../../../assets/img/' + photos[currentNumber].source)").img.profile-gallery__image
     a(href="#", @click.prevent="showNext()").profile-gallery__button.profile-gallery__button--next
       os-svg(:name="arrowRight", width="20px", height="35px")
     a(href="#", @click.prevent="showPrev()").profile-gallery__button.profile-gallery__button--prev
@@ -12,20 +12,20 @@
     .profile-gallery__content
       .profile-gallery__header-modal
         .profile-gallery__avatar
-          img(:src="require('../../../assets/img/' + photos[currentNumber].artist.avatar)").profile-gallery__artist-avatar
+          img(:src="require('../../../assets/img/' + author.avatar)").profile-gallery__artist-avatar
         .profile-gallery__text
-          h1.profile-gallery__title {{ photos[currentNumber].artist.name }}
-          time.profile-gallery__data {{ photos[currentNumber].artist.data }}
+          h1.profile-gallery__title {{ author.name }}
+          time.profile-gallery__data {{ parseTime(author.publishDate) }}
       .profile-gallery__body-modal
         ul.profile-gallery__list
-          li(v-for="(manager,index) in photos[currentNumber].managers", :key="index").profile-gallery__item
+          li(v-for="(comment,index) in photos[currentNumber].comments", :key="index").profile-gallery__item
             .profile-gallery__manager-avatar
-              img(:src="require('../../../assets/img/' + manager.avatar)")
+              img(:src="require('../../../assets/img/' + comment.author.avatar)")
             .profile-gallery__comment-content
-              .profile-gallery__text {{ manager.text }}
+              .profile-gallery__text {{ comment.text }}
               .profile-gallery__comment-author
-                .author__comment-name {{ manager.author }}
-                .author__comment-data {{ manager.date }}
+                .author__comment-name {{ comment.author.name }}
+                .author__comment-data {{ parseTime(comment.publishDate) }}
     .profile-gallery__footer-modal
       textarea(placeholder="Leave Comment" v-model="currentText").profile-gallery__message
       button.profile-gallery__send
@@ -42,7 +42,7 @@ export default {
     OsSvg
   },
 
-  props: ['numOpen', 'galleryPhotos'],
+  props: ['numOpen', 'galleryPhotos', 'author'],
 
   data () {
     return {
@@ -63,11 +63,14 @@ export default {
     // },
     showNext: function () {
       this.currentNumber = (this.currentNumber === this.photos.length - 1) ? 0 : ++this.currentNumber
-      this.currentPhoto = this.photos[this.currentNumber]
+      this.currentPhoto = this.photos[this.currentNumber].source
     },
     showPrev: function () {
       this.currentNumber = (this.currentNumber === 0) ? (this.photos.length - 1) : --this.currentNumber
-      this.currentPhoto = this.photos[this.currentNumber]
+      this.currentPhoto = this.photos[this.currentNumber].source
+    },
+    parseTime: function (time) {
+      return new Date(time).toLocaleDateString()
     }
   }
 }
