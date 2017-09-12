@@ -53,9 +53,10 @@ let router = new Router({
 })
 
 router.beforeEach(function (to, from, next) {
-  var vuexStore = this
+  var vuexStore = this,
+    openRoutes = ['/', '/signup']
 
-  if (to.fullPath !== '/') {
+  if (!openRoutes.includes(to.fullPath)) {
     if (!vuexStore.state.isLogin) {
       const token = sessionStorage.getItem('token')
 
