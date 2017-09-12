@@ -227,6 +227,13 @@
 
   }
 
+  &__video {
+    img {
+      width: 100%;
+      height: 332px;
+    }
+  }
+
   &__footer {
     display: flex;
     justify-content: space-between;

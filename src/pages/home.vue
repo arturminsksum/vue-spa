@@ -101,7 +101,8 @@
             .post-single__body
               .post-single__video
                 .video
-                  iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
+                  //- iframe(width='854', height='480', src='https://www.youtube.com/embed/sdQqgVzex_w', frameborder='0', allowfullscreen='')
+                  img(src="../assets/img/video-cover.jpg")
                   .bg-cover
                     os-svg(name="playVideo", width="60px", height="60px").video__icon
             .post-single__footer
