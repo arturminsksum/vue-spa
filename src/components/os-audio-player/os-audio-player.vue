@@ -33,7 +33,7 @@ div.audio-player
   figure.audio-player-full(v-if="playerFull && playerOpened")
     .audio-player-full__image
       .audio-player-full__image-icon
-        button(@click="togglePlayerFull").audio-player-full__image-icon__button
+        button(@click="togglePlayerFull").audio-player-full__image-icon-button
           os-svg(name="to-curtail", width="14px", height="14px")
       p.audio-player-full__image-name
         span.audio-player-full__image-name__artist Artist Name

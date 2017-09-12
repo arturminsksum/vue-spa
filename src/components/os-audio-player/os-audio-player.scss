@@ -82,8 +82,10 @@
       &-volume,
       &-share,
       &-like,
-      &-expand {
-        margin-right: 6px;
+      &-expand,
+      &-close {
+        margin-left: 6px;
+        outline: none;
       }
 
       &-volume,
@@ -158,6 +160,10 @@
         @include trans(fill);
 
       }
+    }
+
+    &-icon-button {
+      outline: none;
     }
 
     &-name,
