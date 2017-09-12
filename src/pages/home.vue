@@ -81,7 +81,7 @@
                     .toggler__dot
                     .toggler__dot
             .post-single__body
-              os-audio-track(:track="track", :isPlay="track.playing", @showPlayer="showPlayer = true")
+              os-audio-track(:track="track", :isPlay="track.playing", @showPlayer="showPlayer = !showPlayer")
             .post-single__footer
               .post-single__footer-left
               .post-single__footer-right

@@ -6,9 +6,9 @@ div.audio-player
     .audio-player-small-melody
       .audio-player-small-top
         .audio-player-small-top__controls
-          button(@click="makePlay()" v-if="isPlay()").audio-player-small-top__controls-play
+          button(@click="makePlay" v-if="isPlay").audio-player-small-top__controls-play
             os-svg(name="play", width="16px", height="16px")
-          button(@click="makePlay()" v-else).audio-player-small-top__controls-stop
+          button(@click="makePlay" v-else).audio-player-small-top__controls-stop
             os-svg(name="stop", width="16px", height="16px")
           button.audio-player-small-top__controls-prev
             os-svg(name="prev-track", width="7px", height="10px")
@@ -22,9 +22,9 @@ div.audio-player
             os-svg(name="like", width="13px", height="10px")
           button.audio-player-small-top__actions-share
             os-svg(name="share", width="13px", height="10px")
-          button(@click="togglePlayerFull()").audio-player-small-top__actions-expand
+          button(@click="togglePlayerFull").audio-player-small-top__actions-expand
             os-svg(name="expand", width="12px", height="12px")
-          button(@click="closePlayer()").audio-player-small-top__actions-close
+          button(@click="closePlayer").audio-player-small-top__actions-close
             os-svg(name="cross", width="12px", height="12px")
       .audio-player-small-bottom
         .audio-player-small-bottom__track
@@ -33,7 +33,7 @@ div.audio-player
   figure.audio-player-full(v-if="playerFull && playerOpened")
     .audio-player-full__image
       .audio-player-full__image-icon
-        button(@click="togglePlayerFull()").audio-player-full__image-icon__button
+        button(@click="togglePlayerFull").audio-player-full__image-icon__button
           os-svg(name="to-curtail", width="14px", height="14px")
       p.audio-player-full__image-name
         span.audio-player-full__image-name__artist Artist Name
