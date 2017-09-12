@@ -18,20 +18,20 @@
           os-svg(name="wave", width="652px", height="40px")
     .track-footer
       .track-footer__left
-        a(href="/").track-like
+        router-link(to="").track-like
           os-svg(name="like", width="10px", height="10px").track-like_icon
           span.track-like_text {{track.likes}}
-        a(href="/").track-share
+        router-link(to="").track-share
           os-svg(name="share", width="12px", height="10px").track-share_icon
-          span.track-like_text {{track.sheared}}
-        a(href="/").track-add
+          span.track-like_text {{track.shared}}
+        router-link(to="").track-add
           os-svg(name="plus", width="10px", height="10px").track-add_icon
           span.track-add_text Add to playlist
       .track-footer__right
         span.track-popular
           os-svg(name="play", width="7px", height="10px").track-popular_icon
           span.track-popular_text {{track.listened}}
-        a(href="/").track-chart
+        router-link(to="").track-chart
           os-svg(name="speach", width="12px", height="10px").track-chart_icon
           span.track-chart_text {{track.talked}}
 

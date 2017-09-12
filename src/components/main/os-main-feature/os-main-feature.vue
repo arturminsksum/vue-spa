@@ -1,6 +1,6 @@
 <template lang="pug">
   .main-feature.row
-    a.main-feature__item.four.columns(href="" v-for="feature in features")
+    router-link.main-feature__item.four.columns(to="", :key="index" v-for="feature, index in features")
       .main-feature__picture
         os-svg.main-feature__img(:name="feature.img")
       .main-feature__info

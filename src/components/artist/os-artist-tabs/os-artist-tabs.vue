@@ -3,14 +3,14 @@
   os-tabs.artist-tabs
     os-tabs-item(name='Tracks', iconName="diagram", :selected='true')
       .artist-tabs__track(v-for="(song, index) in playlistTracks", :key="index")
-        os-audio-track(:track="song", :isPlay="song.playing" @stopAllTracks="stopAllTracks" @showPlayer="showPlayer = true")
+        os-audio-track(:track="song", :isPlay="song.playing" @stopAllTracks="stopAllTracks" @showPlayer="showPlayer = !showPlayer")
     os-tabs-item(name='Video', iconName="video")
       os-swiper-slider(is-video)
     os-tabs-item(name='Photo', iconName="photo")
       os-swiper-slider(is-photo)
     os-tabs-item(name='Events', iconName="calendar")
       .events-list.row
-        a(href="/" v-for="n in 6" key="index").events-list__item.four.columns
+        router-link(to="" v-for="n in 6" key="index").events-list__item.four.columns
           .events-list__img
             img.img(src="../../../assets/img/event-list-item.jpg")
           .events-list__info
@@ -59,54 +59,46 @@ export default {
         {
           songName: 'Song 1',
           likes: 55,
-          sheared: 55,
+          shared: 55,
           listened: 1043,
           talked: 3,
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/linkin_park_victimized.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/linkin_park_victimized.mp3'
         },
         {
           songName: 'Song 2',
           likes: 60,
-          sheared: 40,
+          shared: 40,
           listened: 1043,
           talked: 3,
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/placebo_every_you_every_me.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/placebo_every_you_every_me.mp3'
         },
         {
           songName: 'Song 3',
           likes: 20,
-          sheared: 100,
+          shared: 100,
           listened: 1043,
           talked: 0,
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/placebo_i_know.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/placebo_i_know.mp3'
         },
         {
           songName: 'Song 4',
           likes: 55,
-          sheared: 55,
+          shared: 55,
           listened: 1043,
           talked: 999,
           time: '05:00',
           added: '3 months',
           playing: false,
-          filePath: '/audio/linkin_park_victimized.mp3',
-          timeoutId: '',
-          delay: ''
+          filePath: '/audio/linkin_park_victimized.mp3'
         }
       ]
     }

@@ -7,7 +7,7 @@
       .page-wrapper
         aside.aside-left.aside-left--profile
           .artist-left__add-contact
-            a(href='').btn.btn--green
+            router-link(to='').btn.btn--green
               span Add contact
           .artist-rating(v-if="!isUser")
             os-svg(name="star", width="17px", height="17px" key="n" v-for="n in 5").artist-rating__star
@@ -17,7 +17,7 @@
               os-svg(name="world", width="14px", height="14px").artist-share__icon
               | social links
             .artist-share__list
-              a(:href="item.link" v-for="item in artistShare" key="index").artist-share__link
+              a(to="" v-for="item in artistShare" key="index").artist-share__link
                 os-svg(:name="item.icon", width="14px", height="14px")
           .aside-adv
             img.img(src="../assets/img/sidebar-banner-01.jpg")
@@ -27,7 +27,7 @@
         .page-content.page-content--profile
           .artist-center__artist-biography
             p.artist-center__describe {{user.description}}
-          os-artist-tags(v-if="!isUser && user.tags && user.tags.length" :tags="user.tags")
+          os-artist-tags(v-if="!isUser && user.tags && user.tags.length", :tags="user.tags")
 
           os-artist-tabs
 
@@ -36,7 +36,7 @@
             .artist-right__rider
               button.btn.btn--dark-blue(@click="showModalRider = true")
                 span Request rider
-            a(href="").artist-right__link
+            router-link(to="").artist-right__link
               os-svg(name="message", width="15px", height="14px").artist-right__link-icon
               span.artist-right__link-text message
           os-profile-stats
@@ -60,7 +60,7 @@
             os-profile-partners(
               header-title="Residents"
               svg-name="dynamic"
-              :counter="41"
+              :counter="residents.length"
               :items="residents"
             )
             .border-top.border-top--20
@@ -196,32 +196,17 @@ export default {
         {
           name: 'Lyapis'
         }
-      ],
-      residents: [
-        {
-          id: 16,
-          name: 'Сalvin Harris',
-          role: 'artist',
-          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-02.jpg'
-        },
-        {
-          id: 17,
-          name: 'Kraftwerk',
-          role: 'artist',
-          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-01.jpg'
-        },
-        {
-          id: 20,
-          name: "Кавер-бэнд pinK'Kode",
-          role: 'artist',
-          avatar_image: 'http://165.227.140.41:1323/pictures/accounts/musicians/artist-avatar-03.jpg'
-        }
       ]
     }
   },
   methods: {
     fetchData () {
       this.$store.dispatch('getUser', {id: this.$route.params.id})
+        .then(() => {
+          // all requests should be here because beforeEach doesn't work on page refresh (maybe need a fix)
+          this.$store.dispatch('getResidents', {id: this.$route.params.id})
+          this.$store.dispatch('getTracks', {id: this.$route.params.id})
+        })
         .catch((error) => {
           if (error) {
             this.$router.push({name: 'home'})
@@ -237,14 +222,15 @@ export default {
       'isClub'
     ]),
     ...mapState({
-      user: state => state.currentUser
+      user: state => state.currentUser,
+      residents: state => state.residents,
+      tracks: state => state.tracks
     })
   },
   created () {
     this.fetchData()
   },
   watch: {
-    // в случае изменения маршрута запрашиваем данные вновь
     '$route': 'fetchData'
   }
 }

@@ -58,26 +58,34 @@ export default {
 
       playerSmall: false,
 
-      playerFull: false
+      playerFull: false,
+
+      playerOpened: false
     }
   },
 
   methods: {
-    makePlay: function () {
+    makePlay () {
       this.playerActs = !this.playerActs
     },
-    isPlay: function () {
+    isPlay () {
       return this.playerActs
     },
-    togglePlayerFull: function () {
+    togglePlayerFull () {
       this.playerFull = !this.playerFull
       this.playerSmall = !this.playerSmall
     },
-    isAudioActive: function () {
-      if (!this.playerFull && this.audioActive) {
-        this.playerSmall = this.audioActive
+    closePlayer () {
+      this.playerSmall = false
+      this.playerOpened = false
+    }
+  },
+  watch: {
+    audioActive (value) {
+      if (value) {
+        this.playerFull ? this.playerSmall = false : this.playerSmall = true
+        this.playerOpened = true
       }
-      return this.playerSmall
     }
   }
 }

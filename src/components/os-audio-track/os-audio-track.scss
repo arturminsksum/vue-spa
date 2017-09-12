@@ -11,7 +11,7 @@
   }
 
   &-header {
-    padding-bottom: 10px;
+    padding-bottom: 6px;
     border-bottom: 1px solid $grey-border;
     display: flex;
     flex-flow: row wrap;
@@ -28,6 +28,7 @@
     fill: $playlist-avatar;
     padding: 15px;
     border-radius: 5px;
+    margin: 2px 0;
   }
 
   &-melody {
@@ -48,6 +49,7 @@
     }
 
     &__display {
+      margin-top: 4px;
       position: absolute;
       top: 30px;
     }
@@ -75,21 +77,21 @@
   &-date,
   &-time {
     text-align: right;
-    padding-bottom: 5px;
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 14px;
+    font-size: 12px;
+  }
 
-    &--active {
-      display: inline-block;
-      padding: 2px 7px;
-      border-radius: 14px;
-    }
-
+  &-date {
+    line-height: 12px;
+    color: $slide-data;
   }
 
   &-time {
-    padding-top: 5px;
+    line-height: 16px;
 
     &--active {
-      margin-bottom: 4px;
       background: $font-color;
       color: $white;
     }
@@ -112,6 +114,10 @@
     border-radius: 14px;
     margin: 0 5px;
 
+    &_text {
+      font-size: 12px;
+    }
+    
     &_icon {
       margin-right: 5px;
     }

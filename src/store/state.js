@@ -2,7 +2,6 @@ const state = {
   isLogin: false,
   user: {},
   currentUser: {},
-  residents: {},
   events: [], // temp events will be in posts as a type
   posts: [ // mocked data
     {
@@ -12,13 +11,13 @@ const state = {
         publishDate: 1505161842421,
         avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
       },
-      eventName: 'fesfsghhhhh',
+      eventName: 'Big Event',
       type: 'event',
       location: '6801 Hollywood Blvd #433, Los Angeles, CA 90028, USA',
       date: '18.10.2017',
       time: '12.05',
       tags: ['tag'],
-      description: 'fesfe',
+      description: '',
       price: '50',
       errors: false,
       id: new Date().getTime(),
@@ -33,7 +32,7 @@ const state = {
         publishDate: 1505161842421,
         avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
       },
-      description: 'feshyyfe',
+      description: 'My favorite clip',
       video: {
         thumbnail: '',
         source: 'https://www.youtube.com/embed/sdQqgVzex_w'
@@ -42,13 +41,91 @@ const state = {
     {
       type: 'news',
       author: {
-        name: '22222',
+        name: 'Karl',
+        surname: '',
+        id: 1505161842421,
+        publishDate: 1505161842421,
+        avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
+      },
+      description: 'New photos',
+      gallery: [
+        {
+          source: 'gallery-01.jpg',
+          comments: [
+            {
+              author: {
+                name: 'Uasya',
+                avatar: 'artist-avatar-02.jpg'
+              },
+              publishDate: 1505161842421,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+            }
+          ]
+        },
+        {
+          source: 'gallery-02.jpg',
+          comments: [
+            {
+              author: {
+                name: 'Greg',
+                avatar: 'artist-avatar-02.jpg'
+              },
+              publishDate: 1505161842421,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+            }
+          ]
+        },
+        {
+          source: 'gallery-03.jpg',
+          comments: [
+            {
+              author: {
+                name: 'Snow',
+                avatar: 'artist-avatar-02.jpg'
+              },
+              publishDate: 1505161842421,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+            }
+          ]
+        },
+        {
+          source: 'gallery-04.jpg',
+          comments: [
+            {
+              author: {
+                name: 'Superman',
+                avatar: 'artist-avatar-02.jpg'
+              },
+              publishDate: 1505161842421,
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+            }
+          ]
+        },
+        {
+          source: 'gallery-05.jpg',
+          comments: [
+            {
+              author: {
+                name: 'Petr',
+                avatar: 'artist-avatar-02.jpg',
+                publishDate: 1505161842421,
+                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      type: 'news',
+      author: {
+        name: 'Cooper John',
         surname: '',
         id: 123184968745,
         publishDate: 1505161842421,
         avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
       },
-      description: 'grsfe',
+      description: 'Awersome',
       tracks: [
         {
           songName: 'Song name',
@@ -62,86 +139,10 @@ const state = {
           filePath: '/audio/linkin_park_victimized.mp3'
         }
       ]
-    },
-    {
-      type: 'news',
-      author: {
-        name: '3333',
-        surname: '',
-        id: 1505161842421,
-        publishDate: 1505161842421,
-        avatar: 'artist-avatar-01.jpg' // take it from state when it will be ready
-      },
-      description: 'gfessfe',
-      gallery: [
-        {
-          source: 'gallery-01.jpg',
-          comments: [
-            {
-              author: {
-                name: 'Fefsgsr',
-                avatar: 'artist-avatar-02.jpg'
-              },
-              publishDate: 1505161842421,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-            }
-          ]
-        },
-        {
-          source: 'gallery-02.jpg',
-          comments: [
-            {
-              author: {
-                name: 'Fefsgsr',
-                avatar: 'artist-avatar-02.jpg'
-              },
-              publishDate: 1505161842421,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-            }
-          ]
-        },
-        {
-          source: 'gallery-03.jpg',
-          comments: [
-            {
-              author: {
-                name: 'Fefsgsr',
-                avatar: 'artist-avatar-02.jpg'
-              },
-              publishDate: 1505161842421,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-            }
-          ]
-        },
-        {
-          source: 'gallery-04.jpg',
-          comments: [
-            {
-              author: {
-                name: 'Fefsgsr',
-                avatar: 'artist-avatar-02.jpg'
-              },
-              publishDate: 1505161842421,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-            }
-          ]
-        },
-        {
-          source: 'gallery-05.jpg',
-          comments: [
-            {
-              author: {
-                name: 'Fefsgsr',
-                avatar: 'artist-avatar-02.jpg',
-                publishDate: 1505161842421,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-              }
-            }
-          ]
-        }
-      ]
     }
-  ]
+  ],
+  residents: [],
+  tracks: []
 }
 
 export default state

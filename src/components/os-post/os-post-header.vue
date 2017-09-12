@@ -1,8 +1,8 @@
 <template lang="pug">
   .post-single__header
     .post-single__header-block
-      a(href="").post-single__avatar
-      a(href="").post-single__user {{name}}
+      router-link(to="").post-single__avatar
+      router-link(to="").post-single__user {{name}}
     .post-single__header-block
       .post-single__date 3 hour ago
       .post-single__drop

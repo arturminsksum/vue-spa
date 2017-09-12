@@ -32,10 +32,10 @@
               .post-single__gallery-count +{{ setIndex(index) }}
       .post-single__video(v-if='post.video')
         .video
-          iframe(width='854', height='480', :src='post.video.source', frameborder='0', allowfullscreen='')
+          //iframe(width='854', height='480', :src='post.video.source', frameborder='0', allowfullscreen='')
           .bg-cover
             os-svg(name="playVideo", width="60px", height="60px").video__icon
-      os-audio-track(v-if='post.tracks.length > 0' v-for='track in post.tracks' :key='track.songName', :track="track", :isPlay="track.playing", @showPlayer="showPlayer = true")
+      os-audio-track(v-if='post.tracks.length > 0' v-for='track in post.tracks' :key='track.songName', :track="track", :isPlay="track.playing", @showPlayer="showPlayer = !showPlayer")
 </template>
 
 <script>

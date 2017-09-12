@@ -15,8 +15,10 @@ const mutations = {
     state.residents = payload.list
   },
   [types.ADD_EVENT] (state, payload) {
-    debugger
     state.posts.splice(0, 0, payload)
+  },
+  [types.SET_TRACKS] (state, payload) {
+    state.tracks = payload.list
   }
 }
 

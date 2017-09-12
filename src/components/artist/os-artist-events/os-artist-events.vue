@@ -131,9 +131,9 @@
         li.artist-concert__item.event-item(v-for='(event, index) in demoEvents')
           .artist-concert__summary
             .artist-concert__summary-hrefs
-              a(href="/").artist-concert__summary-href
+              router-link(to="").artist-concert__summary-href
                 img(:src="require('../../../assets/img/' + event.image)").artist-concert__summary-image
-              a(href="/").artist-concert__summary-date
+              router-link(to="").artist-concert__summary-date
                 span.artist-concert__summary-month {{event.dateMonth}}
                 span.artist-concert__summary-year {{event.dateYear}}
             p.artist-concert__summary-text

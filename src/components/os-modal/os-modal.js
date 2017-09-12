@@ -23,6 +23,14 @@ export default {
   },
 
   methods: {
+    closeModal: function (event) {
+      debugger
+      let el = event.target,
+        isModalMask = typeof el.className === 'string' ? el.className.indexOf('modal__mask') > -1 : false
+      if (isModalMask) {
+        this.$emit('close')
+      }
+    }
   },
   mounted () {
     document.body.style.overflow = 'hidden'

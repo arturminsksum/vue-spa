@@ -35,10 +35,10 @@
 
 .artist-tags {
   margin-right: 60px;
-  padding: 10px 0;
+  padding: 20px 0 10px;
   display: flex;
   flex-wrap: wrap;
-  height: 60px;
+  height: 50px;
   overflow: hidden;
 
   &--active {
@@ -49,7 +49,7 @@
     white-space: nowrap;
     padding: 0 12px;
     font-size: 12px;
-    margin: 10px 16px 10px 0;
+    margin: 0 16px 10px 0;
   }
 
 }

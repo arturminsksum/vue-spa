@@ -35,7 +35,7 @@
                 .page-event__button
                   button.btn.btn--dark-blue-invert.btn--border-thin.btn--30-invert buy tickets
           .page-event__body
-            os-artist-tags
+            os-artist-tags(:tags="eventTags")
             .content-block
               p From the 15th of September on Cantina is your new weekly go-to Friday night at De Marktkantine. Cantina is an extraordinary ride into a colourful, eccentric and outspoken party night. Cantina is set to make a mark in, the Amsterdam, club life. The Rock and Roll Hall of Fame describes him as "arguably the greatest instrumentalist in the history of rock music"... Fame describes him as "arguably the greatest instrumentalist in the history of rock music".
           .page-event__footer
@@ -60,6 +60,7 @@ export default {
 
   data () {
     return {
+      eventTags: ['blues rock', 'classic rock', 'psychedelic rock', 'guitar']
     }
   },
 

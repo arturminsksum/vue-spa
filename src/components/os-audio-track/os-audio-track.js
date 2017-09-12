@@ -14,6 +14,8 @@ export default {
 
   data () {
     return {
+      timeoutId: '',
+      music: ''
     }
   },
 
@@ -25,15 +27,38 @@ export default {
     },
     trackStop () {
       this.track.playing = false
+      this.$emit('showPlayer')
+    },
+    timerToggle (value) {
+      if (value) {
+        let delay = 1000 * (this.music.duration - this.music.currentTime),
+          self = this
+        this.timeoutId = setTimeout(() => {
+          self.track.playing = false
+        }, delay)
+      } else {
+        clearTimeout(this.timeoutId)
+      }
+    }
+  },
+
+  computed: {
+    makeMusic: function () {
+      this.music = this.$refs.audio
     }
   },
 
   watch: {
     isPlay: function (value) {
+      if (!this.music) {
+        this.makeMusic
+      }
       if (value) {
-        this.$refs.audio.play()
+        this.music.play()
+        this.timerToggle(true)
       } else {
-        this.$refs.audio.pause()
+        this.music.pause()
+        this.timerToggle(false)
       }
     }
   }
