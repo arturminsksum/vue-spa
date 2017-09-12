@@ -40,8 +40,14 @@
               p From the 15th of September on Cantina is your new weekly go-to Friday night at De Marktkantine. Cantina is an extraordinary ride into a colourful, eccentric and outspoken party night. Cantina is set to make a mark in, the Amsterdam, club life. The Rock and Roll Hall of Fame describes him as "arguably the greatest instrumentalist in the history of rock music"... Fame describes him as "arguably the greatest instrumentalist in the history of rock music".
           .page-event__footer
             .page-event__map
-              img.img(src="../assets/img/google-map.jpg")
-
+              gmap-map(
+                :center="{lat:53.932519, lng:27.635422}"
+                :zoom="14"
+                map-type-id="terrain"
+                style="width: 100%; height: 200px")
+                gmap-marker(
+                  :position="{lat:53.932519, lng:27.635422}"
+                  :clickable="true")
 </template>
 
 <script>

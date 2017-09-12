@@ -21,6 +21,7 @@
     "vue-axios": "^2.0.2",
     "vue-event-calendar": "^1.4.8",
     "vue-router": "^2.7.0",
+    "vue2-google-maps": "^0.8.2",
     "vue2-scrollbar": "0.0.3",
     "vuex-persistedstate": "^2.0.0"
   },
