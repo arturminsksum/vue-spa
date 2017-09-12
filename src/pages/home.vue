@@ -158,7 +158,7 @@
               os-svg(name="calendar", width="15px", height="16px").page-home__events-icon
               .page-home__events-text 5 events invitations
             .border-top.border-top--20
-            os-artist-events
+            os-artist-events(:isUser="user.role === 'user'")
 
       os-modal.modal-gallery(
       modal-title="Gallery"

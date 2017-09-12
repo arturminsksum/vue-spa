@@ -1,6 +1,6 @@
 <template lang="pug">
 .calendar
-  .calendar__add-event(@click="showModalEvent = true")
+  .calendar__add-event(v-if="!isUser" @click="showModalEvent = true")
     os-svg.svg--mr(name="plus", width="14px", height="14px")
     strong Add event
   os-modal.modal-event(
@@ -172,6 +172,14 @@ export default {
     OsSvg,
     OsModal
   },
+
+  props: {
+    isUser: {
+      type: Boolean,
+      default: false
+    }
+  },
+
   computed: {
     ...mapState([
       'events'

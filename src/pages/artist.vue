@@ -71,7 +71,7 @@
               :items="agentArtist"
             )
           .border-top.border-top--20
-          os-artist-events
+          os-artist-events(:isUser="isUser")
       os-modal.modal-rider(
       modal-title="Rider-list"
       v-if="showModalRider"
