@@ -55,7 +55,6 @@ const actions = {
       })
   },
   getTracks: ({commit, state}, payload) => {
-    console.log('getTracks')
     var id = getCorrectUserId(payload.id, state.user.id)
 
     return Vue.axios.get(`/api/users/${id}/music/`)

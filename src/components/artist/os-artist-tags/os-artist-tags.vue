@@ -1,7 +1,7 @@
 <template lang="pug">
 .artist-hashtags
   .artist-tags(ref="tagsContainer", :class="{'artist-tags--active': availibleTags}")
-    router-link(ref="tags", to="" v-for="tag, index in tags", :key="index").artist-tags__link.btn.btn--grey.btn--20
+    span(ref="tags", to="" v-for="tag, index in tags", :key="index").artist-tags__link.btn.btn--grey.btn--20
       span # {{tag}}
   .artist-hashtags__dots(v-if="showDots", @click="availibleTags = !availibleTags", :class="{'artist-hashtags__dots--active': availibleTags}")
     span.artist-hashtags__dot
