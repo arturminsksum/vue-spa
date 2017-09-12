@@ -25,8 +25,8 @@ export default {
   methods: {
     closeModal: function (event) {
       let el = event.target,
-        isModalMask = el.className.indexOf('modal__mask')
-      if (isModalMask !== -1) {
+        isModalMask = typeof el.className === 'string' ? el.className.indexOf('modal__mask') > -1 : false
+      if (isModalMask) {
         this.$emit('close')
       }
     }
