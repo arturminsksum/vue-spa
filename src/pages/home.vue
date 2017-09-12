@@ -162,6 +162,7 @@
       os-modal.modal-gallery(
       modal-title="Gallery"
       v-if="showModalGallery"
+      @close="showModalGallery = false"
       no-header)
         .modal__body(slot="body")
           os-profile-gallery.modal__gallery(@close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
