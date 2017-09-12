@@ -43,7 +43,7 @@
     )
       .signup__container(slot="body")
         .signup__title
-          a.signup__title-logo(href="/")
+          .signup__title-logo
             os-svg.signup__title-icon(name="onstage-logo-black" width="128" height="28")
           span.signup__title-text Great to see you again!
         form.form.form--signup(@submit.prevent="onSubmit")
@@ -69,10 +69,10 @@
             .form__submit
               button.btn.btn--green.btn--40(type="submit") Sign In
           .form__row.form__row--bottom
-            a.btn.btn--fb.btn--40(href="")
+            router-link(to="").btn.btn--fb.btn--40
               os-svg(name="fb" width="14" height="26")
               span Sign In using facebook
-            a.btn.btn--google.btn--40(href="")
+            router-link(to="").btn.btn--google.btn--40
               os-svg(name="google" width="29" height="29")
               span Sign In using Google
 

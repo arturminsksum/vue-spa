@@ -12,9 +12,10 @@
   &__button{
     display: block;
     width: 80px;
-    height: 600px;
+    height: 100%;
     position: absolute;
     top: 1px;
+    outline: none;
 
     &--next{
       right: 0;

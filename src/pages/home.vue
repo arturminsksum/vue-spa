@@ -41,8 +41,8 @@
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
-                a(href="").post-single__avatar
-                a(href="").post-single__user Major Lazer
+                router-link(to="").post-single__avatar
+                router-link(to="").post-single__user Major Lazer
               .post-single__header-block
                 .post-single__date 3 hour ago
                 .post-single__drop
@@ -57,22 +57,22 @@
                   img(src="../assets/img/post-picture.jpg")
             .post-single__footer
               .post-single__footer-left
-                a(href="/").track-like
+                router-link(to="").track-like
                   os-svg(name="like", width="10px", height="10px").track-like_icon
                   span.track-like_text 55
-                a(href="/").track-share
+                router-link(to="").track-share
                   os-svg(name="share", width="12px", height="10px").track-share_icon
                   span.track-like_text 55
               .post-single__footer-right
-                a(href="/").track-chart
+                router-link(to="").track-chart
                   os-svg(name="speach", width="12px", height="10px").track-chart_icon
                   span.track-chart_text 0
 
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
-                a(href="").post-single__avatar
-                a(href="").post-single__user Major Lazer
+                router-link(to="").post-single__avatar
+                router-link(to="").post-single__user Major Lazer
               .post-single__header-block
                 .post-single__date 3 hour ago
                 .post-single__drop
@@ -89,8 +89,8 @@
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
-                a(href="").post-single__avatar
-                a(href="").post-single__user Major Lazer
+                router-link(to="").post-single__avatar
+                router-link(to="").post-single__user Major Lazer
               .post-single__header-block
                 .post-single__date 3 hour ago
                 .post-single__drop
@@ -106,22 +106,22 @@
                     os-svg(name="playVideo", width="60px", height="60px").video__icon
             .post-single__footer
               .post-single__footer-left
-                a(href="/").track-like
+                router-link(to="").track-like
                   os-svg(name="like", width="10px", height="10px").track-like_icon
                   span.track-like_text 55
-                a(href="/").track-share
+                router-link(to="").track-share
                   os-svg(name="share", width="12px", height="10px").track-share_icon
                   span.track-like_text 55
               .post-single__footer-right
-                a(href="/").track-chart
+                router-link(to="").track-chart
                   os-svg(name="speach", width="12px", height="10px").track-chart_icon
                   span.track-chart_text 0
 
           .post-single.bgc-white
             .post-single__header
               .post-single__header-block
-                a(href="").post-single__avatar
-                a(href="").post-single__user Major Lazer
+                router-link(to="").post-single__avatar
+                router-link(to="").post-single__user Major Lazer
               .post-single__header-block
                 .post-single__date 3 hour ago
                 .post-single__drop
@@ -139,14 +139,14 @@
                     .post-single__gallery-count +{{ setIndex(index) }}
             .post-single__footer
               .post-single__footer-left
-                a(href="/").track-like
+                router-link(to="").track-like
                   os-svg(name="like", width="10px", height="10px").track-like_icon
                   span.track-like_text 55
-                a(href="/").track-share
+                router-link(to="").track-share
                   os-svg(name="share", width="12px", height="10px").track-share_icon
                   span.track-like_text 55
               .post-single__footer-right
-                a(href="/").track-chart
+                router-link(to="").track-chart
                   os-svg(name="speach", width="12px", height="10px").track-chart_icon
                   span.track-chart_text 0
 

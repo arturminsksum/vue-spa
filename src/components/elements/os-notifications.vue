@@ -5,7 +5,7 @@
       ul.notifications(v-show='isOpened')
         li.notifications-item(v-for='item in notifications', :key='item.name')
           span.notifications-item-description
-            a(:href='item.url') {{ item.name }}&nbsp;
+            router-link(to='') {{ item.name }}&nbsp;
             |{{item.description}}
           .notifications-item-time {{parseTime(item.time)}}
 </template>

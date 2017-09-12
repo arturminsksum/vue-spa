@@ -18,7 +18,7 @@
           .plans-info__body.chargeable
             .plans-info__cost.chargeable-cost
               .plans-info__price {{ proCost }}
-              a.btn.btn--green-invert.plans-info__button(href="/") {{ proButton }}
+              router-link.btn.btn--green-invert.plans-info__button(to="") {{ proButton }}
             .plans-info__advantages
               ul.plans-info__list--chargeable
                 li(v-for="advantage, index in plan.proAdvantages", :key="index").plans-info__item {{ advantage }}

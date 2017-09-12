@@ -58,10 +58,10 @@
                 .form__submit
                   button.btn.btn--green.btn--40(type="submit", @click.prevent="formsData.user.submit") Sign Up
               .form__row.form__row--bottom
-                a.btn.btn--fb.btn--40(href="")
+                router-link(to="").btn.btn--fb.btn--40
                   os-svg(name="fb" width="14" height="26")
                   span Register with facebook
-                a.btn.btn--google.btn--40(href="")
+                router-link(to="").btn.btn--google.btn--40
                   os-svg(name="google" width="29" height="29")
                   span Register with Google
           os-tabs-item(name='Musician', :forms-data="formsData")
