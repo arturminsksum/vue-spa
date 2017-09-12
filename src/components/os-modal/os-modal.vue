@@ -1,6 +1,6 @@
 <template lang="pug">
   transition(name='modal')
-    .modal__mask
+    .modal__mask(@click="closeModal")
       .modal__wrapper
         .modal__container
           .modal__header(v-if="!noHeader")

@@ -9,7 +9,7 @@
         p.main-plan__period {{plan.period}}
         .main-plan__divider
         .main-plan__button
-          a.btn.btn--green-invert(href='') {{plan.button}}
+          router-link(to='').btn.btn--green-invert {{plan.button}}
 
 </template>
 

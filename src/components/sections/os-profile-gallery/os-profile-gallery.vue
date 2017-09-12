@@ -2,9 +2,9 @@
 .profile-gallery
   .profile-gallery__picture
     img(:src="require('../../../assets/img/' + photos[currentNumber].poster)").img.profile-gallery__image
-    a(href="#", @click.prevent="showNext()").profile-gallery__button.profile-gallery__button--next
+    button(@click.prevent="showNext()").profile-gallery__button.profile-gallery__button--next
       os-svg(:name="arrowRight", width="20px", height="35px")
-    a(href="#", @click.prevent="showPrev()").profile-gallery__button.profile-gallery__button--prev
+    button(@click.prevent="showPrev()").profile-gallery__button.profile-gallery__button--prev
       os-svg(:name="arrowLeft", width="20px", height="35px")
     .profile-gallery__close(@click="$emit('close')")
       os-svg(name="close", width="25px", height="25px")
