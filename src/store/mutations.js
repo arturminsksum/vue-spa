@@ -15,7 +15,8 @@ const mutations = {
     state.residents = payload.list
   },
   [types.ADD_EVENT] (state, payload) {
-    state.events.splice(0, 0, payload.event)
+    debugger
+    state.posts.splice(0, 0, payload)
   }
 }
 

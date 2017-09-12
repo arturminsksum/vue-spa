@@ -15,7 +15,7 @@ export default new Vuex.Store({
   actions,
   mutations,
   plugins: [createPersistedState({
-    paths: ['events'],
+    paths: ['posts'],
     storage: window.sessionStorage
   })]
 })

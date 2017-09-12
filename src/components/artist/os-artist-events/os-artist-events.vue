@@ -13,7 +13,7 @@
         label.form__row.direction-col
           div.field-wrapper
             .label.label--signup Event name
-            input#name.input(type="text" placeholder="Ex. Super Mega Festival", v-model="formsData.event.name")
+            input#name.input(type="text" placeholder="Ex. Super Mega Festival", v-model="formsData.event.eventName")
           div.field-wrapper(v-show="formsData.event.errors")
             span.error
 
@@ -174,7 +174,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'events'
+      'events',
+      'user'
     ])
   },
 
@@ -201,7 +202,8 @@ export default {
           upload: ''
         }) */
         event: {
-          name: '',
+          type: 'event',
+          eventName: '',
           location: '',
           date: '',
           time: '',
@@ -255,10 +257,14 @@ export default {
   methods: {
     submit: function () {
       const data = Object.assign({}, this.formsData.event)
-      const payload = Object.assign({}, {event: data})
+      const name = this.user.name
+      const id = this.user.id
+      const publishDate = new Date().getTime()
+      const avatar = 'artist-avatar-01.jpg'
+      const payload = Object.assign({}, data)
+      payload.author = {name, id, publishDate, avatar}
       this.$store.commit('ADD_EVENT', payload)
       this.showModalEvent = false
-      this.axios.post()
     },
     uploadFile (event) {
       this.$set(this.formsData.event, 'poster', 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg') // event.target.files[0].name

@@ -19,7 +19,7 @@
               os-svg(name="calendar", width="15px", height="16px").page-home__events-icon
               .page-home__events-text 5 events invitations
             .border-top.border-top--20
-            os-artist-events
+            os-artist-events(:author="user")
 
       os-modal.modal-gallery(
       modal-title="Gallery"
@@ -78,119 +78,6 @@ export default {
       pictureNumber: '',
       showPlayer: false,
       photos: []
-/*
-      photos: [
-        {
-          poster: 'gallery-04.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'gallery-02.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'gallery-03.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'gallery-01.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        },
-        {
-          poster: 'gallery-05.jpg',
-          artist: {
-            avatar: 'avatar-1.png',
-            name: 'Artist Name',
-            data: '11.01.18'
-          },
-          managers: [
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            },
-            {
-              avatar: 'avatar-1.png',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ...eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-              author: 'Maneger Name',
-              date: '11.01.17'
-            }
-          ]
-        }
-      ] */
     }
   }
 }

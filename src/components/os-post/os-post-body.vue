@@ -6,7 +6,7 @@
           img.img(:src="post.poster")
       .post-event__info
         .post-event__row
-          .post-event__head {{post.name}}
+          .post-event__head {{post.eventName}}
           .post-event__price
             os-svg.svg--mr.svg--green(name="ticket", width="14px", height="14px")
             span $ {{post.price}}

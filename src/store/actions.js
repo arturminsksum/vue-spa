@@ -85,6 +85,4 @@ function getByToken (commit, payload) {
     })
 }
 
-// function getBoard () {}
-
 export default actions
