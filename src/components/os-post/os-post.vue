@@ -2,8 +2,8 @@
   .post-single.bgc-white
     .post-single__header
       .post-single__header-block
-        a(href="").post-single__avatar
-        a(href="").post-single__user RE:PUBLIC
+        router-link(to="").post-single__avatar
+        router-link(to="").post-single__user RE:PUBLIC
       .post-single__header-block
         .post-single__date 3 hour ago
         .post-single__drop
@@ -34,17 +34,17 @@
               span {{event.time}}
     .post-single__footer
       .post-single__footer-left
-        a(href="/").track-like
+        router-link(to="").track-like
           os-svg(name="like", width="10px", height="10px").track-like_icon
           span.track-like_text 55
-        a(href="/").track-share
+        router-link(to="").track-share
           os-svg(name="share", width="12px", height="10px").track-share_icon
           span.track-like_text 55
-        a(href="/").track-add
+        router-link(to="").track-add
           os-svg(name="plus", width="10px", height="10px").track-add_icon
           span.track-add_text Add to calendar
       .post-single__footer-right
-        a(href="/").track-chart
+        router-link(to="").track-chart
           os-svg(name="speach", width="12px", height="10px").track-chart_icon
           span.track-chart_text 0
 

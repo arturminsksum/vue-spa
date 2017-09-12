@@ -10,7 +10,7 @@
       os-swiper-slider(is-photo)
     os-tabs-item(name='Events', iconName="calendar")
       .events-list.row
-        a(href="/" v-for="n in 6" key="index").events-list__item.four.columns
+        router-link(to="" v-for="n in 6" key="index").events-list__item.four.columns
           .events-list__img
             img.img(src="../../../assets/img/event-list-item.jpg")
           .events-list__info

@@ -9,7 +9,7 @@ div
   swiper.artist-slider(:options='options' ref="mySwiper")
     swiper-slide.swiper-slide(v-if="isVideo" v-for="n in 5", :key="n" )
       .swiper-slide__cover
-        a(href="/").swiper-slide__cover-button
+        router-link(to="").swiper-slide__cover-button
           os-svg(name="playVideo", width="36px", height="36px").swiper-slide__cover-icon
         p.swiper-slide__cover-text Major Lazer & DJ SnakerAss
     swiper-slide.swiper-slide(v-if="isPhoto" v-for="n in 5", :key="n")

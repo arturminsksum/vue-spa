@@ -7,7 +7,7 @@
       .page-wrapper
         aside.aside-left.aside-left--profile
           .artist-left__add-contact
-            a(href='').btn.btn--green
+            router-link(to='').btn.btn--green
               span Add contact
           .artist-rating(v-if="!isUser")
             os-svg(name="star", width="17px", height="17px" key="n" v-for="n in 5").artist-rating__star
@@ -17,7 +17,7 @@
               os-svg(name="world", width="14px", height="14px").artist-share__icon
               | social links
             .artist-share__list
-              a(:href="item.link" v-for="item in artistShare" key="index").artist-share__link
+              a(to="" v-for="item in artistShare" key="index").artist-share__link
                 os-svg(:name="item.icon", width="14px", height="14px")
           .aside-adv
             img.img(src="../assets/img/sidebar-banner-01.jpg")
@@ -36,7 +36,7 @@
             .artist-right__rider
               button.btn.btn--dark-blue(@click="showModalRider = true")
                 span Request rider
-            a(href="").artist-right__link
+            router-link(to="").artist-right__link
               os-svg(name="message", width="15px", height="14px").artist-right__link-icon
               span.artist-right__link-text message
           os-profile-stats

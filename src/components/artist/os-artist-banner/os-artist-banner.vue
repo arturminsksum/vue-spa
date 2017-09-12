@@ -8,19 +8,19 @@
               p.artist-banner__name {{user.name}}
               .artist-banner__block
                 .artist-banner__genre(v-if="!isUser && user.genre")
-                  a(href="").artist-banner__genre-link Blues rock
+                  router-link(to="").artist-banner__genre-link Blues rock
                   span &nbsp;/&nbsp;
-                  a(href="").artist-banner__genre-link Classic Rock
+                  router-link(to="").artist-banner__genre-link Classic Rock
                   span &nbsp;/&nbsp;
-                  a(href="").artist-banner__genre-link Guitar
-                a(href="" v-if="user.location").artist-banner__location
+                  router-link(to="").artist-banner__genre-link Guitar
+                router-link(to="" v-if="user.location").artist-banner__location
                   os-svg(name="marker", width="9px", height="14px").artist-banner__location-icon
                   span.artist-banner__location-spot {{user.location}}
           .artist-banner__action
-            a(href="" v-if="!isArtist").artist-banner__link
+            router-link(to="" v-if="!isArtist").artist-banner__link
               os-svg(name="message", width="15px", height="11px").artist-banner__link-icon
               span.artist-banner__link-text message
-            a(href="").artist-banner__link
+            router-link(to="").artist-banner__link
               os-svg(name="share", width="14px", height="11px").artist-banner__link-icon
               span.artist-banner__link-text share
 </template>
