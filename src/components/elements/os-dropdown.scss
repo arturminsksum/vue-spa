@@ -16,11 +16,13 @@
 
     a {
       display: block;
-      padding: 13px 20px 15px;
+      padding: 14px 20px 15px;
       text-decoration: none;
       color: $grey-bg-text;
       font-weight: 500;
       font-size: 14px;
+      display: inline-block;
+      width: 100%;
     }
   }
 }
