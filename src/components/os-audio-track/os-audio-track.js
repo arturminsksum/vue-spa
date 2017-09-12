@@ -27,6 +27,7 @@ export default {
     },
     trackStop () {
       this.track.playing = false
+      this.$emit('showPlayer')
     },
     timerToggle (value) {
       if (value) {

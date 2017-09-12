@@ -1,6 +1,6 @@
 <template lang="pug">
 div.audio-player
-  .audio-player-small(v-if="isAudioActive()")
+  .audio-player-small(v-if="playerSmall && playerOpened")
     .audio-player-small-avatar
       os-svg(name="disc", width="23px", height="23px").audio-player-small-avatar__icon
     .audio-player-small-melody
@@ -24,11 +24,13 @@ div.audio-player
             os-svg(name="share", width="13px", height="10px")
           button(@click="togglePlayerFull()").audio-player-small-top__actions-expand
             os-svg(name="expand", width="12px", height="12px")
+          button(@click="closePlayer()").audio-player-small-top__actions-close
+            os-svg(name="cross", width="12px", height="12px")
       .audio-player-small-bottom
         .audio-player-small-bottom__track
           span.audio-player-small-bottom__track-played
           .audio-player-small-bottom__track-currrent
-  figure.audio-player-full(v-if="playerFull")
+  figure.audio-player-full(v-if="playerFull && playerOpened")
     .audio-player-full__image
       .audio-player-full__image-icon
         button(@click="togglePlayerFull()").audio-player-full__image-icon__button

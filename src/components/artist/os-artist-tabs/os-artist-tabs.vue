@@ -3,7 +3,7 @@
   os-tabs.artist-tabs
     os-tabs-item(name='Tracks', iconName="diagram", :selected='true')
       .artist-tabs__track(v-for="(song, index) in playlistTracks", :key="index")
-        os-audio-track(:track="song", :isPlay="song.playing" @stopAllTracks="stopAllTracks" @showPlayer="showPlayer = true")
+        os-audio-track(:track="song", :isPlay="song.playing" @stopAllTracks="stopAllTracks" @showPlayer="showPlayer = !showPlayer")
     os-tabs-item(name='Video', iconName="video")
       os-swiper-slider(is-video)
     os-tabs-item(name='Photo', iconName="photo")

@@ -81,18 +81,16 @@
 
       &-volume,
       &-share,
-      &-like {
-        margin-right: 6px;
-      }
-
+      &-like,
       &-expand {
-        margin-left: 6px;
+        margin-right: 6px;
       }
 
       &-volume,
       &-share,
       &-like,
-      &-expand {
+      &-expand,
+      &-close {
         &:hover {
           fill: $player-avatar;
         }
@@ -145,7 +143,7 @@
   z-index: 997;
 
   &__image {
-    background: url('../../assets/img/player-default.jpg') 50% 50% no-repeat;
+    background: url('../../assets/img/default.png') 50% 50% no-repeat;
     background-size: cover;
     padding: 10px;
     border-radius: 5px 5px 0 0;
