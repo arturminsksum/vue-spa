@@ -162,7 +162,7 @@
     &__arrow {
       margin-left: 8px;
       transition: transform .3s;
-      &.dropdown-opened {
+      .dropdown-opened & {
         transform: rotate(180deg);
       }
     }
@@ -170,6 +170,7 @@
   }
 
   &-notify {
+    position: relative;
     align-items: center;
     display: flex;
 

@@ -23,18 +23,19 @@
           .header-upload
             os-svg.header-upload__icon(name="upload", width="20px", height="20px")
             span.header-upload__text Upload
-          .header-artist
-            .header-artist__avatar
-              img(:src="user.avatar_image")
-            .header-artist__name(@click.prevent="toggleUserDropdown") {{user.name}}
-              os-svg.header-artist__arrow(name="arrow-down", width="11px", height="6px", :class="{'dropdown-opened': dropdownIsOpened}")
-              os-dropdown(:menu-items="userDropdownItems", :is-opened="dropdownIsOpened")
+          os-dropdown.header-artist(:menu-items="userDropdownItems")
+            .header-artist(slot="item")
+              .header-artist__avatar
+                img(:src="user.avatar_image")
+              .header-artist__name {{user.name}}
+                os-svg.header-artist__arrow(name="arrow-down", width="11px", height="6px")
           .header-notify
             .header-notify__letter(:class="{incoming: letterIscoming}")
               os-svg(name="letter", width="19px", height="14px")
-            .header-notify__bell(@click.prevent="toggleNotifications", :class="{incoming: checkNotifications()}")
-              os-svg(name="bell", width="17px", height="18px")
-              os-notifications(:notifications="notificationItems", :is-opened="notificationsIsOpened")
+            os-notifications(:notifications="notificationItems")
+              .header-notify__bell(slot="item" :class="{incoming: checkNotifications()}")
+                os-svg(name="bell", width="17px", height="18px")
+
     os-modal.modal-login(
       v-if="showLoginModal"
       modal-title="Sign In"
@@ -106,8 +107,6 @@ export default {
         password: ''
       },
       showLoginModal: false,
-      dropdownIsOpened: false,
-      notificationsIsOpened: false,
       letterIscoming: true,
 
       artistMenu: [
@@ -184,12 +183,6 @@ export default {
             this.showLoginModal = false
           }
         })
-    },
-    toggleUserDropdown () {
-      this.dropdownIsOpened = !this.dropdownIsOpened
-    },
-    toggleNotifications () {
-      this.notificationsIsOpened = !this.notificationsIsOpened
     },
     checkNotifications () {
       return this.notificationItems.length !== 0

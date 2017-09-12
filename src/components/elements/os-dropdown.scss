@@ -7,7 +7,6 @@
   z-index: 10;
 
   &-item {
-    padding: 13px 20px 15px;
     &:hover{
       background: $dark-blue-hover;
     }
@@ -16,10 +15,13 @@
     }
 
     a {
+      padding: 14px 20px 15px;
       text-decoration: none;
       color: $grey-bg-text;
       font-weight: 500;
       font-size: 14px;
+      display: inline-block;
+      width: 100%;
     }
   }
 }
