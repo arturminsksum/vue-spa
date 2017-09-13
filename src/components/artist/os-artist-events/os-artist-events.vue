@@ -51,9 +51,9 @@
             div.field-wrapper
               .label.label--signup Add Artists
               .event-artist__row
-                .event-artist(v-for="n in 3")
-                  input.event-artist__input(:id="`artist${n}`" type="checkbox", :value="n", v-model="checkedArtists")
-                  label.btn.btn--20(:for="`artist${n}`").event-artist__label Artist{{n}}
+                .event-artist(v-for="artist in residentsArray")
+                  input.event-artist__input(:id="artist.id" type="checkbox", :value="artist.name", v-model="checkedArtists")
+                  label.btn.btn--20(:for="artist.id").event-artist__label {{artist.name}}
 
         //-       .form-search
         //-         input#artist.input(type="text" placeholder="Ex. Prodigy", v-model="formsData.addedArtist")
@@ -189,8 +189,7 @@ export default {
   data () {
     return {
       showModalEvent: false,
-
-      // artistTags: ['The Offsping', 'Prodigy'],
+      residentsArray: [{'id': 16, 'name': 'Сalvin Harris', 'role': 'artist', 'avatar_image': 'pictures/accounts/musicians/artist-avatar-02.jpg'}, {'id': 17, 'name': 'Kraftwerk', 'role': 'artist', 'avatar_image': 'pictures/accounts/musicians/artist-avatar-01.jpg'}, {'id': 20, 'name': 'PinKKode', 'role': 'artist', 'avatar_image': 'pictures/accounts/musicians/artist-avatar-03.jpg'}],
 
       checkedArtists: [],
 
