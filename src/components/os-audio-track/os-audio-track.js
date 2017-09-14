@@ -9,57 +9,43 @@ export default {
 
   props: {
     track: Object,
-    isPlay: Boolean
+    current: [String, Object]
   },
 
   data () {
     return {
-      timeoutId: '',
-      music: ''
     }
   },
 
   methods: {
     trackPlay () {
-      this.$emit('showPlayer')
-      this.$emit('stopAllTracks')
-      this.track.playing = true
+      if (this.current !== this.track) {
+        this.$emit('currentWasReset', this.track)
+        if (this.current.music) {
+          this.current.music.pause()
+          this.current.music.currentTime = 0
+          this.current.playing = false
+          clearTimeout(this.current.timeoutId)
+        }
+      }
+      this.track.music = this.$refs.audio
+      this.track.music.play()
+      this.track.playing = !this.track.playing
+
+      if (this.track.timeoutId) {
+        clearTimeout(this.track.timeoutId)
+      }
+      let delay = 1000 * (this.track.music.duration - this.track.music.currentTime),
+        self = this
+      this.track.timeoutId = setTimeout(() => {
+        self.track.playing = false
+        self.track.music.pause()
+      }, delay)
     },
     trackStop () {
-      this.track.playing = false
-      this.$emit('showPlayer')
-    },
-    timerToggle (value) {
-      if (value) {
-        let delay = 1000 * (this.music.duration - this.music.currentTime),
-          self = this
-        this.timeoutId = setTimeout(() => {
-          self.track.playing = false
-        }, delay)
-      } else {
-        clearTimeout(this.timeoutId)
-      }
-    }
-  },
-
-  computed: {
-    makeMusic: function () {
-      this.music = this.$refs.audio
-    }
-  },
-
-  watch: {
-    isPlay: function (value) {
-      if (!this.music) {
-        this.makeMusic
-      }
-      if (value) {
-        this.music.play()
-        this.timerToggle(true)
-      } else {
-        this.music.pause()
-        this.timerToggle(false)
-      }
+      this.track.music.pause()
+      this.track.playing = !this.track.playing
+      clearTimeout(this.track.timeoutId)
     }
   }
 }

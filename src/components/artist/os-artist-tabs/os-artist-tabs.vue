@@ -3,7 +3,7 @@
   os-tabs.artist-tabs
     os-tabs-item(name='Tracks', iconName="diagram", :selected='true')
       .artist-tabs__track(v-for="(song, index) in playlistTracks", :key="index")
-        os-audio-track(:track="song", :isPlay="song.playing" @stopAllTracks="stopAllTracks" @showPlayer="showPlayer = !showPlayer")
+        os-audio-track(:track="song", :current="currentTrack", @currentWasReset="currentTrack = $event")
     os-tabs-item(name='Video', iconName="video")
       os-swiper-slider(is-video)
     os-tabs-item(name='Photo', iconName="photo")
@@ -23,7 +23,7 @@
       ul.pagin
         li.pagin__item(v-for="(text, index) in ['<<','<','1','2','3','4','>','>>']", key="index")
           span.pagin__text {{text}}
-    os-audio-player(:audioActive="showPlayer")
+    os-audio-player(:audioActive="currentTrack.playing")
 </template>
 
 <script>
@@ -54,7 +54,10 @@ export default {
       openedPhoto: '',
       showModalGallery: false,
       showPlayer: false,
-      currentTrack: '',
+      currentTrack:
+      {
+        playing: false
+      },
       playlistTracks: [
         {
           songName: 'Song 1',
