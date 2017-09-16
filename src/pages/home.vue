@@ -81,7 +81,7 @@
                     .toggler__dot
                     .toggler__dot
             .post-single__body
-              os-audio-track(:track="track", :isPlay="track.playing", @showPlayer="showPlayer = !showPlayer")
+              os-audio-track(:track="track", :current="currentTrack", @currentWasReset="currentTrack = $event")
             .post-single__footer
               .post-single__footer-left
               .post-single__footer-right
@@ -167,7 +167,7 @@
       no-header)
         .modal__body(slot="body")
           os-profile-gallery.modal__gallery(@close="showModalGallery = false", :numOpen="pictureNumber", :galleryPhotos="photos" )
-      os-audio-player(:audioActive="showPlayer")
+      os-audio-player(:audioActive="currentTrack.playing")
 </template>
 
 <script>
@@ -211,6 +211,10 @@ export default {
       showModalGallery: false,
       pictureNumber: '',
       showPlayer: false,
+      currentTrack:
+      {
+        playing: false
+      },
 
       track: {
         songName: 'Song name',
