@@ -263,7 +263,8 @@ export default {
       const avatar = 'artist-avatar-01.jpg'
       const payload = Object.assign({}, data)
       payload.author = {name, id, publishDate, avatar}
-      this.$store.commit('ADD_EVENT', payload)
+      this.$store.dispatch('addPost', payload)
+      this.$store.dispatch('getPosts')
       this.showModalEvent = false
     },
     uploadFile (event) {

@@ -17,7 +17,7 @@ const actions = {
     return getByToken(commit, payload)
   },
   getUser: ({commit}, payload) => {
-    var options = {}
+    const options = {}
 
     if (payload.id === 'me') {
       options['Authorization'] = 'Bearer ' + sessionStorage.getItem('token')
@@ -56,15 +56,31 @@ const actions = {
   },
   getTracks: ({commit, state}, payload) => {
     console.log('getTracks')
-    var id = getCorrectUserId(payload.id, state.user.id)
+    const id = getCorrectUserId(payload.id, state.user.id)
 
     return Vue.axios.get(`/api/users/${id}/music/`)
       .then((response) => {
         let data = response.data
         commit(types.SET_TRACKS, {list: data})
       })
-  }
-
+  },
+  addPost: (payload) => {
+    // const id = payload.state.user.id
+    const options = {}
+    options['Authorization'] = 'Bearer ' + sessionStorage.getItem('token')
+    Vue.axios.post(`/posts/`, payload, {headers: options})
+  },
+  getPosts: ({commit, state}) => {
+    // const id = state.user.id
+    const options = {}
+    options['Authorization'] = 'Bearer ' + sessionStorage.getItem('token')
+    Vue.axios.get(`/posts/`, {headers: options})
+      .then(response => {
+        let posts = response.data.posts
+        commit(types.GET_POSTS, posts)
+      })
+  },
+  updateBoard: ({commit, state}) => {}
 }
 
 function updateImageUrl (obj) {

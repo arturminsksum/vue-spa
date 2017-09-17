@@ -19,6 +19,9 @@ const mutations = {
   },
   [types.SET_TRACKS] (state, payload) {
     state.tracks = payload.list
+  },
+  [types.GET_POSTS] (state, payload) {
+    state.posts = payload.posts
   }
 }
 
