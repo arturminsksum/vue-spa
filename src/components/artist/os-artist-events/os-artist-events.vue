@@ -261,10 +261,19 @@ export default {
 
   methods: {
     submit: function () {
-      const data = Object.assign({}, this.formsData.event)
-      const payload = Object.assign({}, {event: data})
-      this.$store.commit('ADD_EVENT', payload)
-      this.showModalEvent = false
+      // const data = Object.assign({}, this.formsData.event)
+      // const payload = Object.assign({}, {event: data})
+      // this.$store.commit('ADD_EVENT', payload)
+      // this.showModalEvent = false
+      this.axios.post('https://onstage-front.firebaseio.com/data.json', this.formsData.event)
+        .then((response) => {
+          this.showModalEvent = false
+        })
+        .catch((error) => {
+          if (error) {
+            this.showModalEvent = false
+          }
+        })
     },
     uploadFile (event) {
       this.$set(this.formsData.event, 'poster', 'http://carpentercollective.com/wp-content/uploads/2013/12/JackJohnson02_tadcarpenter1.jpg') // event.target.files[0].name
